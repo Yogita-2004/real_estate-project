@@ -1,0 +1,935 @@
+/* =====================================================
+   ROOT VARIABLES – SOBHA / MAX LUXURY FEEL
+===================================================== */
+:root{
+  --primary:#0b3b63;      /* Blue */
+  --accent:#fbb040;       /* Orange */
+  --accent-soft:#f5a623;  /* Orange soft */
+  --dark:#111;
+  --text:#333;
+  --light:#f6f7f5;
+  --white:#ffffff;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:"Poppins", system-ui, sans-serif;
+  background:var(--white);
+  color:var(--text);
+  line-height:1.7;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.site-header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:80px;
+  z-index:9999;
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(6px);
+  transition:background 0.3s ease;
+}
+
+.site-header.scrolled{
+  background:rgba(0,0,0,0.85);
+}
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  height:80px;
+  padding:0 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brochure-header-btn{
+  background:#fbb040;
+  color:#0b3b63;
+  padding:10px 16px;
+  border-radius:6px;
+  font-weight:600;
+  margin-left:15px;
+}
+
+.brochure-header-btn:hover{
+  background:#f5a623;
+}
+.menu a{
+  position:relative;
+  padding:6px 4px;
+  color:#ddd;
+  transition:0.3s;
+}
+
+.menu a.active{
+  color:#fbb040;
+  font-weight:600;
+}
+
+.menu a.active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:100%;
+  height:2px;
+  background:#fbb040;
+  border-radius:2px;
+}
+
+/* brochure button ko active se bachane ke liye */
+.menu .brochure-header-btn::after{
+  display:none;
+}
+section {
+  scroll-margin-top: 90px;
+}
+/* ================= BROCHURE MODAL ================= */
+
+.brochure-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.65);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+}
+
+.modal-box{
+  position:relative;
+  background:#eaf2fa;
+  padding:30px 26px 26px;
+  border-radius:10px;
+  width:340px;
+  box-shadow:0 30px 80px rgba(0,0,0,0.4);
+}
+
+/* ❌ CLOSE ICON */
+.close-modal{
+  position:absolute;
+  top:12px;
+  right:14px;
+  font-size:22px;
+  color:#060606;
+  cursor:pointer;
+  font-weight:600;
+  line-height:1;
+}
+
+.close-modal:hover{
+  color:#fbb040;
+  transform:scale(1.1);
+}
+
+/* inputs */
+.modal-box input{
+  width:100%;
+  padding:12px;
+  margin-bottom:12px;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+}
+
+/* button */
+.modal-box button{
+  width:100%;
+  padding:12px;
+  background:#fbb040;
+  color:#0b0b0b;
+  border:none;
+  border-radius:10px;
+  font-size:15px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.modal-box button:hover{
+  background:#f5a623;
+}
+/* LOGO */
+.logo-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1;
+  color:var(--white);
+}
+
+.logo-text .brand{
+  font-size:18px;
+  letter-spacing:4px;
+  font-weight:500;
+}
+
+.logo-text .project{
+  font-size:26px;
+  letter-spacing:3px;
+  font-weight:600;
+  margin-top:4px;
+}
+
+.logo-text .tagline{
+  font-size:10px;
+  letter-spacing:2px;
+  margin-top:6px;
+  opacity:0.85;
+}
+
+/* MENU */
+.menu{
+  display:flex;
+}
+
+.menu a{
+  color:var(--white);
+  text-decoration:none;
+  font-size:14px;
+  margin-left:22px;
+  position:relative;
+}
+
+.menu a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--accent);
+  transition:0.3s;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+/* ================= HERO SECTION ================= */
+
+.hero{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* HERO IMAGE */
+.hero img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DARK OVERLAY */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.65)
+  );
+}
+
+/* HERO CONTENT */
+.hero-content{
+  position: relative;
+  z-index: 2;
+  max-width: 420px;
+  margin-left: 80px;
+  margin-top: 350px;
+  color: #fff;
+}
+
+/* HEADING */
+.hero-content h1{
+  font-size: 48px;
+  line-height: 1.15;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+/* SUBTITLE */
+.hero-subtitle{
+  font-size: 14px;
+  opacity: 0.9;
+  margin-bottom: 22px;
+}
+
+/* HIGHLIGHTS */
+.hero-highlights{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.hero-highlights span{
+  background: rgba(255,255,255,0.18);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* BUTTON */
+.brochure-header-btn{
+  background: #fbb040;
+  color: #000;
+  border: none;
+  padding: 14px 30px;
+  border-radius: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.brochure-header-btn:hover{
+  background: #ffd27a;
+}
+
+/* ================= MOBILE ================= */
+@media(max-width:768px){
+
+  .hero{
+    height: 90vh;
+  }
+
+  .hero-content{
+    margin-left: 24px;
+    margin-top: 160px;
+    max-width: 100%;
+  }
+
+  .hero-content h1{
+    font-size: 34px;
+  }
+}
+/* =====================================================
+   OVERVIEW SECTION
+===================================================== */
+
+.overview{
+  background: var(--white);
+  padding: 80px 20px;
+}
+
+.overview-wrap{
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* ================= LEFT ================= */
+.overview-text h2{
+  position: relative;
+  padding-bottom: 10px;
+  color: #0b3b63;
+}
+
+.overview-text h2::after{
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.overview-text p{
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ================= POINT CARDS ================= */
+
+.overview-points{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px 30px;
+  margin: 32px 0;
+}
+
+.point-card{
+  border-left: 2px solid var(--primary);
+  padding-left: 14px;
+}
+
+.point-card .highlight{
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.point-card p{
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ================= EXTRA LIST ================= */
+
+.overview-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.overview-list li{
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.overview-list strong{
+  color: var(--primary);
+}
+
+/* ================= RIGHT IMAGE ================= */
+
+.overview-image{
+  position: relative;
+  height: 460px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.overview-image img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* ================= POINT CARD HOVER ================= */
+
+.point-card{
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.point-card:hover{
+  background: rgba(251, 176, 64, 0.08); /* soft orange */
+  border-left-color: var(--accent);     /* orange */
+  transform: translateY(-4px);
+}
+
+.point-card:hover .highlight{
+  color: var(--accent);                 /* orange text */
+}
+
+.point-card:hover p{
+  color: var(--text);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px){
+  .overview-wrap{
+    grid-template-columns: 1fr;
+  }
+
+  .overview-image{
+    height: 320px;
+    margin-top: 30px;
+  }
+
+  .overview-points{
+    grid-template-columns: 1fr;
+  }
+
+  .overview-text h2{
+    font-size: 28px;
+  }
+}
+/* =====================================================
+   RESIDENCES
+===================================================== */
+
+.residences{
+  background: var(--white);
+  padding: 80px 20px;
+}
+
+.residences-wrap{
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ================= CONTENT ================= */
+
+.residences-content{
+  margin-left: 50px;   /* text right shift */
+}
+
+.residences-content h2{
+  font-size: 34px;
+  color: var(--primary);
+  margin-bottom: 10px;
+  position: relative;
+}
+
+/* orange line (same as Overview & Amenities) */
+.residences-content h2::after{
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+.residences-list{
+  list-style: none;
+  padding: 0;
+  margin: 28px 0 24px;
+}
+
+.residences-list li{
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+
+/* subtle bullet */
+.residences-list li::before{
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 18px;
+  line-height: 1;
+}
+
+.residences-text{
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+/* ================= IMAGES ================= */
+
+.residences-images{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: -24px;   /* images left shift */
+}
+
+/* BIG IMAGE */
+.residences-images img:first-child{
+  width: 100%;
+  height: 300px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* SMALL IMAGE */
+.residences-images img:last-child{
+  width: 80%;
+  height: 180px;
+  margin-left: auto;   /* right aligned */
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* HOVER */
+.residences-images img{
+  transition: transform 0.6s ease;
+}
+
+.residences-images img:hover{
+  transform: scale(1.03);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px){
+  .residences-wrap{
+    grid-template-columns: 1fr;
+  }
+
+  .residences-content{
+    margin-left: 0;
+  }
+
+  .residences-images{
+    margin-left: 0;
+    margin-top: 30px;
+  }
+
+  .residences-images img:first-child{
+    height: 240px;
+  }
+}
+/* =====================================================
+   MASTER PLAN – MAX (SOBHA STYLE)
+===================================================== */
+
+#masterplan{
+  background: var(--white);
+  padding: 80px 20px;
+}
+
+.master-wrap{
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+  align-items: center;
+}
+/* ================= LEFT IMAGE SLIDER ================= */
+.master-image{
+  position: relative;
+  height: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.master-image img{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: masterFade 25s infinite;
+}
+
+/* timing for each image */
+.master-image img.mp1{ animation-delay: 0s; }
+.master-image img.mp2{ animation-delay: 5s; }
+.master-image img.mp3{ animation-delay: 10s; }
+.master-image img.mp4{ animation-delay: 15s; }
+.master-image img.mp5{ animation-delay: 20s; }
+
+/* ✅ FIXED animation */
+@keyframes masterFade{
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  30%  { opacity: 1; }
+  40%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+/* ================= RIGHT CONTENT ================= */
+
+.master-content .apex-title{
+  font-size: 34px;
+  color: var(--primary);
+}
+
+.master-content p{
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 16px 0;
+}
+
+.master-list{
+  padding-left: 18px;
+}
+
+.master-list li{
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* ================= PROJECT GALLERY ================= */
+
+#gallery{
+  padding: 60px 0;
+  background-color: #f3f6f9;
+}
+
+#gallery h2{
+  font-size: 30px;
+  color:#0b3b63;
+}
+
+#gallery .section-line{
+  width:55px;
+  height:3px;
+  background:#fbb040;
+  margin:12px 0 28px;
+}
+
+/* ===== CONTAINER CONTROL ===== */
+#gallery .container{
+  max-width: 1100px;   /* IMPORTANT */
+  margin: 0 auto;
+}
+
+/* ===== GRID FIX ===== */
+#gallery .gallery{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* FIX */
+  gap: 20px;
+}
+
+/* ===== IMAGE FIX ===== */
+#gallery .gallery img{
+  width: 100%;
+  height: 250px;       /*  controlled size */
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+/* ================= AMENITIES SECTION ================= */
+
+.apex-amenities{
+  padding: 55px 6%;
+  background-color: #fbf9f9;
+}
+
+.apex-amenities-wrap{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+  height: 100%;
+}
+
+/* ================= LEFT IMAGE ================= */
+
+.amenities-image{
+  position: relative;
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.amenities-image::before{
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 85%;
+  height: 85%;
+  background: #f3f6f9;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.amenities-image img{
+  width: 78%;
+  max-width: 459px;
+  max-height: none;
+  object-fit:cover;
+  height: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.amenities-image img:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+}
+
+/* ================= RIGHT CONTENT ================= */
+
+.amenities-content{
+  padding-left: 10px;
+}
+
+.apex-title{
+  font-size: 38px;
+  font-weight: 700;
+  color: #0b3b63;
+}
+
+.apex-line{
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #fbb040;
+  margin: 12px 0 35px;
+}
+
+/* ================= DIVIDER LIST ================= */
+.amenities-divider-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.amenities-divider-list li{
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #cfcfcf; /* 🔥 REAL DIVIDER */
+}
+
+.amenities-divider-list li:last-child{
+  border-bottom: none;
+}
+
+.amenities-divider-list .num{
+  font-size: 15px;
+  font-weight: 600;
+  color: #b5b5b5;
+}
+
+.amenities-divider-list .text{
+  font-size: 16px;
+  color: #333;
+}
+
+/* Hover effect */
+.amenities-divider-list li:hover{
+  border-bottom-color: #fbb040;
+}
+
+/* TEXT */
+.amenities-divider-list .text{
+  font-size: 16px;
+  color: #333;
+  white-space: normal;
+}
+
+/* LINE */
+.amenities-divider-list .line{
+  display: block;
+  width: 100%;              /**/
+  height: 1px;
+  background: #dcdcdc;
+}
+/* Hover effect */
+.amenities-divider-list li:hover .line{
+  background: #fbb040;
+}
+.contact-section{
+  background:#0b3b63;
+  padding:50px 20px;
+  color:#fff;
+}
+
+.contact-wrap{
+  max-width:1100px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1.1fr 0.9fr;
+  gap:40px;
+  align-items:center;
+}
+
+.contact-text h2{
+  font-size:34px;
+  margin-bottom:12px;
+}
+
+.contact-text p{
+  opacity:0.9;
+  margin-bottom:18px;
+  max-width:420px;
+}
+
+.contact-text ul{
+  list-style:none;
+  padding:0;
+}
+
+.contact-text li{
+  margin-bottom:6px;
+  font-size:14px;
+}
+
+.contact-form{
+  background:#fff;
+  padding:24px;
+  border-radius:16px;
+  display:flex;
+  flex-direction:column;
+  gap: 10px;
+}
+
+.contact-form input{
+  padding:12px 14px;
+  border-radius:10px;
+  border:1px solid #ddd;
+  font-size:14px;
+}
+
+.contact-form button{
+  margin-top:8px;
+  padding:13px;
+  border:none;
+  border-radius:10px;
+  background:#fbb040;
+  color:#000;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.contact-form button:hover{
+  background:#f5a623;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+.footer-divider{
+  max-width:1100px;
+  height:1px;
+  margin:40px auto 25px;
+  background:linear-gradient(
+    to right,
+    transparent,
+    #fbb040,
+    transparent
+  );
+}
+.lp-footer{
+  background:#0b3b63;
+  padding:20px;
+  text-align:center;
+}
+
+.lp-footer p{
+  color:#ffffff;
+  font-size:11px;
+  line-height:1.6;
+  max-width:900px;
+  margin:auto;
+  opacity:0.85;
+}
+
