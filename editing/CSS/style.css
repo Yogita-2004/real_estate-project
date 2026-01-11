@@ -346,7 +346,7 @@ a {
   font-weight: 600;
   color: #0b3b63;
   margin-bottom: 16px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .marquee-track {
@@ -355,7 +355,7 @@ a {
   animation: marqueeLoop 15s linear infinite;
 }
 .marquee-track img{
-  height: 45px;
+  height: 55px;
   width :auto;
   object-fit: contain;
   flex-shrink: 0;
@@ -382,7 +382,7 @@ a {
   font-weight: 600;
   color: #0b3b63;
   margin-bottom: 45px;
-  font-style: italic;
+  font-style: normal;
 }
 
 .property-grid {

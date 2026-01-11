@@ -762,6 +762,147 @@ section {
 .amenities-divider-list li:hover .line{
   background: #fbb040;
 }
+/* =========================================
+   APEX LANDBASE – FINAL POPUP CSS (SAFE)
+========================================= */
+
+/* Overlay – viewport locked */
+.apex-popup-bg{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.75);
+  z-index: 2147483647;
+}
+
+/* Active */
+.apex-popup-bg.active{
+  display: flex !important;
+}
+
+/* Popup card */
+.apex-popup-box{
+  background: #ffffff;
+  width: 92%;
+  max-width: 440px;
+  padding: 36px 34px 38px;
+  border-radius: 18px;
+  position: relative;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(255,255,255,0.08);
+  animation: apexFadeUp 0.35s ease;
+}
+
+/* Close */
+.apex-popup-close{
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+.apex-popup-close:hover{
+  opacity: 1;
+}
+
+/* Header */
+.apex-popup-header{
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.apex-popup-header img{
+  max-width: 150px;
+  margin-bottom: 14px;
+}
+
+.apex-popup-header h3{
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.apex-popup-header p{
+  font-size: 14px;
+  color: #777;
+}
+
+/* Form */
+.apex-lead-form{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apex-lead-form input{
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+.apex-lead-form input:focus{
+  outline: none;
+  background: #fff;
+  border-color: #000;
+}
+
+/* Submit */
+.apex-submit-btn{
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #000000, #1c1c1c);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.apex-submit-btn:hover{
+  background: linear-gradient(135deg, #1c1c1c, #000000);
+}
+
+.apex-submit-btn:disabled{
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animation */
+@keyframes apexFadeUp{
+  from{
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px){
+  .apex-popup-box{
+    padding: 28px 22px 30px;
+    border-radius: 16px;
+  }
+
+  .apex-popup-header h3{
+    font-size: 20px;
+  }
+}
 .contact-section{
   background:#0b3b63;
   padding:50px 20px;

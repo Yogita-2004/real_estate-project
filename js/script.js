@@ -29,15 +29,16 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Popup / Form elements missing");
     return;
   }
-  // ===== FORM POPUP – FIRST VISIT ONLY =====
-  if (!localStorage.getItem("formPopupShown")) {
+
+  // POPUP //
+  if (!localStorage.getItem("formSubmitted")) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
-      localStorage.setItem("formPopupShown", "yes");
     }, 3500);
   }
-  /* CLOSE */
+
+  /* CLOSE (refresh pe popup phir aayega) */
   closeBtn.addEventListener("click", () => {
     popupBg.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -88,6 +89,9 @@ document.addEventListener("DOMContentLoaded", function () {
     )
       .then(() => {
         showToast("Thank you! We will contact you shortly.");
+
+        // IMPORTANT LINE//
+        localStorage.setItem("formSubmitted", "yes");
 
         form.reset();
         popupBg.classList.remove("active");

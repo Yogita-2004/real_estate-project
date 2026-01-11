@@ -49,3 +49,101 @@ function submitBrochure(e){
   closeBrochure();
   window.location.href = "/max361/brochure/max361.pdf";
 }
+
+/* =====================================
+   APEX LANDBASE – POPUP + LEAD FORM JS
+   Supabase + EmailJS Connected
+===================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const popupBg  = document.getElementById("apexPopupBg");
+  const closeBtn = document.getElementById("apexPopupClose");
+  const form     = document.getElementById("apexLeadForm");
+
+  if (!popupBg || !closeBtn || !form) return;
+
+  /* ===== PAGE TRACKING ===== */
+  const pageField = document.getElementById("apex-page");
+  if (pageField) {
+    pageField.value = document.title || window.location.pathname;
+  }
+
+  /* ===== SHOW POPUP UNTIL FORM SUBMITTED ===== */
+  if (!localStorage.getItem("apexFormSubmitted")) {
+    setTimeout(() => {
+      popupBg.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }, 3500);
+  }
+
+  /* ===== CLOSE POPUP (will reappear on refresh) ===== */
+  closeBtn.addEventListener("click", () => {
+    popupBg.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  popupBg.addEventListener("click", (e) => {
+    if (e.target === popupBg) {
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+
+  /* ===== FORM SUBMIT ===== */
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector(".apex-submit-btn");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
+
+    const name  = document.getElementById("apex-name").value.trim();
+    const email = document.getElementById("apex-email").value.trim();
+    const phone = document.getElementById("apex-phone").value.trim();
+    const page  = pageField ? pageField.value : "";
+
+    if (!name || !email || !phone) {
+      alert("Please fill all fields");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
+      return;
+    }
+
+    /* ===== SUPABASE INSERT ===== */
+    const { error } = await window.supabase
+      .from("leads")
+      .insert([{ name, email, phone, page }]);
+
+    if (error) {
+      console.error("Supabase Error:", error);
+      alert("Something went wrong. Try again.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
+      return;
+    }
+
+    /* ===== EMAILJS SEND ===== */
+    emailjs.send(
+      "service_kabl40s",
+      "template_hm3z1bq",
+      { name, email, phone, page }
+    )
+    .then(() => {
+      localStorage.setItem("apexFormSubmitted", "yes");
+
+      form.reset();
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
+
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
+    })
+    .catch(() => {
+      alert("Saved, but email failed.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
+    });
+  });
+
+});
