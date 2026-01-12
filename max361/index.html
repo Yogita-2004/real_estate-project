@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Max Estate 361 | Sector 36A Gurugram</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Estate 361 Sector 36A Gurugram | Luxury 3 & 4 BHK Residences</title>
+  <meta name="description" content="Max Estate 361 Sector 36A Gurugram offers luxury 3 & 4 BHK wellness residences by Max Estates near Dwarka Expressway. Get price, floor plans & brochure.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="stylesheet" href="/editing/max361.css">
 </head>
 
@@ -38,7 +39,7 @@
 
   <!-- ================= HERO (VIDEO) ================= -->
   <section class="hero">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
       <source src="https://maxestates-in.b-cdn.net/wp-content/uploads/2025/12/Estate-361-Teaser-Video-1.mp4"
         type="video/mp4">
     </video>
@@ -53,7 +54,7 @@
         <span>Low Density</span>
       </div>
 
-      <button class="brochure-header-btn" onclick="openBrochure()"> Download Brochure</button>
+      <button type="button" class="brochure-header-btn" onclick="openBrochure()"> Download Brochure</button>
     </div>
   </section>
 
@@ -126,7 +127,8 @@
 
       <!-- RIGHT IMAGE -->
       <div class="overview-image">
-        <img src="/max361/images/central2.webp" alt="Max Estate 361 Overview">
+        <img src="/max361/images/central2.webp"
+          alt="Max Estate 361 luxury residential project overview in Sector 36A Gurugram" loading="lazy">
       </div>
 
     </div>
@@ -204,7 +206,7 @@
   <section id="gallery">
     <div class="container">
 
-      <h2>Project Gallery</h2>
+      <h2>&nbsp;Project Gallery</h2>
       <div class="section-line"></div>
 
       <div class="gallery">
@@ -314,9 +316,9 @@
       </div>
 
       <form id="apexLeadForm" class="apex-lead-form" autocomplete="off">
-        <input type="text" id="apex-name" placeholder="Your Name">
-        <input type="email" id="apex-email" placeholder="Email Address">
-        <input type="tel" id="apex-phone" placeholder="Phone Number">
+        <input type="text" id="apex-name" placeholder="Your Name" aria-label="Your Name">
+        <input type="email" id="apex-email" placeholder="Email Address" aria-label="Email Address">
+        <input type="tel" id="apex-phone" placeholder="Phone Number" aria-label="Phone Number">
 
         <!-- page tracking -->
         <input type="hidden" id="apex-page">
@@ -401,6 +403,23 @@
     </div>
 
   </div>
+  <!-- EMAILJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("Jt6Vp9_-hORbbxZ79");
+</script>
+
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+  window.supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+</script>
   <script src="/js/max.js" defer></script>
 
 </body>
