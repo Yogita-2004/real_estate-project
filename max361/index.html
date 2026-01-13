@@ -7,6 +7,8 @@
   <meta name="description" content="Max Estate 361 Sector 36A Gurugram offers luxury 3 & 4 BHK wellness residences by Max Estates near Dwarka Expressway. Get price, floor plans & brochure.">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="stylesheet" href="/editing/max361.css">
+  <link rel="canonical" href="https://apexlandbase.com/max-estate-361">
+  <link rel="preconnect" href="https://maxestates-in.b-cdn.net" crossorigin>
 </head>
 
 <body>
@@ -39,7 +41,7 @@
 
   <!-- ================= HERO (VIDEO) ================= -->
   <section class="hero">
-    <video autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="none" aria-hidden="true">
       <source src="https://maxestates-in.b-cdn.net/wp-content/uploads/2025/12/Estate-361-Teaser-Video-1.mp4"
         type="video/mp4">
     </video>
@@ -380,7 +382,7 @@
     </p>
   </footer>
   <!-- ================= BROCHURE MODAL ================= -->
-  <div id="brochurePopup" class="brochure-modal">
+  <div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
     <div class="modal-box">
 
@@ -404,13 +406,13 @@
 
   </div>
   <!-- EMAILJS -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
 <script>
   emailjs.init("Jt6Vp9_-hORbbxZ79");
 </script>
 
 <!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
 <script>
   const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";

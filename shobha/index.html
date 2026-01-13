@@ -12,10 +12,10 @@
   <meta name="description"
     content="Sobha Aranya at Karma Lakelands, Sector 80 Gurugram offers luxury 3 & 4 BHK residences amidst forest and golf greens. Get price, floor plan & brochure.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yourdomain.com/sobha-aranya">
+  <link rel="canonical" href="https://apexlandbase.com/sobha-aranya">
 
   <!-- PERFORMANCE -->
-  <link rel="preload" as="video" href="/shobha/images/hero.webm.mp4" type="video/mp4">
+  <link rel="preconnect" href="/shobha/images">
 
   <!-- CSS -->
   <link rel="stylesheet" href="/editing/CSS/shobha.css">
@@ -52,7 +52,7 @@
 
   <!-- ================= HERO ================= -->
   <section class="hero" id="hero">
-    <video autoplay muted loop playsinline preload="metadata">
+    <video autoplay muted loop playsinline preload="metadata" poster="/shobha/images/hero.webp">
       <source src="/shobha/images/hero.webm.mp4" type="video/mp4">
     </video>
   </section>
@@ -135,7 +135,7 @@
 
       <!-- RIGHT IMAGE -->
       <div class="residential-image">
-        <img src="/shobha/images/residential.webp" alt="Luxury Residential Living">
+        <img src="/shobha/images/residential.webp" alt="Luxury Residential Living" loading="lazy">
       </div>
 
     </div>
@@ -187,7 +187,7 @@
 
       <!-- LEFT IMAGE -->
       <div class="amenities-image">
-        <img src="/shobha/images/hero.webp" alt="Sobha Aranya Towers">
+        <img src="/shobha/images/hero.webp" alt="Sobha Aranya Towers" loading="lazy">
       </div>
 
       <!-- RIGHT CONTENT -->
@@ -292,7 +292,7 @@
     </p>
   </footer>
   <!-- ================= BROCHURE MODAL ================= -->
-  <div id="brochurePopup" class="brochure-modal">
+  <div id="brochurePopup" class="brochure-modal" role="dialog" aira-model="true">
 
     <div class="modal-box">
 
@@ -315,6 +315,23 @@
     </div>
 
   </div>
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script>
+    emailjs.init("Jt6Vp9_-hORbbxZ79");
+  </script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script>
+    const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+    window.supabase = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
   <!-- JS -->
   <script src="/js/shobha.js" defer></script>
 

@@ -666,6 +666,26 @@ section {
   color: var(--text);
   margin-bottom: 8px;
 }
+/* ================= FLOOR PLAN DOWNLOAD BUTTON ================= */
+
+.floorplan-btn{
+  display: inline-block;
+  padding: 14px 26px;
+  background: #f4ad3a;  
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid #d4a13a;
+}
+
+.floorplan-btn:hover{
+  background: transparent;
+  color: #d4a13a;
+}
+
 
 /* ================= PROJECT GALLERY ================= */
 

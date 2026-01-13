@@ -1140,11 +1140,13 @@ section{
 
    /* GALLERY */
   #gallery .gallery{
-    grid-template-columns:1fr;
+    grid-template-columns:repeat(2,1fr);
+    gap: 14px;
   }
 
   #gallery .gallery img{
-    height:220px;
+    height:200px;
+    border-radius: 14px;
   }
 
   /* AMENITIES */

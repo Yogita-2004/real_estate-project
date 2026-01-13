@@ -812,6 +812,13 @@ a {
 
 .footer-col {
   flex: 1;
+  padding-left: 0;
+}
+.footer-col p{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: -33px;
 }
 
 .footer-col h3 {
@@ -952,6 +959,9 @@ a {
   .footer-col {
     flex: 1 1 45%;
   }
+  .footer-col p{
+    margin-left: -18px;
+  }
 }
 /* =====================================================
    LARGE TABLET / SMALL LAPTOP
@@ -1065,10 +1075,8 @@ a {
     flex-wrap: wrap;
   }
 
-  .footer-col {
-    flex: 1 1 45%;
-  }
 }
+  
 
 /* =====================================================
    MOBILE VIEW
@@ -1103,7 +1111,7 @@ a {
   .hero {
     height: 300px;
   }
-
+  
   /* =====================================
    OUR PROPERTIES SLIDER – MEDIA CSS
 ===================================== */
