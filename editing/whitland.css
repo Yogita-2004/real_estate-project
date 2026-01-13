@@ -545,7 +545,8 @@ body {
 .lp-footer a:focus-visible {
   outline: 2px solid #fbb040;
   outline-offset: 3px;
-}* =====================================================
+}
+/* =====================================================
    COMPLETE RESPONSIVE MEDIA – MAX 361 (FINAL)
    MOBILE + TABLET + DESKTOP SAFE
 ===================================================== */
