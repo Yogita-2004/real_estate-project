@@ -545,4 +545,273 @@ body {
 .lp-footer a:focus-visible {
   outline: 2px solid #fbb040;
   outline-offset: 3px;
+}* =====================================================
+   COMPLETE RESPONSIVE MEDIA – MAX 361 (FINAL)
+   MOBILE + TABLET + DESKTOP SAFE
+===================================================== */
+
+/* ================= MOBILE (≤768px) ================= */
+@media (max-width: 768px) {
+
+  /* GLOBAL */
+  html,
+  body {
+    width: 100%;
+    font-size: 14px;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .site-header {
+    padding-top: env(safe-area-insert-top);
+    background: rgba(0, 0, 0, 0.92);
+  }
+
+  .nav {
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo-text {
+   flex-grow: 0;
+   align-items: flex-start;
+  }
+  .logo-text .brand{
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+  .logo-text .project{
+    font-size: 18px;
+    line-height:1;
+  }
+  .logo-text .tagline{
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .menu {
+    width: 100%;
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .menu a {
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .brochure-header-btn {
+    margin: 10px auto 0;
+    display: inline-block;
+  }
+ 
+  .hero {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    align-items: flex-end;
+    padding-top: calc(64px + 24px);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 70px;
+
+    color: #fff;
+    overflow: hidden;
+  }
+
+  .hero video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+    text-align: left;
+  }
+  .hero-content h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 6px 0 14px;
+    opacity: 0.9;
+  }
+
+  .hero-highlights {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .hero-highlights span {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .hero button {
+    padding: 12px 26px;
+    font-size: 14px;
+  }
+
+  /* OVERVIEW */
+  .overview-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-image {
+    height: 260px;
+    margin-top: 25px;
+  }
+
+  .overview-points {
+    grid-template-columns: 1fr;
+  }
+
+  /* RESIDENCES */
+  .residences-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .residences-content {
+    margin-left: 0;
+  }
+
+  .residences-images {
+    margin-left: 0;
+    margin-top: 25px;
+  }
+
+  .residences-images img:first-child {
+    height: 220px;
+  }
+
+  .residences-images img:last-child {
+    width: 100%;
+    height: 160px;
+  }
+
+  /* MASTER PLAN */
+  .master-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .master-image {
+    height: 260px;
+    margin-bottom: 30px;
+  }
+
+  /* GALLERY */
+  #gallery .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  #gallery .gallery img {
+    height: 220px;
+  
+  }
+
+  /* AMENITIES */
+  .apex-amenities-wrap {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .amenities-image {
+    margin-top: 0%;
+    min-height: unset;
+    padding: 0px;
+  }
+  .amenities-image img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;
+    object-fit: contain;
+    border-radius: 10px;
+  }
+
+  .apex-title {
+    font-size: 30px;
+  }
+
+  /* CONTACT */
+  .contact-wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-text p {
+    margin: auto;
+  }
+}
+
+/* ================= TABLET (769px – 1024px) ================= */
+@media (max-width: 1024px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 42px;
+  }
+
+  .overview-wrap,
+  .residences-wrap,
+  .master-wrap,
+  .apex-amenities-wrap,
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-image {
+    height: 320px;
+  }
+
+  .master-image {
+    height: 360px;
+  }
+
+  .residences-images img:first-child {
+    height: 260px;
+  }
+}
+
+/* ================= SMALL DESKTOP (≤1200px) ================= */
+@media (max-width: 1200px) {
+
+  .nav {
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding: 80px 40px;
+  }
+
+  .hero-content h1 {
+    font-size: 46px;
+  }
 }
