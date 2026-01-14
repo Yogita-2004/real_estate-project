@@ -1,17 +1,22 @@
 /* =====================================================
-   ROOT VARIABLES
+   ROOT VARIABLES – SOBHA / MAX LUXURY FEEL
 ===================================================== */
 :root {
   --primary: #0b3b63;
+  /* Blue */
   --accent: #fbb040;
+  /* Orange */
   --accent-soft: #f5a623;
+  /* Orange soft */
   --dark: #111;
-  --light: #f6f7f5;
   --text: #333;
-  --white: #fff;
+  --light: #f6f7f5;
+  --white: #ffffff;
 }
 
-/* RESET */
+/* =====================================================
+   RESET
+===================================================== */
 * {
   margin: 0;
   padding: 0;
@@ -38,58 +43,175 @@ body {
   left: 0;
   width: 100%;
   height: 72px;
-  display: flex;
-  align-items: center;
   z-index: 9999;
-  background: rgba(0,0,0,0.35);
-  backdrop-filter: blur(7px);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(6px);
+  transition: background 0.3s ease;
+}
+
+.site-header.scrolled {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 .nav {
   max-width: 1200px;
-  width: 100%;
-  margin: auto;
+  margin: 0 auto;
+  height: 72px;
   padding: 0 20px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
+.brochure-header-btn {
+  background: #fbb040;
+  color: #0b3b63;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.brochure-header-btn:hover {
+  background: #f5a623;
+}
+
+.menu a {
+  position: relative;
+  padding: 6px 4px;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+.menu a.active {
+  color: #fbb040;
+  font-weight: 600;
+}
+
+.menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #fbb040;
+  border-radius: 2px;
+}
+
+/* brochure button ko active se bachane ke liye */
+.menu .brochure-header-btn::after {
+  display: none;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+/* ================= BROCHURE MODAL ================= */
+
+.brochure-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  position: relative;
+  background: #eaf2fa;
+  padding: 30px 26px 26px;
+  border-radius: 10px;
+  width: 340px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* ❌ CLOSE ICON */
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  color: #060606;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: #fbb040;
+  transform: scale(1.1);
+}
+
+/* inputs */
+.modal-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* button */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  background: #fbb040;
+  color: #0b0b0b;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-box button:hover {
+  background: #f5a623;
+}
+
+/* LOGO */
 .logo-text {
-  color: white;
   display: flex;
   flex-direction: column;
   line-height: 1;
+  color: var(--white);
 }
 
 .logo-text .brand {
   font-size: 18px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
+  font-weight: 500;
 }
 
 .logo-text .project {
   font-size: 26px;
   letter-spacing: 3px;
-  margin-top: 4px;
   font-weight: 600;
+  margin-top: 4px;
 }
 
 .logo-text .tagline {
   font-size: 10px;
+  letter-spacing: 2px;
   margin-top: 6px;
   opacity: 0.85;
 }
 
-.menu a {
-  color: #fff;
-  margin-left: 22px;
-  font-size: 14px;
-  text-decoration: none;
-  position: relative;
+/* MENU */
+.menu {
+  display: flex;
 }
 
-.menu a:hover::after {
-  width: 100%;
+.menu a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  margin-left: 22px;
+  position: relative;
 }
 
 .menu a::after {
@@ -97,37 +219,29 @@ body {
   position: absolute;
   left: 0;
   bottom: -6px;
-  height: 2px;
   width: 0;
+  height: 2px;
   background: var(--accent);
-  transition: 0.25s;
+  transition: 0.3s;
 }
 
-.brochure-header-btn {
-  background: var(--accent);
-  color: #0b3b63;
-  padding: 10px 14px;
-  border-radius: 6px;
-  font-weight: 600;
-  margin-left: 12px;
-  cursor: pointer;
-}
-
-.brochure-header-btn:hover {
-  background: var(--accent-soft);
+.menu a:hover::after {
+  width: 100%;
 }
 
 /* =====================================================
-   HERO SECTION
+   HERO – CLEAN SOBHA LOOK
 ===================================================== */
 .hero {
   position: relative;
-  width: 100%;
   height: 100vh;
-  padding: 120px 80px 80px;
+  width: 100%;
   display: flex;
   align-items: flex-end;
-  color: white;
+  padding: 80px;
+  color: #fff;
+  overflow: hidden;
+  padding-top: calc(80px + 72px);
 }
 
 .hero video {
@@ -142,7 +256,8 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1;
 }
 
 .hero-content {
@@ -151,28 +266,105 @@ body {
   max-width: 520px;
 }
 
+
 .hero-content h1 {
-  font-size: 50px;
+  font-size: 52px;
   font-weight: 600;
 }
 
 .hero-subtitle {
-  margin: 10px 0 22px;
-  opacity: 0.95;
+  font-size: 18px;
+  margin: 14px 0 22px;
+  opacity: .9;
 }
 
 .hero-highlights {
   display: flex;
   gap: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
 
 .hero-highlights span {
   padding: 8px 16px;
-  background: rgba(255,255,255,0.15);
   border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
   font-size: 13px;
 }
+
+.hero button {
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: none;
+  background: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ================= BROCHURE MODAL ================= */
+
+.brochure-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  position: relative;
+  background: #eaf2fa;
+  padding: 30px 26px 26px;
+  border-radius: 10px;
+  width: 340px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* ❌ CLOSE ICON */
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  color: #060606;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: #fbb040;
+  transform: scale(1.1);
+}
+
+/* inputs */
+.modal-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* button */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  background: #fbb040;
+  color: #0b0b0b;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-box button:hover {
+  background: #f5a623;
+}
+
 
 /* =====================================================
    OVERVIEW
@@ -208,7 +400,7 @@ body {
 .overview-points {
   margin: 30px 0;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
@@ -220,7 +412,7 @@ body {
 }
 
 .point-card:hover {
-  background: rgba(251,176,64,0.08);
+  background: rgba(251, 176, 64, 0.08);
   border-color: var(--accent);
 }
 
@@ -229,7 +421,7 @@ body {
   height: 330px;
   object-fit: cover;
   border-radius: 18px;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* =====================================================
@@ -274,7 +466,7 @@ body {
   height: 270px;
   border-radius: 18px;
   object-fit: cover;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
   margin: 0 auto;
 }
 
@@ -284,24 +476,24 @@ body {
   border-radius: 16px;
   object-fit: cover;
   margin-left: auto;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
 }
 
 /* =====================================================
    AMENITIES SECTION (MATCHED TO RESIDENCE STYLE)
 ===================================================== */
+
 .apex-amenities {
-  background: #fbf9f9;
   padding: 55px 6%;
+  background-color: #fbf9f9;
 }
 
 .apex-amenities-wrap {
-  max-width: 1200px;
-  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+  height: 100%;
 }
 
 .amenities-content h2 {
@@ -332,7 +524,7 @@ body {
   object-fit: cover;
   border-radius: 18px;
   margin: 0 auto;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
 }
 
 .amenities-images img:last-child {
@@ -341,84 +533,347 @@ body {
   object-fit: cover;
   border-radius: 16px;
   margin-left: auto;
-  box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
 }
 
 /* =====================================================
-   MASTERPLAN
+   MASTER PLAN – MAX (SOBHA STYLE)
 ===================================================== */
-.master-wrap {
-  max-width: 1200px;
-  margin: auto;
+
+#masterplan {
+  background: var(--white);
   padding: 80px 20px;
+}
+
+.master-wrap {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 50px;
+  align-items: center;
 }
+
+/* ================= LEFT IMAGE SLIDER ================= */
 
 .master-image {
   position: relative;
-  height: 450px;
-  border-radius: 14px;
-  overflow: hidden;
+  height: 480px;
   background: var(--light);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .master-image img {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  animation: slide 12s infinite;
+  animation: masterSlide 12s infinite;
 }
 
-.master-image img.mp1 { animation-delay: 0s; }
-.master-image img.mp2 { animation-delay: 6s; }
-
-@keyframes slide {
-  0%,100% { opacity: 0; }
-  10%,45% { opacity: 1; }
+/* slide timing */
+.master-image img.mp1 {
+  animation-delay: 0s;
 }
 
-/* =====================================================
-   GALLERY
-===================================================== */
+.master-image img.mp2 {
+  animation-delay: 6s;
+}
+
+/* ================= RIGHT CONTENT ================= */
+
+.master-content .apex-title {
+  font-size: 34px;
+  color: var(--primary);
+}
+
+.master-content p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 16px 0;
+}
+
+.master-list {
+  padding-left: 18px;
+}
+
+.master-list li {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* ================= SLIDER ANIMATION ================= */
+
+@keyframes masterSlide {
+  0% {
+    opacity: 0
+  }
+
+  8% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  58% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 0
+  }
+}
+
+/* ================= PROJECT GALLERY ================= */
+
 #gallery {
   padding: 60px 0;
-  background: #f3f6f9;
+  background-color: #f3f6f9;
 }
 
-#gallery .gallery {
+#gallery h2 {
+  font-size: 30px;
+  color: #0b3b63;
+}
+
+#gallery .section-line {
+  width: 55px;
+  height: 3px;
+  background: #fbb040;
+  margin: 12px 0 28px;
+}
+
+/* ===== CONTAINER CONTROL ===== */
+#gallery .container {
   max-width: 1100px;
-  margin: auto;
+  /* IMPORTANT */
+  margin: 0 auto;
+}
+
+/* ===== GRID FIX ===== */
+#gallery .gallery {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* FIX */
   gap: 20px;
 }
 
-#gallery img {
+/* ===== IMAGE FIX ===== */
+#gallery .gallery img {
   width: 100%;
   height: 250px;
+  /*  controlled size */
   object-fit: cover;
   border-radius: 14px;
+  display: block;
 }
 
-/* =====================================================
-   CONTACT
-===================================================== */
-.contact-section {
+
+/* =========================================
+   APEX LANDBASE – FINAL POPUP CSS (SAFE)
+========================================= */
+
+/* Overlay – viewport locked */
+.apex-popup-bg {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2147483647;
+}
+
+/* Active */
+.apex-popup-bg.active {
+  display: flex !important;
+}
+
+/* Popup card */
+.apex-popup-box {
+  background: #ffffff;
+  width: 92%;
+  max-width: 440px;
+  padding: 36px 34px 38px;
+  border-radius: 18px;
+  position: relative;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: apexFadeUp 0.35s ease;
+}
+
+/* Close */
+.apex-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.apex-popup-close:hover {
+  opacity: 1;
+}
+
+/* Header */
+.apex-popup-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.apex-popup-header img {
+  max-width: 150px;
+  margin-bottom: 14px;
+}
+
+.apex-popup-header h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.apex-popup-header p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Form */
+.apex-lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apex-lead-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+.apex-lead-form input:focus {
+  outline: none;
+  background: #fff;
+  border-color: #000;
+}
+
+/* Submit */
+.apex-submit-btn {
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #000000, #1c1c1c);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.apex-submit-btn:hover {
+  background: linear-gradient(135deg, #1c1c1c, #000000);
+}
+
+.apex-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animation */
+@keyframes apexFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .apex-popup-box {
+    padding: 28px 22px 30px;
+    border-radius: 16px;
+  }
+
+  .apex-popup-header h3 {
+    font-size: 20px;
+  }
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
   background: #0b3b63;
   color: #fff;
-  padding: 60px 20px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.contact-section {
+  background: #0b3b63;
+  padding: 50px 20px;
+  color: #fff;
 }
 
 .contact-wrap {
   max-width: 1100px;
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 40px;
+  align-items: center;
+}
+
+.contact-text h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.contact-text p {
+  opacity: 0.9;
+  margin-bottom: 18px;
+  max-width: 420px;
+}
+
+.contact-text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-text li {
+  margin-bottom: 6px;
+  font-size: 14px;
 }
 
 .contact-form {
@@ -427,48 +882,68 @@ body {
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .contact-form input {
-  padding: 12px;
+  padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #ddd;
+  font-size: 14px;
 }
 
 .contact-form button {
-  padding: 14px;
-  background: var(--accent);
-  font-weight: 600;
+  margin-top: 8px;
+  padding: 13px;
   border: none;
   border-radius: 10px;
+  background: #fbb040;
+  color: #000;
+  font-weight: 600;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: #f5a623;
 }
 
 /* =====================================================
-   BROCHURE POPUP
+   FOOTER
 ===================================================== */
-.brochure-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0,0,0,0.65);
-  z-index: 99999;
+.footer-divider {
+  max-width: 1100px;
+  height: 1px;
+  margin: 40px auto 25px;
+  background: linear-gradient(to right,
+      transparent,
+      #fbb040,
+      transparent);
 }
 
-.modal-box {
-  width: 340px;
-  background: #eaf2fa;
-  padding: 30px;
-  border-radius: 14px;
+.lp-footer {
+  background: #0b3b63;
+  padding: 20px;
+  text-align: center;
 }
 
-.close-modal {
-  position: absolute;
-  right: 18px;
-  top: 12px;
-  font-size: 22px;
-  cursor: pointer;
+.lp-footer p {
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: auto;
+  opacity: 0.85;
+}
+
+.lp-footer p a {
+  color: #ffffff;
+  font-weight: 500;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.lp-footer a:focus-visible {
+  outline: 2px solid #fbb040;
+  outline-offset: 3px;
 }
