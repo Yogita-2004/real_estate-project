@@ -70,7 +70,7 @@ function closeBrochure(){
 function submitBrochure(e){
   e.preventDefault();
   closeBrochure();
-  window.location.href = "/godrej/brochure/godrej.pdf";
+  window.location.href = "/whiteland/brochure/Westin Brochure.pdf";
 }
 
 /* =====================================

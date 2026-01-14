@@ -1,24 +1,31 @@
 /* =====================================================
-   ROOT VARIABLES – SAME AS MAX361
+   ROOT VARIABLES – SOBHA / MAX LUXURY FEEL
 ===================================================== */
 :root {
   --primary: #0b3b63;
+  /* Blue */
   --accent: #fbb040;
+  /* Orange */
   --accent-soft: #f5a623;
+  /* Orange soft */
   --dark: #111;
   --text: #333;
   --light: #f6f7f5;
   --white: #ffffff;
 }
 
-/* RESET */
+/* =====================================================
+   RESET
+===================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: "Poppins", system-ui, sans-serif;
@@ -28,7 +35,7 @@ body {
 }
 
 /* =====================================================
-   HEADER — SAME AS MAX361
+   HEADER
 ===================================================== */
 .site-header {
   position: fixed;
@@ -56,6 +63,117 @@ body {
   justify-content: space-between;
 }
 
+.brochure-header-btn {
+  background: #fbb040;
+  color: #0b3b63;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: 15px;
+}
+
+.brochure-header-btn:hover {
+  background: #f5a623;
+}
+
+.menu a {
+  position: relative;
+  padding: 6px 4px;
+  color: #ddd;
+  transition: 0.3s;
+}
+
+.menu a.active {
+  color: #fbb040;
+  font-weight: 600;
+}
+
+.menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #fbb040;
+  border-radius: 2px;
+}
+
+/* brochure button ko active se bachane ke liye */
+.menu .brochure-header-btn::after {
+  display: none;
+}
+
+section {
+  scroll-margin-top: 90px;
+}
+
+/* ================= BROCHURE MODAL ================= */
+
+.brochure-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-box {
+  position: relative;
+  background: #eaf2fa;
+  padding: 30px 26px 26px;
+  border-radius: 10px;
+  width: 340px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* ❌ CLOSE ICON */
+.close-modal {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 22px;
+  color: #060606;
+  cursor: pointer;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.close-modal:hover {
+  color: #fbb040;
+  transform: scale(1.1);
+}
+
+/* inputs */
+.modal-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* button */
+.modal-box button {
+  width: 100%;
+  padding: 12px;
+  background: #fbb040;
+  color: #0b0b0b;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-box button:hover {
+  background: #f5a623;
+}
+
+/* LOGO */
 .logo-text {
   display: flex;
   flex-direction: column;
@@ -66,33 +184,34 @@ body {
 .logo-text .brand {
   font-size: 18px;
   letter-spacing: 4px;
+  font-weight: 500;
 }
 
 .logo-text .project {
   font-size: 26px;
+  letter-spacing: 3px;
   font-weight: 600;
+  margin-top: 4px;
 }
 
 .logo-text .tagline {
   font-size: 10px;
   letter-spacing: 2px;
-  opacity: .85;
+  margin-top: 6px;
+  opacity: 0.85;
 }
 
+/* MENU */
 .menu {
   display: flex;
 }
 
 .menu a {
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   font-size: 14px;
   margin-left: 22px;
   position: relative;
-}
-
-.menu a:hover::after {
-  width: 100%;
 }
 
 .menu a::after {
@@ -106,12 +225,8 @@ body {
   transition: 0.3s;
 }
 
-.brochure-header-btn {
-  background: var(--accent);
-  color: var(--primary);
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 600;
+.menu a:hover::after {
+  width: 100%;
 }
 
 /* =====================================================
@@ -347,25 +462,35 @@ body {
   transform: scale(1.03);
 }
 
-
 /* =====================================================
-   MASTERPLAN — SAME
+   MASTER PLAN – MAX (SOBHA STYLE)
 ===================================================== */
+
+#masterplan {
+  background: var(--white);
+  padding: 80px 20px;
+}
+
 .master-wrap {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 50px;
+  align-items: center;
 }
+
+/* ================= LEFT IMAGE SLIDER ================= */
 
 .master-image {
   position: relative;
   height: 480px;
-  border-radius: 14px;
+  background: var(--light);
+  border-radius: 12px;
   overflow: hidden;
 }
 
 .master-image img {
   position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -373,12 +498,61 @@ body {
   animation: masterSlide 12s infinite;
 }
 
-.master-image img.mp1 { animation-delay: 0s; }
-.master-image img.mp2 { animation-delay: 6s; }
+/* slide timing */
+.master-image img.mp1 {
+  animation-delay: 0s;
+}
+
+.master-image img.mp2 {
+  animation-delay: 6s;
+}
+
+/* ================= RIGHT CONTENT ================= */
+
+.master-content .apex-title {
+  font-size: 34px;
+  color: var(--primary);
+}
+
+.master-content p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin: 16px 0;
+}
+
+.master-list {
+  padding-left: 18px;
+}
+
+.master-list li {
+  font-size: 14px;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+/* ================= SLIDER ANIMATION ================= */
 
 @keyframes masterSlide {
-  0%, 58%, 100% { opacity: 0; }
-  8%, 50% { opacity: 1; }
+  0% {
+    opacity: 0
+  }
+
+  8% {
+    opacity: 1
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  58% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 0
+  }
 }
 
 /* ================= PROJECT GALLERY ================= */
@@ -425,19 +599,281 @@ body {
   display: block;
 }
 
+/* ================= AMENITIES SECTION ================= */
 
-/* =====================================================
-   AMENITIES — UPDATED SMALLER IMAGE
-===================================================== */
 .apex-amenities {
-  padding: 60px 6%;
-  background: #fbf9f9;
+  padding: 55px 6%;
+  background-color: #fbf9f9;
 }
 
 .apex-amenities-wrap {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: 1.3fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+  height: 100%;
+}
+
+/* ================= LEFT IMAGE ================= */
+
+.amenities-image {
+  position: relative;
+  padding: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.amenities-image::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 85%;
+  height: 85%;
+  background: #f3f6f9;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.amenities-image img {
+  width: 78%;
+  max-width: 459px;
+  max-height: none;
+  object-fit: cover;
+  height: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.amenities-image img:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* ================= RIGHT CONTENT ================= */
+
+.amenities-content {
+  padding-left: 10px;
+}
+
+.apex-title {
+  font-size: 38px;
+  font-weight: 700;
+  color: #0b3b63;
+}
+
+.apex-line {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #fbb040;
+  margin: 12px 0 35px;
+}
+
+/* ================= DIVIDER LIST ================= */
+.amenities-divider-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.amenities-divider-list li {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  align-items: center;
   gap: 20px;
+  padding: 16px 0;
+  border-bottom: 1px solid #cfcfcf;
+  /* 🔥 REAL DIVIDER */
+}
+
+.amenities-divider-list li:last-child {
+  border-bottom: none;
+}
+
+.amenities-divider-list .num {
+  font-size: 15px;
+  font-weight: 600;
+  color: #b5b5b5;
+}
+
+.amenities-divider-list .text {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Hover effect */
+.amenities-divider-list li:hover {
+  border-bottom-color: #fbb040;
+}
+
+/* TEXT */
+.amenities-divider-list .text {
+  font-size: 16px;
+  color: #333;
+  white-space: normal;
+}
+
+/* LINE */
+.amenities-divider-list .line {
+  display: block;
+  width: 100%;
+  /**/
+  height: 1px;
+  background: #dcdcdc;
+}
+
+/* Hover effect */
+.amenities-divider-list li:hover .line {
+  background: #fbb040;
+}
+
+/* =========================================
+   APEX LANDBASE – FINAL POPUP CSS (SAFE)
+========================================= */
+
+/* Overlay – viewport locked */
+.apex-popup-bg {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 2147483647;
+}
+
+/* Active */
+.apex-popup-bg.active {
+  display: flex !important;
+}
+
+/* Popup card */
+.apex-popup-box {
+  background: #ffffff;
+  width: 92%;
+  max-width: 440px;
+  padding: 36px 34px 38px;
+  border-radius: 18px;
+  position: relative;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: apexFadeUp 0.35s ease;
+}
+
+/* Close */
+.apex-popup-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.apex-popup-close:hover {
+  opacity: 1;
+}
+
+/* Header */
+.apex-popup-header {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.apex-popup-header img {
+  max-width: 150px;
+  margin-bottom: 14px;
+}
+
+.apex-popup-header h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.apex-popup-header p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Form */
+.apex-lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.apex-lead-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #e1e1e1;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+.apex-lead-form input:focus {
+  outline: none;
+  background: #fff;
+  border-color: #000;
+}
+
+/* Submit */
+.apex-submit-btn {
+  margin-top: 12px;
+  padding: 15px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, #000000, #1c1c1c);
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.apex-submit-btn:hover {
+  background: linear-gradient(135deg, #1c1c1c, #000000);
+}
+
+.apex-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animation */
+@keyframes apexFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .apex-popup-box {
+    padding: 28px 22px 30px;
+    border-radius: 16px;
+  }
+
+  .apex-popup-header h3 {
+    font-size: 20px;
+  }
 }
 
 .contact-section {
@@ -507,7 +943,6 @@ body {
 .contact-form button:hover {
   background: #f5a623;
 }
-
 
 /* =====================================================
    FOOTER

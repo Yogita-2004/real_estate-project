@@ -36,7 +36,7 @@
   </header>
 
   <!-- ================= HERO VIDEO ================= -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <video autoplay muted loop playsinline preload="metadata">
       <source src="/whiteland/images/hero.webm" type="video/mp4">
     </video>
@@ -95,13 +95,17 @@
 
         <div class="overview-description">
           <ul class="overview-list">
-            <li><strong>Location:</strong> Sector 103, Dwarka Expressway, with excellent access to Delhi, Airport, and Global City.</li>
+            <li><strong>Location:</strong> Sector 103, Dwarka Expressway, with excellent access to Delhi, Airport, and
+              Global City.</li>
 
-            <li><strong>Brand Heritage:</strong> Exclusive branded residences with ONVIA global hospitality benefits.</li>
+            <li><strong>Brand Heritage:</strong> Exclusive branded residences with ONVIA global hospitality benefits.
+            </li>
 
-            <li><strong>Master Planning:</strong> Zero vehicular movement at ground level ensuring safety and serenity.</li>
+            <li><strong>Master Planning:</strong> Zero vehicular movement at ground level ensuring safety and serenity.
+            </li>
 
-            <li><strong>Residences:</strong> Large layouts with imported marble, VRV air-conditioning, premium appliances and smart home features.</li>
+            <li><strong>Residences:</strong> Large layouts with imported marble, VRV air-conditioning, premium
+              appliances and smart home features.</li>
           </ul>
         </div>
 
@@ -133,7 +137,8 @@
 
         <p class="residences-text">
           Designed for mindful living, every Westin residence blends elegant materiality with functional efficiency.
-          Large windows and balconies ensure natural light, fresh airflow, and uninterrupted views of the central green landscape.
+          Large windows and balconies ensure natural light, fresh airflow, and uninterrupted views of the central green
+          landscape.
         </p>
       </div>
 
@@ -226,6 +231,33 @@
     </div>
 
   </section>
+   <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+  <div id="apexPopupBg" class="apex-popup-bg">
+    <div class="apex-popup-box">
+
+      <button id="apexPopupClose" class="apex-popup-close" aria-label="Close popup">
+        &times;
+      </button>
+
+      <div class="apex-popup-header">
+        <img src="/img/image.png" alt="Apex Landbase Logo">
+        <h3>Get Exclusive Details</h3>
+        <p>Register now to receive price, floor plan & offers</p>
+      </div>
+
+      <form id="apexLeadForm" class="apex-lead-form" autocomplete="off">
+        <input type="text" id="apex-name" placeholder="Your Name">
+        <input type="email" id="apex-email" placeholder="Email Address">
+        <input type="tel" id="apex-phone" placeholder="Phone Number">
+
+        <!-- page tracking -->
+        <input type="hidden" id="apex-page">
+
+        <button type="submit" class="apex-submit-btn">Submit</button>
+      </form>
+
+    </div>
+  </div>
 
   <!-- ================= CONTACT ================= -->
   <section id="contact" class="contact-section">
@@ -268,14 +300,14 @@
     <p>
       Disclaimer: This website is for information purposes only. Marketed by Apex Landbase.
     </p>
-     <p>
+    <p>
       Explore more luxury residential projects by
       <a href="index.html">Apex Landbase</a>
     </p>
   </footer>
 
   <!-- ================= BROCHURE POPUP ================= -->
-  <div id="brochurePopup" class="brochure-modal">
+  <div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
     <div class="modal-box">
 
       <span class="close-modal" onclick="closeBrochure()">×</span>
@@ -292,10 +324,26 @@
 
     </div>
   </div>
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script>
+    emailjs.init("Jt6Vp9_-hORbbxZ79");
+  </script>
 
-  <script src="/js/westin.js" defer></script>
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script>
+    const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+    window.supabase = window.supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
+
+  <script src="/js/whiteland.js" defer></script>
 
 </body>
-</html>
 
-      
+</html>
