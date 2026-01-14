@@ -1,4 +1,4 @@
-function toggleMenu(){
+function toggleMenu() {
   document.querySelector(".menu").classList.toggle("show");
 }
 
@@ -36,15 +36,15 @@ function activateMenu() {
 window.addEventListener("scroll", activateMenu);
 
 
-function openBrochure(){
+function openBrochure() {
   document.getElementById("brochurePopup").style.display = "flex";
 }
 
-function closeBrochure(){
+function closeBrochure() {
   document.getElementById("brochurePopup").style.display = "none";
 }
 
-function submitBrochure(e){
+function submitBrochure(e) {
   e.preventDefault();
   closeBrochure();
   window.location.href = "/max361/brochure/max361.pdf";
@@ -57,9 +57,9 @@ function submitBrochure(e){
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const popupBg  = document.getElementById("apexPopupBg");
+  const popupBg = document.getElementById("apexPopupBg");
   const closeBtn = document.getElementById("apexPopupClose");
-  const form     = document.getElementById("apexLeadForm");
+  const form = document.getElementById("apexLeadForm");
 
   if (!popupBg || !closeBtn || !form) return;
 
@@ -98,10 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
-    const name  = document.getElementById("apex-name").value.trim();
+    const name = document.getElementById("apex-name").value.trim();
     const email = document.getElementById("apex-email").value.trim();
     const phone = document.getElementById("apex-phone").value.trim();
-    const page  = pageField ? pageField.value : "";
+    const page = pageField ? pageField.value : "";
 
     if (!name || !email || !phone) {
       alert("Please fill all fields");
@@ -109,41 +109,98 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.innerText = "Submit";
       return;
     }
+  try {
+  /* ===== SUPABASE INSERT ===== */
+  const { error } = await window.supabase
+    .from("leads")
+    .insert([{ name, email, phone, page }]);
 
-    /* ===== SUPABASE INSERT ===== */
-    const { error } = await window.supabase
-      .from("leads")
-      .insert([{ name, email, phone, page }]);
+  if (error) throw error;
 
-    if (error) {
-      console.error("Supabase Error:", error);
-      alert("Something went wrong. Try again.");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
+  /* ===== EMAILJS SEND ===== */
+  await emailjs.send(
+    "service_kabl40s",
+    "template_hm3z1bq",
+    { name, email, phone }
+  );
+
+  /* ===== SAVE FLAG ===== */
+  localStorage.setItem("apexFormSubmitted", "yes");
+
+  /* ===== RESET & CLOSE POPUP ===== */
+  form.reset();
+  popupBg.classList.remove("active");
+  document.body.style.overflow = "auto";
+
+  /* ===== SUCCESS TOAST ===== */
+  setTimeout(() => {
+    const toast = document.getElementById("thankYouToast");
+    if (toast) {
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+  }, 200);
+
+} catch (err) {
+  console.error(err);
+  alert("Something went wrong. Please try again.");
+} finally {
+  /* ===== BUTTON RESET (ALWAYS) ===== */
+  submitBtn.disabled = false;
+  submitBtn.innerText = "Submit";
+}
+   
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+
+  const contactForm = document.querySelector(".contact-form");
+  if (!contactForm) return;
+
+  const toast = document.getElementById("thankYouToast");
+
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const inputs = contactForm.querySelectorAll("input");
+    const name  = inputs[0]?.value.trim();
+    const phone = inputs[1]?.value.trim();
+    const email = inputs[2]?.value.trim();
+
+    if (!name || !phone) {
+      console.warn("Required fields missing");
       return;
     }
 
-    /* ===== EMAILJS SEND ===== */
-    emailjs.send(
-      "service_kabl40s",
-      "template_hm3z1bq",
-      { name, email, phone, page }
-    )
-    .then(() => {
-      localStorage.setItem("apexFormSubmitted", "yes");
+    try {
+      /* ===== SUPABASE INSERT ===== */
+      await window.supabase
+        .from("leads")
+        .insert([{ name, phone, email }]);
 
-      form.reset();
-      popupBg.classList.remove("active");
-      document.body.style.overflow = "auto";
+      /* ===== EMAILJS SEND ===== */
+      await emailjs.send(
+        "service_kabl40s",
+        "template_hm3z1bq",
+        { name, phone, email }
+      );
 
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
-    })
-    .catch(() => {
-      alert("Saved, but email failed.");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
-    });
+      /* ===== RESET FORM ===== */
+      contactForm.reset();
+
+      /* ===== SHOW TOAST (NO ALERT) ===== */
+      if (toast) {
+        toast.classList.add("show");
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3000);
+      }
+
+    } catch (err) {
+      console.error(err);
+    }
   });
 
 });

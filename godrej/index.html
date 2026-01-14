@@ -334,7 +334,7 @@
     </div>
 
   </section>
-  <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+ <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
   <div id="apexPopupBg" class="apex-popup-bg">
     <div class="apex-popup-box">
 
@@ -358,7 +358,10 @@
 
         <button type="submit" class="apex-submit-btn">Submit</button>
       </form>
-
+    </div>
+    <div id="thankYouToast" class="toast">
+      <strong>Thank you!</strong><br>
+      Our team will contact you shortly.
     </div>
   </div>
   <!-- ================= CONTACT ================= -->
@@ -451,7 +454,7 @@
     const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
 
-    window.supabase = window.supabase.createClient(
+    window.supabase =supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY
     );

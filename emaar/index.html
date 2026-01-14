@@ -222,7 +222,7 @@
 
     </div>
   </section>
-  <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+ <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
   <div id="apexPopupBg" class="apex-popup-bg">
     <div class="apex-popup-box">
 
@@ -237,16 +237,19 @@
       </div>
 
       <form id="apexLeadForm" class="apex-lead-form" autocomplete="off">
-        <input type="text" id="apex-name" placeholder="Your Name">
-        <input type="email" id="apex-email" placeholder="Email Address">
-        <input type="tel" id="apex-phone" placeholder="Phone Number">
+        <input type="text" id="apex-name" placeholder="Your Name" aria-label="Your Name">
+        <input type="email" id="apex-email" placeholder="Email Address" aria-label="Email Address">
+        <input type="tel" id="apex-phone" placeholder="Phone Number" aria-label="Phone Number">
 
         <!-- page tracking -->
         <input type="hidden" id="apex-page">
 
         <button type="submit" class="apex-submit-btn">Submit</button>
       </form>
-
+    </div>
+    <div id="thankYouToast" class="toast">
+      <strong>Thank you!</strong><br>
+      Our team will contact you shortly.
     </div>
   </div>
 

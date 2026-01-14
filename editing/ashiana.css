@@ -1,0 +1,474 @@
+/* =====================================================
+   ROOT VARIABLES
+===================================================== */
+:root {
+  --primary: #0b3b63;
+  --accent: #fbb040;
+  --accent-soft: #f5a623;
+  --dark: #111;
+  --light: #f6f7f5;
+  --text: #333;
+  --white: #fff;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", system-ui, sans-serif;
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(7px);
+}
+
+.nav {
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-text {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.logo-text .brand {
+  font-size: 18px;
+  letter-spacing: 3px;
+}
+
+.logo-text .project {
+  font-size: 26px;
+  letter-spacing: 3px;
+  margin-top: 4px;
+  font-weight: 600;
+}
+
+.logo-text .tagline {
+  font-size: 10px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+.menu a {
+  color: #fff;
+  margin-left: 22px;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+}
+
+.menu a:hover::after {
+  width: 100%;
+}
+
+.menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: 0.25s;
+}
+
+.brochure-header-btn {
+  background: var(--accent);
+  color: #0b3b63;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+.brochure-header-btn:hover {
+  background: var(--accent-soft);
+}
+
+/* =====================================================
+   HERO SECTION
+===================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 120px 80px 80px;
+  display: flex;
+  align-items: flex-end;
+  color: white;
+}
+
+.hero video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.hero-subtitle {
+  margin: 10px 0 22px;
+  opacity: 0.95;
+}
+
+.hero-highlights {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.hero-highlights span {
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+/* =====================================================
+   OVERVIEW
+===================================================== */
+.overview {
+  padding: 80px 20px;
+}
+
+.overview-wrap {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 50px;
+}
+
+.overview-text h2 {
+  font-size: 32px;
+  color: var(--primary);
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.overview-text h2::after {
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: var(--accent);
+  display: block;
+  margin-top: 8px;
+}
+
+.overview-points {
+  margin: 30px 0;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 24px;
+}
+
+.point-card {
+  border-left: 2px solid var(--primary);
+  padding-left: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.point-card:hover {
+  background: rgba(251,176,64,0.08);
+  border-color: var(--accent);
+}
+
+.overview-image img {
+  width: 92%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+}
+
+/* =====================================================
+   RESIDENCES & LEARNING HUB
+===================================================== */
+.residences {
+  padding: 80px 20px;
+}
+
+.residences-wrap {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.residences-content h2 {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.residences-content h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  background: var(--accent);
+  margin-top: 6px;
+  border-radius: 2px;
+}
+
+.residences-images {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.residences-images img:first-child {
+  width: 90%;
+  height: 270px;
+  border-radius: 18px;
+  object-fit: cover;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  margin: 0 auto;
+}
+
+.residences-images img:last-child {
+  width: 65%;
+  height: 170px;
+  border-radius: 16px;
+  object-fit: cover;
+  margin-left: auto;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+}
+
+/* =====================================================
+   AMENITIES SECTION (MATCHED TO RESIDENCE STYLE)
+===================================================== */
+.apex-amenities {
+  background: #fbf9f9;
+  padding: 55px 6%;
+}
+
+.apex-amenities-wrap {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.amenities-content h2 {
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.amenities-divider-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.amenities-divider-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid #d3d3d3;
+  font-size: 15px;
+}
+
+.amenities-images {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.amenities-images img:first-child {
+  width: 88%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 18px;
+  margin: 0 auto;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+.amenities-images img:last-child {
+  width: 62%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-left: auto;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.12);
+}
+
+/* =====================================================
+   MASTERPLAN
+===================================================== */
+.master-wrap {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 50px;
+}
+
+.master-image {
+  position: relative;
+  height: 450px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--light);
+}
+
+.master-image img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  animation: slide 12s infinite;
+}
+
+.master-image img.mp1 { animation-delay: 0s; }
+.master-image img.mp2 { animation-delay: 6s; }
+
+@keyframes slide {
+  0%,100% { opacity: 0; }
+  10%,45% { opacity: 1; }
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+#gallery {
+  padding: 60px 0;
+  background: #f3f6f9;
+}
+
+#gallery .gallery {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
+}
+
+#gallery img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+.contact-section {
+  background: #0b3b63;
+  color: #fff;
+  padding: 60px 20px;
+}
+
+.contact-wrap {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.contact-form {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.contact-form button {
+  padding: 14px;
+  background: var(--accent);
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* =====================================================
+   BROCHURE POPUP
+===================================================== */
+.brochure-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.65);
+  z-index: 99999;
+}
+
+.modal-box {
+  width: 340px;
+  background: #eaf2fa;
+  padding: 30px;
+  border-radius: 14px;
+}
+
+.close-modal {
+  position: absolute;
+  right: 18px;
+  top: 12px;
+  font-size: 22px;
+  cursor: pointer;
+}

@@ -875,6 +875,27 @@ section {
     font-size: 20px;
   }
 }
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0b3b63;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .contact-section {
   background: #0b3b63;
