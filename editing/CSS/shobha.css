@@ -906,7 +906,7 @@ section{
   pointer-events: none;
   transform: translateY(10px);
   transition: 0.3s ease;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 .toast.show {

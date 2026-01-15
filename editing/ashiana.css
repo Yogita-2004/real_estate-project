@@ -480,36 +480,20 @@ section {
 }
 
 /* =====================================================
-   AMENITIES SECTION (MATCHED TO RESIDENCE STYLE)
+   AMENITIES
 ===================================================== */
-
 .apex-amenities {
-  padding: 55px 6%;
-  background-color: #fbf9f9;
+  padding: 60px 6%;
+  background: #fbf9f9;
 }
 
 .apex-amenities-wrap {
+  max-width: 1200px;
+  margin: auto;
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 50px;
-  align-items: stretch;
-  height: 100%;
-}
-
-.amenities-content h2 {
-  font-size: 32px;
-  color: var(--primary);
-}
-
-.amenities-divider-list {
-  list-style: none;
-  margin-top: 20px;
-}
-
-.amenities-divider-list li {
-  padding: 14px 0;
-  border-bottom: 1px solid #d3d3d3;
-  font-size: 15px;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
 }
 
 .amenities-images {
@@ -520,11 +504,11 @@ section {
 
 .amenities-images img:first-child {
   width: 88%;
-  height: 250px;
+  height: 240px;
   object-fit: cover;
   border-radius: 18px;
-  margin: 0 auto;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  margin: auto;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
 }
 
 .amenities-images img:last-child {
@@ -533,8 +517,41 @@ section {
   object-fit: cover;
   border-radius: 16px;
   margin-left: auto;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.12);
 }
+
+.amenities-content h2 {
+  font-size: 34px;
+  color: var(--primary);
+}
+
+.amenities-divider-list {
+  list-style: none;
+  margin-top: 25px;
+}
+
+.amenities-divider-list li {
+  padding: 14px 0;
+  border-bottom: 1px solid #d3d3d3;
+  font-size: 15px;
+}
+.section-heading {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1d3e5e; 
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: #f5a623; 
+  margin-top: 8px;
+}
+
 
 /* =====================================================
    MASTER PLAN – MAX (SOBHA STYLE)

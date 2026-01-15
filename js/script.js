@@ -1,115 +1,74 @@
+/* ================= TOAST ================= */
 function showToast(message, type = "success") {
   const toast = document.getElementById("toast");
-  if (!toast) {
-    console.error("Toast element not found");
-    return;
-  }
+  if (!toast) return;
 
   toast.classList.remove("show", "error");
   toast.innerText = message;
 
-  if (type === "error") {
-    toast.classList.add("error");
-  }
+  if (type === "error") toast.classList.add("error");
 
   toast.classList.add("show");
-
-  setTimeout(() => {
-    toast.classList.remove("show", "error");
-  }, 2500);
+  setTimeout(() => toast.classList.remove("show", "error"), 2500);
 }
 
+/* ================= POPUP FORM (HOME ONLY) ================= */
 document.addEventListener("DOMContentLoaded", function () {
 
   const popupBg = document.getElementById("formPopupBg");
   const closeBtn = document.getElementById("closeFormPopup");
   const form = document.getElementById("formPopup");
 
-  if (!popupBg || !closeBtn || !form) {
-    console.log("Popup / Form elements missing");
-    return;
-  }
+  if (popupBg && closeBtn && form) {
 
-  // POPUP //
-  if (!localStorage.getItem("formSubmitted")) {
-    setTimeout(() => {
-      popupBg.classList.add("active");
-      document.body.style.overflow = "hidden";
-    }, 3500);
-  }
+    if (!localStorage.getItem("formSubmitted")) {
+      setTimeout(() => {
+        popupBg.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }, 3500);
+    }
 
-  /* CLOSE (refresh pe popup phir aayega) */
-  closeBtn.addEventListener("click", () => {
-    popupBg.classList.remove("active");
-    document.body.style.overflow = "auto";
-  });
-
-  popupBg.addEventListener("click", (e) => {
-    if (e.target === popupBg) {
+    closeBtn.addEventListener("click", () => {
       popupBg.classList.remove("active");
       document.body.style.overflow = "auto";
-    }
-  });
+    });
 
-  /* FORM SUBMIT */
-  form.addEventListener("submit", async function (e) {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector("button[type='submit']");
-    submitBtn.disabled = true;
-    submitBtn.innerText = "Submitting...";
-
-    const name = document.getElementById("fp-name").value.trim();
-    const email = document.getElementById("fp-email").value.trim();
-    const phone = document.getElementById("fp-phone").value.trim();
-
-    if (!name || !email || !phone) {
-      showToast("Please fill all fields", "error");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
-      return;
-    }
-
-    const { error } = await window.supabase
-      .from("leads")
-      .insert([{ name, email, phone }]);
-
-    if (error) {
-      console.error(error);
-      showToast("Database error. Try again.", "error");
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
-      return;
-    }
-
-    emailjs.send(
-      "service_kabl40s",
-      "template_hm3z1bq",
-      { name, email, phone }
-    )
-      .then(() => {
-        showToast("Thank you! We will contact you shortly.");
-
-        // IMPORTANT LINE//
-        localStorage.setItem("formSubmitted", "yes");
-
-        form.reset();
+    popupBg.addEventListener("click", (e) => {
+      if (e.target === popupBg) {
         popupBg.classList.remove("active");
         document.body.style.overflow = "auto";
+      }
+    });
 
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Submit";
-      })
-      .catch(() => {
-        showToast("Email failed, but data saved.", "error");
-        submitBtn.disabled = false;
-        submitBtn.innerText = "Submit";
-      });
-  });
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("fp-name")?.value.trim();
+      const email = document.getElementById("fp-email")?.value.trim();
+      const phone = document.getElementById("fp-phone")?.value.trim();
+
+      if (!name || !email || !phone) {
+        showToast("Please fill all fields", "error");
+        return;
+      }
+
+      await window.supabase.from("leads").insert([{ name, email, phone }]);
+
+      emailjs.send("service_kabl40s", "template_hm3z1bq", { name, email, phone })
+        .then(() => {
+          showToast("Thank you! We will contact you shortly.");
+          localStorage.setItem("formSubmitted", "yes");
+          form.reset();
+          popupBg.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+    });
+  }
 
 });
 /* =====================================
-   OUR PROPERTIES SLIDER – FINAL JS
+   PROPERTY SLIDER
+   Home + Residential (Perfect)
 ===================================== */
 
 const slider = document.querySelector(".property-grid");
@@ -118,99 +77,109 @@ const prevBtn = document.querySelector(".arrow.left");
 const nextBtn = document.querySelector(".arrow.right");
 const dotsContainer = document.querySelector(".slider-dots");
 
-let index = 0;
+if (slider && cards.length && prevBtn && nextBtn && dotsContainer) {
 
-/* Slider only for tablet & mobile */
-function isSliderActive() {
-  return window.innerWidth <= 992;
-}
+  let index = 0;
+  const GAP = 24;
 
-/* Cards per screen */
-function cardsPerView() {
-  if (window.innerWidth <= 768) return 1;
-  if (window.innerWidth <= 992) return 2;
-  return 3;
-}
+  /* ---------- PAGE TYPE ---------- */
+  const isResidential = document.body.classList.contains("residential-page");
 
-/* Create dots */
-function createDots() {
-  dotsContainer.innerHTML = "";
+  /* ---------- SLIDER ACTIVE ---------- */
+  function isSliderActive() {
+    if (isResidential) return window.innerWidth <= 768;
+    return window.innerWidth <= 992;
+  }
 
-  if (!isSliderActive()) return;
+  /* ---------- CARDS PER VIEW ---------- */
+  function cardsPerView() {
+    if (isResidential) return 1;
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 992) return 2;
+    return 3;
+  }
 
-  const totalDots = Math.ceil(cards.length / cardsPerView());
+  /* ---------- MAX INDEX ---------- */
+  function getMaxIndex() {
+    if (isResidential) return cards.length - 1;
+    return Math.max(Math.ceil(cards.length / cardsPerView()) - 1, 0);
+  }
 
-  for (let i = 0; i < totalDots; i++) {
-    const dot = document.createElement("span");
-    if (i === 0) dot.classList.add("active");
+  /* ---------- DOTS ---------- */
+  function createDots() {
+    dotsContainer.innerHTML = "";
 
-    dot.addEventListener("click", () => {
-      index = i;
-      updateSlider();
+    if (!isSliderActive()) return;
+
+    const totalDots = isResidential
+      ? cards.length
+      : Math.ceil(cards.length / cardsPerView());
+
+    for (let i = 0; i < totalDots; i++) {
+      const dot = document.createElement("span");
+      if (i === index) dot.classList.add("active");
+
+      dot.addEventListener("click", () => {
+        index = i;
+        updateSlider();
+      });
+
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  /* ---------- UPDATE SLIDER ---------- */
+  function updateSlider() {
+
+    if (!isSliderActive()) {
+      slider.style.transform = "translateX(0)";
+      return;
+    }
+
+    const cardWidth = cards[0].offsetWidth + GAP;
+    slider.style.transform = `translateX(-${index * cardWidth}px)`;
+
+    dotsContainer.querySelectorAll("span").forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
     });
-
-    dotsContainer.appendChild(dot);
-  }
-}
-
-/* Update slider */
-function updateSlider() {
-  if (!isSliderActive()) {
-    slider.style.transform = "translateX(0)";
-    return;
   }
 
-  const gap = 24;
-  const cardWidth = cards[0].getBoundingClientRect().width + gap;
-
-  slider.style.transform =
-    `translateX(-${index * cardWidth * cardsPerView()}px)`;
-
-  document.querySelectorAll(".slider-dots span").forEach((dot, i) => {
-    dot.classList.toggle("active", i === index);
+  /* ---------- ARROWS ---------- */
+  nextBtn.addEventListener("click", () => {
+    const max = getMaxIndex();
+    index = index < max ? index + 1 : 0;
+    updateSlider();
   });
-}
 
-/* Arrow buttons */
-nextBtn.addEventListener("click", () => {
-  if (!isSliderActive()) return;
+  prevBtn.addEventListener("click", () => {
+    const max = getMaxIndex();
+    index = index > 0 ? index - 1 : max;
+    updateSlider();
+  });
 
-  const maxIndex = Math.ceil(cards.length / cardsPerView()) - 1;
-  index = index < maxIndex ? index + 1 : 0;
-  updateSlider();
-});
+  /* ---------- RESIZE ---------- */
+  window.addEventListener("resize", () => {
+    index = 0;
+    createDots();
+    updateSlider();
+  });
 
-prevBtn.addEventListener("click", () => {
-  if (!isSliderActive()) return;
-
-  const maxIndex = Math.ceil(cards.length / cardsPerView()) - 1;
-  index = index > 0 ? index - 1 : maxIndex;
-  updateSlider();
-});
-
-/* Resize handling */
-window.addEventListener("resize", () => {
-  index = 0;
+  /* ---------- INIT ---------- */
   createDots();
   updateSlider();
-});
+}
 
-/* Init */
-createDots();
-updateSlider();
-
-
-/* =====================================
-   MOBILE MENU TOGGLE (3 LINE BUTTON)
-===================================== */
-
+/* ================= MOBILE MENU ================= */
 const menuBtn = document.querySelector(".menu-btn");
 const navList = document.querySelector(".nav-list");
 
-menuBtn.addEventListener("click", () => {
-  navList.classList.toggle("show-menu");
-});
-// ===== CONTACT NOW – MOBILE vs DESKTOP =====
+if (menuBtn && navList) {
+  menuBtn.addEventListener("click", () => {
+    navList.classList.toggle("show-menu");
+  });
+}
+
+/* ================= CONTACT NOW ================= */
 const contactBtn = document.querySelector(".contact-btn");
 const contactChoice = document.getElementById("contactChoice");
 const closeChoiceBtn = document.getElementById("closeChoiceBtn");
@@ -219,32 +188,29 @@ function isMobile() {
   return window.innerWidth <= 768;
 }
 
-if (contactBtn) {
-  contactBtn.addEventListener("click", function () {
-
-    //  MOBILE → Direct WhatsApp
+if (contactBtn && contactChoice) {
+  contactBtn.addEventListener("click", () => {
     if (isMobile()) {
       window.open("https://wa.me/919654465643", "_blank");
-      return;
+    } else {
+      contactChoice.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
-
-    // DESKTOP → Popup
-    contactChoice.classList.add("active");
-    document.body.style.overflow = "hidden";
   });
 }
 
-if (closeChoiceBtn) {
-  closeChoiceBtn.addEventListener("click", function () {
+if (closeChoiceBtn && contactChoice) {
+  closeChoiceBtn.addEventListener("click", () => {
     contactChoice.classList.remove("active");
     document.body.style.overflow = "auto";
   });
 }
 
-// Outside click close
-contactChoice.addEventListener("click", function (e) {
-  if (e.target === contactChoice) {
-    contactChoice.classList.remove("active");
-    document.body.style.overflow = "auto";
-  }
-});
+if (contactChoice) {
+  contactChoice.addEventListener("click", (e) => {
+    if (e.target === contactChoice) {
+      contactChoice.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  });
+}

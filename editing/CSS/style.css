@@ -867,6 +867,145 @@ a {
   font-size: 0.9rem;
   color: #d4d4d4;
 }
+/* ================================
+   RESIDENTIAL PAGE – HEADING FIX
+================================ */
+
+/* Heading section spacing */
+.residential-page .inner-page-heading {
+  padding: 70px 0 35px;  
+}
+
+/* Container alignment */
+.residential-page .inner-page-heading .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Main heading */
+.residential-page .inner-page-heading h1 {
+  font-size: 34px;
+  font-weight: 500;
+  color: #14346a;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+/* Yellow underline */
+.residential-page .inner-page-heading .section-line {
+  width: 70px;
+  height: 3px;
+  background-color: #dda222;
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 768px) {
+  .residential-page .inner-page-heading {
+    padding: 45px 0 25px;
+  }
+
+  .residential-page .inner-page-heading h1 {
+    font-size: 26px;
+  }
+}
+/* ================================
+   AWARDS PAGE
+================================ */
+
+.awards-page .inner-page-heading {
+  padding: 70px 0 40px;
+}
+.awards-page .inner-page-heading .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.awards-page .page-subtitle {
+  margin-top: 10px;
+  color: #555;
+  max-width: 520px;
+  font-size: 15px;
+}
+
+.awards-section {
+  padding: 60px 0;
+}
+
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+}
+
+/* Award Card */
+.award-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+}
+
+.award-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+.award-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.award-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #14346a;
+  margin-bottom: 4px;
+}
+
+.award-card p {
+  font-size: 14px;
+  color: #777;
+
+}.section-heading {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1d3e5e; 
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.section-heading::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: #f5a623; 
+  margin-top: 8px;
+}
+
+/* Tablet */
+@media (max-width: 991px) {
+  .awards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .awards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .awards-page .inner-page-heading {
+    padding: 45px 0 30px;
+  }
+}
 /* =====================================================
    LARGE TABLET / SMALL LAPTOP (max-width: 1200px)
 ===================================================== */
@@ -888,7 +1027,6 @@ a {
     max-width: 100%;
   }
 }
-
 
 /* =====================================================
    TABLET VIEW (max-width: 992px)
@@ -1111,7 +1249,17 @@ a {
   .hero {
     height: 300px;
   }
-  
+  @media (max-width: 768px) {
+
+  .dropdown-content {
+    position: relative;
+    display: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+}
   /* =====================================
    OUR PROPERTIES SLIDER – MEDIA CSS
 ===================================== */

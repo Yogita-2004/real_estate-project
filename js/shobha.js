@@ -49,9 +49,9 @@ function submitBrochure(e){
   closeBrochure();
   window.location.href = "/shobha/brochure/shobha-aranya.pdf";
 }
-
 /* =====================================
    APEX LANDBASE – POPUP + LEAD FORM JS
+   SOBHA (ID = 1)
    Supabase + EmailJS Connected
 ===================================== */
 
@@ -59,25 +59,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const popupBg = document.getElementById("apexPopupBg");
   const closeBtn = document.getElementById("apexPopupClose");
-  const form = document.getElementById("apexLeadForm");
+  const form = document.getElementById("apexLeadForm1");
 
   if (!popupBg || !closeBtn || !form) return;
 
   /* ===== PAGE TRACKING ===== */
-  const pageField = document.getElementById("apex-page");
+  const pageField = document.getElementById("apex-page1");
   if (pageField) {
     pageField.value = document.title || window.location.pathname;
   }
 
   /* ===== SHOW POPUP UNTIL FORM SUBMITTED ===== */
-  if (!localStorage.getItem("apexFormSubmitted")) {
+  if (!localStorage.getItem("apexFormSubmitted1")) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
     }, 3500);
   }
 
-  /* ===== CLOSE POPUP (will reappear on refresh) ===== */
+  /* ===== CLOSE POPUP ===== */
   closeBtn.addEventListener("click", () => {
     popupBg.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ===== FORM SUBMIT ===== */
+  /* ===== FORM SUBMIT (POPUP) ===== */
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
@@ -98,10 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
-    const name = document.getElementById("apex-name").value.trim();
-    const email = document.getElementById("apex-email").value.trim();
-    const phone = document.getElementById("apex-phone").value.trim();
-    const page = pageField ? pageField.value : "";
+    const name  = document.getElementById("apex-name1").value.trim();
+    const email = document.getElementById("apex-email1").value.trim();
+    const phone = document.getElementById("apex-phone1").value.trim();
+    const page  = pageField ? pageField.value : "";
 
     if (!name || !email || !phone) {
       alert("Please fill all fields");
@@ -109,54 +109,57 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.innerText = "Submit";
       return;
     }
-  try {
-  /* ===== SUPABASE INSERT ===== */
-  const { error } = await window.supabase
-    .from("leads")
-    .insert([{ name, email, phone, page }]);
 
-  if (error) throw error;
+    try {
+      /* ===== SUPABASE INSERT ===== */
+      const { error } = await window.supabase
+        .from("leads")
+        .insert([{ name, email, phone, page }]);
 
-  /* ===== EMAILJS SEND ===== */
-  await emailjs.send(
-    "service_kabl40s",
-    "template_hm3z1bq",
-    { name, email, phone }
-  );
+      if (error) throw error;
 
-  /* ===== SAVE FLAG ===== */
-  localStorage.setItem("apexFormSubmitted", "yes");
+      /* ===== EMAILJS SEND ===== */
+      await emailjs.send(
+        "service_kabl40s",
+        "template_hm3z1bq",
+        { name, email, phone }
+      );
 
-  /* ===== RESET & CLOSE POPUP ===== */
-  form.reset();
-  popupBg.classList.remove("active");
-  document.body.style.overflow = "auto";
+      /* ===== SAVE FLAG ===== */
+      localStorage.setItem("apexFormSubmitted1", "yes");
 
-  /* ===== SUCCESS TOAST ===== */
-  setTimeout(() => {
-    const toast = document.getElementById("thankYouToast");
-    if (toast) {
-      toast.classList.add("show");
+      /* ===== RESET & CLOSE POPUP ===== */
+      form.reset();
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
+
+      /* ===== SUCCESS TOAST ===== */
       setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3000);
-    }
-  }, 200);
+        const toast = document.getElementById("thankYouToast");
+        if (toast) {
+          toast.classList.add("show");
+          setTimeout(() => toast.classList.remove("show"), 3000);
+        }
+      }, 200);
 
-} catch (err) {
-  console.error(err);
-  alert("Something went wrong. Please try again.");
-} finally {
-  /* ===== BUTTON RESET (ALWAYS) ===== */
-  submitBtn.disabled = false;
-  submitBtn.innerText = "Submit";
-}
-   
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
+    }
   });
 });
+
+
+/* =====================================
+   CONTACT / ENQUIRE FORM – SOBHA
+===================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  const contactForm = document.querySelector(".contact-form");
+  const contactForm = document.getElementById("contactForm1");
   if (!contactForm) return;
 
   const toast = document.getElementById("thankYouToast");
@@ -164,10 +167,9 @@ document.addEventListener("DOMContentLoaded", function () {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const inputs = contactForm.querySelectorAll("input");
-    const name  = inputs[0]?.value.trim();
-    const phone = inputs[1]?.value.trim();
-    const email = inputs[2]?.value.trim();
+    const name  = document.getElementById("contact-name1").value.trim();
+    const phone = document.getElementById("contact-phone1").value.trim();
+    const email = document.getElementById("contact-email1").value.trim();
 
     if (!name || !phone) {
       console.warn("Required fields missing");
@@ -187,20 +189,15 @@ document.addEventListener("DOMContentLoaded", function () {
         { name, phone, email }
       );
 
-      /* ===== RESET FORM ===== */
       contactForm.reset();
 
-      /* ===== SHOW TOAST (NO ALERT) ===== */
       if (toast) {
         toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
+        setTimeout(() => toast.classList.remove("show"), 3000);
       }
 
     } catch (err) {
       console.error(err);
     }
   });
-
 });
