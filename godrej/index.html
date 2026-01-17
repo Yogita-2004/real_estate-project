@@ -8,7 +8,7 @@
 
   <meta name="description"
     content="Godrej Miraya Sector 43 Gurgaon offers ultra-luxury 3 & 4 BHK residences on Golf Course Road. IGBC Platinum certified project with premium clubhouse, floor plans & pricing.">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <!-- CANONICAL -->
   <link rel="canonical" href="https://apexlandbase.com/godrej-miraya">
@@ -36,6 +36,13 @@
         <span class="brand">GODREJ</span>
         <span class="project">MIRAYA</span>
         <small class="tagline">SECTOR 43, GOLF COURSE ROAD, GURGAON</small>
+      </div>
+
+      <!-- MOBILE HAMBURGER (ADD HERE) -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
 
       <nav class="menu">
@@ -151,7 +158,7 @@
 
       <!-- RIGHT IMAGE -->
       <div class="overview-image">
-        <img src="/godrej/img/overview1.webp"
+        <img src="/godrej/img/overview.webp"
           alt="Godrej Miraya ultra luxury residential project overview on Golf Course Road Gurugram" loading="lazy">
       </div>
 
@@ -242,14 +249,22 @@
         </ul>
       </div>
 
+      <!-- RIGHT : FLOOR PLAN SLIDER (FORMAT SAME) -->
       <div class="floorplan-images">
-        <img src="/godrej/img/floorplan1.webp" loading="lazy">
-        <img src="/godrej/img/floorplan2.webp" loading="lazy">
+
+        <div class="fp-slider">
+          <div class="fp-track">
+
+            <img src="/godrej/img/floorplan1.webp" loading="lazy" alt="3 BHK Floor Plan">
+            <img src="/godrej/img/floorplan2.webp" loading="lazy" alt="4 BHK Floor Plan">
+
+          </div>
+        </div>
+
       </div>
 
     </div>
   </section>
-
   <!-- ================= AMENITIES ================= -->
   <section class="apex-amenities" id="amenities">
 
@@ -334,7 +349,7 @@
     </div>
 
   </section>
- <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+  <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
   <div id="apexPopupBg" class="apex-popup-bg">
     <div class="apex-popup-box">
 
@@ -454,7 +469,7 @@
     const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
     const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
 
-    window.supabase =supabase.createClient(
+    window.supabase = supabase.createClient(
       SUPABASE_URL,
       SUPABASE_KEY
     );
