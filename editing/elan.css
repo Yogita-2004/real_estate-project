@@ -299,6 +299,12 @@ section {
   gap: 50px;
   align-items: center;
 }
+.overview-text{
+  padding-left: 20px;
+}
+.overview-list{
+  padding-left: 20px;
+}
 
 .overview-text h2 {
   font-size: 32px;
@@ -335,8 +341,8 @@ section {
 /* === FIXED SMALLER OVERVIEW IMAGE === */
 .overview-image {
   position: relative;
-  height: 300px;
-  max-width: 95%;
+  height: 340px;
+  max-width: 100%;
   margin-left: auto;
   border-radius: 16px;
   overflow: hidden;
@@ -366,7 +372,7 @@ section {
 
 /* ================= CONTENT ================= */
 .residences-content {
-  margin-left: 50px; /* text right shift */
+  margin-left: 70px; /* text right shift */
 }
 
 .residences-content h2 {
@@ -1134,6 +1140,10 @@ section {
   .residences-images {
     margin-left: 0;
   }
+  .overview-image{
+    height: 320px;
+    margin: 0 auto;
+  }
 }
 /* ================== MOBILE (FINAL FIXED) ================== */
 @media (max-width: 768px) {
@@ -1261,7 +1271,7 @@ section {
   }
 
   .overview-image {
-    height: 230px;
+    height: 260px;
     max-width: 100%;
     margin: 0;
   }

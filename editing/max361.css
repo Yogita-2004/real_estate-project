@@ -445,7 +445,7 @@ section {
 /* ================= CONTENT ================= */
 
 .residences-content {
-  margin-left: 50px;
+  margin-left: 70px;
   /* text right shift */
 }
 
@@ -519,8 +519,8 @@ section {
 
 /* SMALL IMAGE */
 .residences-images img:last-child {
-  width: 80%;
-  height: 180px;
+  width: 100%;
+  height: 300px;
   margin-left: auto;
   /* right aligned */
   border-radius: 18px;
@@ -964,7 +964,7 @@ section {
   pointer-events: none;
   transform: translateY(10px);
   transition: 0.3s ease;
-  z-index: 9999;
+  z-index: 999999;
 }
 
 .toast.show {
@@ -1066,154 +1066,31 @@ section {
   margin: auto;
   opacity: 0.85;
 }
-
 /* =====================================================
-   COMPLETE RESPONSIVE MEDIA – MAX 361 (FINAL)
-   MOBILE + TABLET + DESKTOP SAFE
+   MOBILE + TABLET MEDIA CSS (WITH HAMBURGER)
 ===================================================== */
 
-/* ================= MOBILE (≤768px) ================= */
-@media (max-width: 768px) {
-
-  /* GLOBAL */
-  html,
-  body {
-    width: 100%;
-    font-size: 14px;
-    overflow-x: hidden;
-  }
-
-  /* HEADER */
-  .site-header {
-    padding-top: env(safe-area-insert-top);
-    background: rgba(0, 0, 0, 0.92);
-  }
+/* ================== TABLET ================== */
+@media (max-width: 1024px) {
 
   .nav {
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo-text {
-   flex-grow: 0;
-   align-items: flex-start;
-  }
-  .logo-text .brand{
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-  .logo-text .project{
-    font-size: 18px;
-    line-height:1;
-  }
-  .logo-text .tagline{
-    font-size: 9px;
-    letter-spacing: 1.5px;
-  }
-
-  .menu {
-    width: 100%;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: flex-start;
-    gap: 8px;
+    padding: 0 16px;
   }
 
   .menu a {
-    font-size: 12px;
-    margin: 0;
-  }
-
-  .brochure-header-btn {
-    margin: 10px auto 0;
-    display: inline-block;
-  }
- 
-  .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-
-    display: flex;
-    align-items: flex-end;
-    padding-top: calc(64px + 24px);
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 70px;
-
-    color: #fff;
-    overflow: hidden;
-  }
-
-  .hero video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 100%;
-    text-align: left;
-  }
-  .hero-content h1 {
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 10px;
-  }
-
-  .hero-subtitle {
+    margin-left: 16px;
     font-size: 13px;
-    line-height: 1.4;
-    margin: 6px 0 14px;
-    opacity: 0.9;
   }
 
-  .hero-highlights {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px;
+  .hero {
+    padding: 60px 40px;
+    padding-top: calc(60px + 72px);
   }
 
-  .hero-highlights span {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .hero button {
-    padding: 12px 26px;
-    font-size: 14px;
-  }
-
-  /* OVERVIEW */
-  .overview-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-image {
-    height: 260px;
-    margin-top: 25px;
-  }
-
-  .overview-points {
-    grid-template-columns: 1fr;
-  }
-
-  /* RESIDENCES */
-  .residences-wrap {
+  .overview-wrap,
+  .residences-wrap,
+  .apex-amenities-wrap,
+  .contact-wrap {
     grid-template-columns: 1fr;
   }
 
@@ -1223,117 +1100,222 @@ section {
 
   .residences-images {
     margin-left: 0;
-    margin-top: 25px;
   }
-
-  .residences-images img:first-child {
-    height: 220px;
-  }
-
-  .residences-images img:last-child {
-    width: 100%;
-    height: 160px;
-  }
-
-  /* MASTER PLAN */
-  .master-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .master-image {
-    height: 260px;
-    margin-bottom: 30px;
-  }
-
-  /* GALLERY */
-  #gallery .gallery {
-    grid-template-columns: 1fr;
-  }
-
-  #gallery .gallery img {
-    height: 220px;
-  
-  }
-
-  /* AMENITIES */
-  .apex-amenities-wrap {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .amenities-image {
-    margin-top: 0%;
-    min-height: unset;
-    padding: 0px;
-  }
-  .amenities-image img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: none;
-    object-fit: contain;
-    border-radius: 10px;
-  }
-
-  .apex-title {
-    font-size: 30px;
-  }
-
-  /* CONTACT */
-  .contact-wrap {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .contact-text p {
-    margin: auto;
+  .overview-image{
+    height: 320px;
+    margin: 0 auto;
   }
 }
+/* ================== MOBILE (FINAL FIXED) ================== */
+@media (max-width: 768px) {
 
-/* ================= TABLET (769px – 1024px) ================= */
-@media (max-width: 1024px) {
+  /* ================= GLOBAL FIX ================= */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-  body {
+  /* ================= HEADER ================= */
+  .site-header {
+    height: 64px;
+  }
+
+  .nav {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  /* ================= LOGO ================= */
+  .logo-text {
+    align-items: flex-start;
+  }
+
+  .logo-text .brand {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+  }
+
+  .logo-text .project {
+    font-size: 19px;
+    letter-spacing: 1.8px;
+  }
+
+  .logo-text .tagline {
+    font-size: 9px;
+  }
+
+  /* ================= HAMBURGER ================= */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+  }
+
+  /* ================= MENU ================= */
+  .menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: flex-start;   /* 🔥 LEFT ALIGN */
+    gap: 18px;
+    padding: 28px 20px 36px;
+    transform: translateY(-120%);
+    transition: 0.4s ease;
+    z-index: 9998;
+  }
+
+  .menu.active {
+    transform: translateY(0);
+  }
+
+  .menu a {
     font-size: 15px;
+    margin: 0;
+  }
+
+  .brochure-header-btn {
+    margin-top: 12px;
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    min-height: 100vh;
+    padding: 26px 16px;
+    padding-top: calc(26px + 64px);
+    align-items: flex-end;      /* 🔥 bottom */
+    text-align: left;           /* 🔥 LEFT */
+  }
+
+  .hero-content {
+    max-width: 92%;
+    margin: 0;
   }
 
   .hero-content h1 {
-    font-size: 42px;
+    font-size: 22px;
+    line-height: 1.35;
   }
 
-  .overview-wrap,
-  .residences-wrap,
-  .master-wrap,
-  .apex-amenities-wrap,
-  .contact-wrap {
+  .hero-subtitle {
+    font-size: 14px;
+    margin: 10px 0 18px;
+  }
+
+  .hero-highlights {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-highlights span {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  /* ================= OVERVIEW ================= */
+  .overview {
+    padding: 56px 16px;
+  }
+
+  .overview-wrap {
     grid-template-columns: 1fr;
   }
 
   .overview-image {
-    height: 320px;
+    height: 260px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* ================= RESIDENCES ================= */
+  .residences {
+    padding: 56px 16px;
+  }
+
+  .residences-images img {
+    height: 230px;
+  }
+
+  /* ================= MASTER PLAN ================= */
+  .master-wrap {
+    grid-template-columns: 1fr;
+    text-align: left;
   }
 
   .master-image {
-    height: 360px;
+    align-items: flex-start;
   }
 
-  .residences-images img:first-child {
-    height: 260px;
-  }
-}
-
-/* ================= SMALL DESKTOP (≤1200px) ================= */
-@media (max-width: 1200px) {
-
-  .nav {
-    padding: 0 16px;
+  /* ================= FLOOR PLAN ================= */
+  .floorplan-wrap {
+    grid-template-columns: 1fr;
   }
 
-  .hero {
-    padding: 80px 40px;
+  .floorplan-images img {
+    max-width: 100%;
+  }
+#gallery {
+    padding: 40px 0;
+    width: 100%;
+  }
+  #gallery .container {
+    max-width: 100% !important;
+    width: 100%;
+    padding-left: 14px;  
+    padding-right: 14px;
+    margin: 0;
   }
 
-  .hero-content h1 {
-    font-size: 46px;
+  /* Grid */
+  #gallery .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Images */
+  #gallery .gallery img {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ================= AMENITIES ================= */
+  .apex-amenities {
+    padding: 50px 16px;
+  }
+
+  .apex-amenities-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .amenities-image img {
+    width: 100%;
+  }
+
+  /* ================= CONTACT ================= */
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-text h2 {
+    font-size: 26px;
+  }
+
+  /* ================= FOOTER ================= */
+  .lp-footer p {
+    font-size: 10px;
   }
 }

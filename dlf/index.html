@@ -3,242 +3,385 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>DLF Privana North | Apex Landbase</title>
+
+  <title>DLF Privana North & West Gurugram | Ultra Luxury Residences</title>
+
+  <meta name="description"
+    content="DLF Privana North & West offers ultra-luxury residences in Sectors 76–77 Gurugram. Part of a 116-acre integrated township by DLF.">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- GLOBAL + DLF CSS -->
+  <link rel="canonical" href="https://yourdomain.com/dlf-privana">
+
+  <!-- SAME CSS -->
   <link rel="stylesheet" href="/editing/dlf.css">
-  <link rel="stylesheet" href="/editing/dlf_parivnastyle.css">
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <div class="nav">
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="nav">
 
-    <div class="logo-text">
-      <span class="brand">DLF</span>
-      <span class="project">Privana North</span>
-      <small class="tagline">THE NEIGHBOURHOOD OF TOMORROW</small>
+      <div class="logo-text">
+        <span class="brand">DLF</span>
+        <span class="project">PRIVANA</span>
+        <small class="tagline">SECTOR 76 & 77, GURUGRAM</small>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav class="menu">
+        <a href="#overview">Overview</a>
+        <a href="#residences">Residences</a>
+        <a href="#masterplan">Master Plan</a>
+        <a href="#floorplan">Floor Plan</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#contact">Contact</a>
+
+        <a href="javascript:void(0)" class="brochure-header-btn" onclick="openBrochure()">
+          Download Brochure
+        </a>
+      </nav>
+
     </div>
+  </header>
 
-    <nav class="menu">
-      <a href="#overview">Overview</a>
-      <a href="#residences">Residences</a>
-      <a href="#features">Features</a>
-      <a href="#location">Location</a>
-      <a href="#contact">Contact</a>
+  <main>
 
-      <a href="#contact" class="brochure-header-btn">
-        Request Details
-      </a>
-    </nav>
-
-  </div>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <img src="image/main.webp" alt="DLF Privana North Luxury Residences">
-
-  <div class="hero-content">
-    <span class="hero-tag">DLF PRESENTS</span>
-    <h1>Privana North</h1>
-    <p class="hero-subtitle">The Neighbourhood of Tomorrow</p>
-
-    <div class="hero-highlights">
-      <span>Pedestrian Living</span>
-      <span>Green Masterplan</span>
-      <span>DLF Legacy</span>
-    </div>
-
-    <a href="#contact" class="brochure-header-btn">Request Details</a>
-  </div>
-</section>
-
-<!-- ================= OVERVIEW ================= -->
-<section class="overview" id="overview">
-  <div class="container overview-wrap">
-
-    <div class="overview-left">
-
-      <div class="overview-text">
-        <h2>Project Overview</h2>
-        <p>
-          DLF Privana North is a landmark residential development crafted
-          around pedestrian-friendly living, expansive green spaces, and
-          iconic high-rise towers that redefine urban luxury.
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="https://www.pexels.com/download/video/34439771/" type="video/mp4">
+      </video>
+      <div class="hero-content">
+        <h1>DLF Privana<br>North & West</h1>
+        <p class="hero-subtitle">
+          Ultra-Luxury Residences in a 116-Acre Integrated Township
         </p>
+        <div class="hero-highlights">
+          <span>DLF Legacy</span>
+          <span>Low Density Living</span>
+          <span>Sector 76–77</span>
+        </div>
+        <button class="brochure-header-btn" onclick="openBrochure()">Download Brochure</button>
       </div>
+    </section>
 
-      <div class="overview-points">
+    <!-- ================= OVERVIEW (COMMON) ================= -->
+    <section class="overview" id="overview">
+      <div class="container overview-wrap">
 
-        <div class="point-card">
-          <span class="highlight">DLF Legacy</span>
-          <p>India’s most trusted developer</p>
+        <div class="overview-left">
+          <div class="overview-text">
+            <h2>DLF Privana Township</h2>
+            <p>
+              DLF Privana is a 116-acre integrated luxury township in Sectors 76–77,
+              Gurugram. Designed as a future-ready neighbourhood with wide green
+              corridors, pedestrian-friendly planning and ultra-premium residences.
+            </p>
+          </div>
+
+          <ul class="overview-list">
+            <li><strong>Total Township:</strong> ~116 Acres</li>
+            <li><strong>Open Greens:</strong> ~80%</li>
+            <li><strong>Location:</strong> Southern Peripheral Road (SPR)</li>
+            <li><strong>Developer:</strong> DLF Limited</li>
+          </ul>
         </div>
 
-        <div class="point-card">
-          <span class="highlight">Green Living</span>
-          <p>Expansive landscaped open spaces</p>
-        </div>
-
-        <div class="point-card">
-          <span class="highlight">Iconic Towers</span>
-          <p>Contemporary high-rise architecture</p>
-        </div>
-
-        <div class="point-card">
-          <span class="highlight">Future Ready</span>
-          <p>Pedestrian-first community design</p>
+        <div class="overview-image">
+          <img src="/dlf/images/overview.webp" alt="DLF Privana Township">
         </div>
 
       </div>
-
-    </div>
-
-    <div class="overview-image">
-      <img src="image/atrium.webp" alt="DLF Privana North Overview">
-    </div>
-
-  </div>
-</section>
-
+    </section>
 <!-- ================= RESIDENCES ================= -->
 <section class="residences" id="residences">
+
+  <!-- ===== PRIVANA NORTH ===== -->
   <div class="container residences-wrap">
 
     <div class="residences-content">
-      <h2>Residences</h2>
-      <span class="section-line"></span>
-
-      <ul class="residences-list">
-        <li>High-rise luxury residences</li>
-        <li>Thoughtfully planned spacious layouts</li>
-        <li>Abundant natural light & ventilation</li>
-        <li>Premium specifications & finishes</li>
-      </ul>
+      <h2>Privana North</h2>
 
       <p class="residences-text">
-        Homes at DLF Privana North are designed to offer
-        refined living experiences with comfort,
-        elegance, and functionality.
+        DLF Privana North is an ultra-luxury high-rise residential project by DLF in
+        Sector 76/77, Gurugram, offering spacious 4 BHK apartments and penthouses
+        with panoramic Aravalli views.
       </p>
+
+      <ul class="residences-list">
+        <li>Ultra-luxury 4 BHK residences</li>
+        <li>Stilt + 50 floors</li>
+        <li>Only 2 apartments per core</li>
+        <li>Panoramic Aravalli & city views</li>
+      </ul>
     </div>
 
     <div class="residences-images">
-      <img src="image/cafe.webp" alt="Garden Inspired Cafe">
-      <img src="image/creche.webp" alt="Creche and Daycare">
+      <img src="/dlf/images/north1.webp" alt="Privana North Living" loading="lazy">
+      <img src="/dlf/images/north2.webp" alt="Privana North Bedroom" loading="lazy">
     </div>
 
   </div>
-</section>
 
-<!-- ================= FEATURES ================= -->
-<section id="features" class="apex-amenities">
-  <div class="apex-amenities-wrap">
+  <!-- ===== PRIVANA WEST ===== -->
+  <div class="container residences-wrap reverse">
 
-    <div class="amenities-image">
-      <img src="image/atrium.webp" alt="Tropical Atrium">
+    <div class="residences-images">
+      <img src="/dlf/images/west1.webp" alt="Privana West Living" loading="lazy">
+      <img src="/dlf/images/west2.webp" alt="Privana West Bedroom" loading="lazy">
     </div>
 
-    <div class="amenities-content">
-      <h2 class="apex-title">Signature Features</h2>
+    <div class="residences-content">
+      <h2>Privana West</h2>
+
+      <p class="residences-text">
+        DLF Privana West is an under-construction ultra-luxury residential project
+        in Sector 76, Gurugram. Low-density towers with green-facing homes.
+      </p>
+
+      <ul class="residences-list">
+        <li>Luxury 3 & 4 BHK residences</li>
+        <li>Lower density towers</li>
+        <li>Large balconies & decks</li>
+        <li>Green-facing homes</li>
+      </ul>
+    </div>
+
+  </div>
+
+</section>
+<!-- ================= MASTER PLAN (ELAN STYLE) ================= -->
+<section class="apex-masterplan" id="masterplan">
+  <div class="container master-wrap">
+
+    <!-- LEFT IMAGE -->
+    <div class="master-image">
+      <img src="/dlf/images/masterplan.webp"
+           class="master-thumb"
+           alt="DLF Privana Master Plan"
+           onclick="openMasterPlan()">
+      <span class="click-note">Click to view master plan</span>
+    </div>
+
+    <!-- RIGHT CONTENT -->
+    <div class="master-content">
+      <h2 class="apex-title">Master Plan</h2>
       <span class="apex-line"></span>
 
-      <ul class="amenities-divider-list">
-        <li>
-          <span class="num">01</span>
-          <span class="text">Tropical Themed Atrium</span>
-        </li>
-        <li>
-          <span class="num">02</span>
-          <span class="text">Garden Inspired Café</span>
-        </li>
-        <li>
-          <span class="num">03</span>
-          <span class="text">Creche & Daycare Facilities</span>
-        </li>
-        <li>
-          <span class="num">04</span>
-          <span class="text">Pedestrian-Friendly Master Planning</span>
-        </li>
+      <p class="master-text">
+        DLF Privana is a thoughtfully planned 116-acre integrated township
+        featuring wide internal roads, expansive green zones, pedestrian-friendly
+        pathways and dedicated lifestyle clusters for holistic urban living.
+      </p>
+
+      <ul class="master-list">
+        <li>Low-density high-rise planning</li>
+        <li>Dedicated green & leisure zones</li>
+        <li>Separate residential precincts</li>
+        <li>Well-connected internal circulation</li>
       </ul>
     </div>
 
   </div>
 </section>
 
-<!-- ================= LOCATION ================= -->
-<section id="location" class="lux-location">
-  <h2>Location Advantage</h2>
+<!-- ================= MASTER PLAN MODAL ================= -->
+<div id="masterModal" class="master-modal">
+  <span class="master-close" onclick="closeMasterPlan()">×</span>
+  <img src="/dlf/images/masterplan.webp"
+       class="master-full"
+       alt="DLF Privana Master Plan Full View">
+</div>
+    <!-- ================= FLOOR PLAN (ELAN STYLE) ================= -->
+<section class="apex-floorplan" id="floorplan">
+  <div class="container floorplan-wrap">
 
-  <ul>
-    <li>Well-connected urban neighbourhood</li>
-    <li>Easy access to major roads & business hubs</li>
-    <li>Close proximity to schools & healthcare</li>
-    <li>Future-ready infrastructure corridor</li>
-  </ul>
+    <!-- LEFT CONTENT -->
+    <div class="floorplan-content">
+
+      <h2 class="apex-title">Floor Plans</h2>
+      <span class="apex-line"></span>
+
+      <p class="floorplan-text">
+        DLF Privana residences are intelligently designed with expansive layouts,
+        optimal space utilization and seamless zoning that ensures privacy,
+        ventilation and abundant natural light.
+      </p>
+
+      <ul class="floorplan-list">
+        <li>Spacious 3 & 4 BHK residences with utility areas</li>
+        <li>Well-defined living & private zones</li>
+        <li>Large balconies with Aravalli views</li>
+        <li>Efficient layouts for cross ventilation</li>
+        <li>Premium specifications across configurations</li>
+      </ul>
+
+      <!-- CONFIG TAGS (ELAN STYLE) -->
+      <div class="floorplan-tags">
+        <span>3 BHK · 2,700+ sq. ft.</span>
+        <span>4 BHK · 3,900+ sq. ft.</span>
+        <span>Privana North & West</span>
+      </div>
+
+    </div>
+
+    <!-- RIGHT : SLIDER -->
+    <div class="floorplan-images">
+      <div class="fp-slider">
+        <div class="fp-track">
+          <img src="/dlf/images/floorplan1.webp" alt="DLF Privana 3 BHK Floor Plan">
+          <img src="/dlf/images/floorplan2.webp" alt="DLF Privana 4 BHK Floor Plan">
+        </div>
+      </div>
+    </div>
+
+  </div>
 </section>
-<!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery">
+      <div class="container">
+        <h2>Project Gallery</h2>
+        <div class="section-line"></div>
+
+        <div class="gallery">
+          <img src="/dlf/images/gallery1.webp">
+          <img src="/dlf/images/gallery2.webp">
+          <img src="/dlf/images/gallery3.webp">
+          <img src="/dlf/images/gallery4.webp">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= AMENITIES ================= -->
+    <section class="apex-amenities" id="amenities">
+      <div class="apex-amenities-wrap">
+
+        <div class="amenities-image">
+          <img src="/dlf/images/amenities.webp" alt="dlf amenities">
+        </div>
+
+        <div class="amenities-content">
+          <h2 class="apex-title">Amenities</h2>
+          <span class="apex-line"></span>
+
+          <ul class="amenities-divider-list">
+            <li><span class="num">01</span><span class="text">Clubhouse & Lounges</span></li>
+            <li><span class="num">02</span><span class="text">Fitness & Wellness Zones</span></li>
+            <li><span class="num">03</span><span class="text">Jogging & Cycling Tracks</span></li>
+            <li><span class="num">04</span><span class="text">Landscaped Greens</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+<!-- ===== POPUP FORM ===== -->
 <div id="apexPopupBg" class="apex-popup-bg">
   <div class="apex-popup-box">
 
-    <button id="apexPopupClose" class="apex-popup-close" aria-label="Close popup">
-      &times;
-    </button>
+    <button id="apexPopupClose" class="apex-popup-close">&times;</button>
 
     <div class="apex-popup-header">
-      <img src="/img/image.png" alt="Apex Landbase Logo">
+      <img src="/img/image.png" alt="Apex Landbase">
       <h3>Get Exclusive Details</h3>
       <p>Register now to receive price, floor plan & offers</p>
     </div>
 
-    <form id="apexLeadForm" class="apex-lead-form" autocomplete="off">
-      <input type="text" id="apex-name" placeholder="Your Name">
-      <input type="email" id="apex-email" placeholder="Email Address">
-      <input type="tel" id="apex-phone" placeholder="Phone Number">
+    <form id="apexLeadForm" class="apex-lead-form">
+      <input type="text" id="apex-name" placeholder="Your Name" required>
+      <input type="email" id="apex-email" placeholder="Email Address" required>
+      <input type="tel" id="apex-phone" placeholder="Phone Number" required>
 
       <!-- page tracking -->
       <input type="hidden" id="apex-page">
 
       <button type="submit" class="apex-submit-btn">Submit</button>
     </form>
-
   </div>
 </div>
 
-<!-- ================= CONTACT ================= -->
+<!-- ===== TOAST (POPUP KE BAHAR) ===== -->
+<div id="thankYouToast" class="toast">
+  <strong>Thank you!</strong><br>
+  Our team will contact you shortly.
+</div>
+
+<!-- ===== CONTACT SECTION ===== -->
 <section id="contact" class="contact-section">
   <div class="contact-wrap">
 
     <div class="contact-text">
-      <h2>Schedule a Private Consultation</h2>
+      <h2>Enquire Now</h2>
       <p>
-        Get detailed information on floor plans,
-        pricing and availability at DLF Privana North.
+        Get complete details about pricing, floor plans and offers for  
+        <strong>DLF Parivana north/west</strong>.
       </p>
     </div>
 
     <form class="contact-form">
       <input type="text" placeholder="Your Name" required>
       <input type="tel" placeholder="Phone Number" required>
-      <input type="email" placeholder="Email Address">
-      <button type="submit">Request Call Back</button>
+      <input type="email" placeholder="Email Address" required>
+      <button type="submit">Submit Enquiry</button>
     </form>
 
   </div>
 </section>
+  <!-- ================= FOOTER ================= -->
+  <footer class="lp-footer">
+    <div class="footer-divider"></div>
+    <p>
+      Disclaimer: This website is for information purposes only and does not constitute an offer.
+      Marketed by Apex Landbase.
+    </p>
+  </footer>
+   <!-- ================= BROCHURE MODAL ================= -->
+  <div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
-<!-- ================= FOOTER ================= -->
-<footer class="lp-footer">
-  <div class="footer-divider"></div>
-  <p>
-    Disclaimer: This website is for information purposes only and does not
-    constitute an offer. Marketed by <strong>Apex Landbase</strong>.
-  </p>
-</footer>
+    <div class="modal-box">
 
+      <!-- CLOSE BUTTON -->
+      <span class="close-modal" onclick="closeBrochure()">×</span>
+
+      <h3>Download Brochure</h3>
+      <p>Please fill your details to get the brochure</p>
+
+      <form id="brochureForm" onsubmit="submitBrochure(event)">
+
+        <input type="text" placeholder="Your Name" required>
+        <input type="tel" placeholder="Phone Number" required>
+        <input type="email" placeholder="Email Address" required>
+
+        <button type="submit">Submit & Download</button>
+
+      </form>
+
+    </div>
+
+  </div>
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("Jt6Vp9_-hORbbxZ79");
+  </script>
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+    window.supabase = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
+
+  <script src="/js/dlf.js" defer></script>
 </body>
+
 </html>

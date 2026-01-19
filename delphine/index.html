@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Central Park Delphine | Ultra Luxury Residences</title>
@@ -9,200 +10,255 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <div class="nav">
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="nav">
 
-    <div class="logo-text">
-      <span class="brand">CENTRAL PARK</span>
-      <span class="project">DELPHINE</span>
-      <small class="tagline">ULTRA LUXURY RESIDENCES</small>
+      <div class="logo-text">
+        <span class="brand">CENTRAL PARK</span>
+        <span class="project">DELPHINE</span>
+        <small class="tagline">ULTRA LUXURY RESIDENCES</small>
+      </div>
+      <!-- MOBILE HAMBURGER (ADD HERE) -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+
+      <nav class="menu">
+        <a href="#overview">Overview</a>
+        <a href="#residences">Residences</a>
+        <a href="#masterplan">Master Plan</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="Download brochure-header-btn" onclick="openBrochure()">Download Brochure</a>
+      </nav>
+
     </div>
-
-    <nav class="menu">
-      <a href="#overview">Overview</a>
-      <a href="#residences">Residences</a>
-      <a href="#masterplan">Master Plan</a>
-      <a href="#amenities">Amenities</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
-      <a class="Download brochure-header-btn" onclick="openBrochure()">Download Brochure</a>
-    </nav>
-
-  </div>
-</header>
+  </header>
 
 
-<!-- ================= HERO VIDEO ================= -->
-<section class="hero">
-  <video autoplay muted loop playsinline>
-    <source src="https://www.pexels.com/download/video/32541194/" type="video/mp4">
-  </video>
+  <!-- ================= HERO VIDEO ================= -->
+  <section class="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://www.pexels.com/download/video/32541194/" type="video/mp4">
+    </video>
 
-  <div class="hero-content">
-    <h1>Sky Villas & Ultra-Luxury Living</h1>
-    <p class="hero-subtitle">A Landmark of Elegance at Central Park Resorts</p>
+    <div class="hero-content">
+      <h1>Sky Villas & Ultra-Luxury Living</h1>
+      <p class="hero-subtitle">A Landmark of Elegance at Central Park Resorts</p>
 
-    <div class="hero-highlights">
-      <span>Ultra Luxury</span>
-      <span>Sky Villas</span>
-      <span>Exclusive Club</span>
+      <div class="hero-highlights">
+        <span>Ultra Luxury</span>
+        <span>Sky Villas</span>
+        <span>Exclusive Club</span>
+      </div>
+      <button class="brochure-header-btn" onclick="openBrochure()" aria-label="Download Brochure">
+        Download Brochure
+      </button>
     </div>
-
-    <button onclick="openBrochure()">Download Brochure</button>
-  </div>
-</section>
+  </section>
 
 
-<!-- ================= OVERVIEW ================= -->
-<section id="overview" class="overview">
-  <div class="overview-wrap">
+  <!-- ================= OVERVIEW ================= -->
+  <section id="overview" class="overview">
+    <div class="overview-wrap">
 
-    <div class="overview-left">
-      <div class="overview-text">
-        <h2>Project Overview</h2>
-        <p>
-          Central Park Delphine is an ultra-luxury development crafted for elite living.
-          Featuring Sky Villas, Premium Apartments and Luxury Residences, Delphine
-          sets a new benchmark in Gurugram’s upscale lifestyle category.
+      <div class="overview-left">
+        <div class="overview-text">
+          <h2>Project Overview</h2>
+          <p>
+            Central Park Delphine is an ultra-luxury development crafted for elite living.
+            Featuring Sky Villas, Premium Apartments and Luxury Residences, Delphine
+            sets a new benchmark in Gurugram’s upscale lifestyle category.
+          </p>
+        </div>
+
+        <div class="overview-points">
+          <div class="point-card">
+            <span class="highlight">Ultra-Luxury</span>
+            <p>Sky Villas with panoramic decks</p>
+          </div>
+
+          <div class="point-card">
+            <span class="highlight">Private Lobbies</span>
+            <p>Exclusive lift access & privacy</p>
+          </div>
+
+          <div class="point-card">
+            <span class="highlight">Resort Living</span>
+            <p>Part of Central Park Resort Township</p>
+          </div>
+
+          <div class="point-card">
+            <span class="highlight">Premium Facilities</span>
+            <p>Concierge, valet & clubhouse access</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="overview-image">
+        <img src="/delphine/images/overview.webp" alt="Delphine overview" loading="lazy">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= RESIDENCES ================= -->
+  <section id="residences" class="residences">
+    <div class="residences-wrap">
+
+      <div class="residences-content">
+        <h2>Residences</h2>
+
+        <ul class="residences-list">
+          <li>Sky Villas with expansive balconies</li>
+          <li>Ultra-luxury high-rise apartments</li>
+          <li>Low-density luxury floors</li>
+          <li>Private lift lobby access</li>
+          <li>Premium specifications & finishes</li>
+        </ul>
+
+        <p class="residences-text">
+          Delphine includes a curated blend of Sky Villas, luxury apartments and premium
+          residences — all designed with generous layouts, elegant interior detailing and
+          unmatched privacy for the discerning homeowner.
         </p>
       </div>
 
-      <div class="overview-points">
-        <div class="point-card">
-          <span class="highlight">Ultra-Luxury</span>
-          <p>Sky Villas with panoramic decks</p>
-        </div>
+      <div class="residences-images">
+        <img src="/delphine/images/residences.webp" alt="" loading="lazy">
+        <img src="/delphine/images/residence1.webp" alt="" loading="lazy">
+      </div>
 
-        <div class="point-card">
-          <span class="highlight">Private Lobbies</span>
-          <p>Exclusive lift access & privacy</p>
-        </div>
+    </div>
+  </section>
 
-        <div class="point-card">
-          <span class="highlight">Resort Living</span>
-          <p>Part of Central Park Resort Township</p>
-        </div>
 
-        <div class="point-card">
-          <span class="highlight">Premium Facilities</span>
-          <p>Concierge, valet & clubhouse access</p>
+  <!-- ================= MASTER PLAN ================= -->
+  <section id="masterplan" class="masterplan">
+    <div class="master-wrap">
+      <div class="master-image">
+        <img src="/delphine/images/masterplan.webp" alt="Elan The Statement Master Plan" class="master-thumb"
+          onclick="openMasterPlan()">
+
+        <small class="click-note">Click to view full master plan</small>
+      </div>
+
+     <!-- RIGHT : CONTENT -->
+      <div class="master-content">
+
+        <h2 class="apex-title">Master Plan</h2>
+        <span class="apex-line"></span>
+
+        <p>
+          A thoughtfully planned luxury development with seamless vehicular movement,
+          pedestrian-friendly walkways, landscaped greens, and exclusive resident facilities.
+        </p>
+
+        <ul class="master-list">
+          <li>Premium entry experience</li>
+          <li>Dedicated sky villa clusters</li>
+          <li>Resort-themed podium greens</li>
+          <li>Separate club & recreational zones</li>
+          <li>Efficient circulation & parking planning</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+  <!-- ================= FLOOR PLAN ================= -->
+  <section id="floorplan" class="apex-floorplan">
+    <div class="container floorplan-wrap">
+
+      <!-- LEFT CONTENT -->
+      <div class="floorplan-content">
+        <h2 class="apex-title">Floor Plans</h2>
+        <span class="apex-line"></span>
+
+        <p>
+          Central Delhi offers thoughtfully designed premium residences with
+          spacious layouts, private zones and elegant planning suited for
+          modern luxury living.
+        </p>
+
+        <ul class="floorplan-list">
+          <li>1,3&4 BHK Luxury Residences</li>
+          <li>Well-planned living & dining areas</li>
+          <li>Large balconies with city views</li>
+          <li>Servant room & utility space</li>
+          <li>Limited exclusive residences</li>
+        </ul>
+
+        <a href="/delphine/brochure/delphine.pdf" class="floorplan-btn" target="_blank" download>
+          Download All Floor Plans
+        </a>
+      </div>
+
+      <!-- RIGHT : FLOOR PLAN SLIDER -->
+      <div class="floorplan-images">
+        <div class="fp-slider">
+          <div class="fp-track">
+
+            <img src="/delphine/images/floorplan1.webp" alt="Central Delhi 3 BHK Floor Plan" loading="lazy">
+
+            <img src="/delphine/images/floorplan2.webp" alt="Central Delhi 4 BHK Floor Plan" loading="lazy">
+          </div>
         </div>
       </div>
+
     </div>
+  </section>
+  <!-- ================= END FLOOR PLAN ================= -->
+  <!-- ================= AMENITIES ================= -->
+  <section class="apex-amenities" id="amenities">
+    <div class="apex-amenities-wrap">
 
-    <div class="overview-image">
-      <img src="/delphine/images/overview.webp" alt="Delphine overview" loading="lazy">
+      <!-- LEFT : IMAGE -->
+      <div class="amenities-image">
+        <img src="/delphine/images/amenities.webp" alt="Central Park Delphine luxury amenities" loading="lazy">
+      </div>
+
+      <!-- RIGHT : CONTENT -->
+      <div class="amenities-content">
+        <h2 class="apex-title">Amenities</h2>
+        <span class="apex-line"></span>
+
+        <ul class="amenities-divider-list">
+          <li><span class="num">01</span><span class="text">Resort-Style Central Greens & Walkways</span></li>
+          <li><span class="num">02</span><span class="text">Exclusive Premium Clubhouse</span></li>
+          <li><span class="num">03</span><span class="text">Concierge & Valet Services</span></li>
+          <li><span class="num">04</span><span class="text">Infinity-Edge Swimming Pool</span></li>
+          <li><span class="num">05</span><span class="text">Private Lounges & Business Centre</span></li>
+          <li><span class="num">06</span><span class="text">Wellness Spa & Relaxation Suites</span></li>
+          <li><span class="num">07</span><span class="text">Fitness Studio & Training Zones</span></li>
+          <li><span class="num">08</span><span class="text">Family Play & Activity Areas</span></li>
+          <li><span class="num">09</span><span class="text">Gated Community with 5-Tier Security</span></li>
+        </ul>
+      </div>
+
     </div>
+  </section>
 
-  </div>
-</section>
-
-
-<!-- ================= RESIDENCES ================= -->
-<section id="residences" class="residences">
-  <div class="residences-wrap">
-
-    <div class="residences-content">
-      <h2>Residences</h2>
-
-      <ul class="residences-list">
-        <li>Sky Villas with expansive balconies</li>
-        <li>Ultra-luxury high-rise apartments</li>
-        <li>Low-density luxury floors</li>
-        <li>Private lift lobby access</li>
-        <li>Premium specifications & finishes</li>
-      </ul>
-
-      <p class="residences-text">
-        Delphine includes a curated blend of Sky Villas, luxury apartments and premium
-        residences — all designed with generous layouts, elegant interior detailing and
-        unmatched privacy for the discerning homeowner.
-      </p>
-    </div>
-
-    <div class="residences-images">
-      <img src="/delphine/images/residences.webp" alt="" loading="lazy">
-      <img src="/delphine/images/residence1.webp" alt="" loading="lazy">
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= MASTER PLAN ================= -->
-<section id="masterplan" class="masterplan">
-  <div class="master-wrap">
-
-    <div class="master-image">
-      <img src="/delphine/images/masterplan1.webp" class="mp1" alt="" loading="lazy">
-      <img src="/delphine/images/masterplan2.webp" class="mp2" alt="" loading="lazy">
-    </div>
-
-    <div class="master-content">
-      <h2 class="section-heading">Master Plan</h2>
-      <p>
-        A thoughtfully planned luxury development with seamless vehicular movement,
-        pedestrian-friendly walkways, landscaped greens, and exclusive resident facilities.
-      </p>
-
-      <ul class="master-list">
-        <li>Premium entry experience</li>
-        <li>Dedicated sky villa clusters</li>
-        <li>Resort-themed podium greens</li>
-        <li>Separate club & recreational zones</li>
-        <li>Efficient circulation & parking planning</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= AMENITIES ================= -->
-<section id="amenities" class="apex-amenities">
-  <div class="apex-amenities-wrap">
-
-    <div class="amenities-images">
-      <img src="/delphine/images/amenities.webp" alt="" loading="lazy">
-      <img src="/delphine/images/amenities1.webp" alt="" loading="lazy">
-    </div>
-
-    <div class="amenities-content">
-      <h2 class="section-heading">Amenities</h2>
-
-      <ul class="amenities-divider-list">
-        <li>Resort-style central greens & walkways</li>
-        <li>Exclusive premium clubhouse</li>
-        <li>Concierge & valet services</li>
-        <li>Infinity-edge pool</li>
-        <li>Private lounges & business centre</li>
-        <li>Wellness spa & relaxation suites</li>
-        <li>Fitness studio & training zones</li>
-        <li>Family-friendly play & activity areas</li>
-        <li>Gated community with 5-tier security</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= GALLERY ================= -->
- <section id="gallery">
+  <!-- ================= GALLERY ================= -->
+  <section id="gallery">
     <div class="container">
 
       <h2>&nbsp;Project Gallery</h2>
       <div class="section-line"></div>
 
       <div class="gallery">
-    <img src="/delphine/images/gallery1.webp" alt="" loading="lazy">
-    <img src="/delphine/images/gallery2.webp" alt="" loading="lazy">
-    <img src="/delphine/images/gallery3.webp" alt="" loading="lazy">
-    <img src="/delphine/images/gallery4.webp" alt="" loading="lazy">
-  </div>
-</section>
-<!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
+        <img src="/delphine/images/gallery1.webp" alt="" loading="lazy">
+        <img src="/delphine/images/gallery2.webp" alt="" loading="lazy">
+        <img src="/delphine/images/gallery3.webp" alt="" loading="lazy">
+        <img src="/delphine/images/gallery4.webp" alt="" loading="lazy">
+      </div>
+  </section>
+  <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
   <div id="apexPopupBg" class="apex-popup-bg">
     <div class="apex-popup-box">
 
@@ -222,7 +278,7 @@
         <input type="tel" id="apex-phone2" placeholder="Phone Number" aria-label="Phone Number">
 
         <!-- page tracking -->
-        <input type="hidden" id="apex-page">
+        <input type="hidden" id="apex-page2">
 
         <button type="submit" class="apex-submit-btn">Submit</button>
       </form>
@@ -233,61 +289,86 @@
     </div>
   </div>
 
-<!-- ================= CONTACT ================= -->
-<section id="contact" class="contact-section">
-  <div class="contact-wrap">
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="contact-section">
+    <div class="contact-wrap">
 
-    <div class="contact-text">
-      <h2>Enquire Now</h2>
-      <p>
-        Register to get pricing, floor plans and complete details about
-        Central Park Delphine.
-      </p>
+      <div class="contact-text">
+        <h2>Enquire Now</h2>
+        <p>
+          Register to get pricing, floor plans and complete details about
+          Central Park Delphine.
+        </p>
 
-      <ul>
-        <li>✔ Ultra luxury residences</li>
-        <li>✔ Sky villas + premium apartments</li>
-        <li>✔ Central Park Resorts location</li>
-      </ul>
-    </div>
+        <ul>
+          <li>✔ Ultra luxury residences</li>
+          <li>✔ Sky villas + premium apartments</li>
+          <li>✔ Central Park Resorts location</li>
+        </ul>
+      </div>
 
-    <form class="contact-form" id="contactForm2">
-       <input type="text" id="contact-name2" placeholder="Your Name" required>
+      <form class="contact-form" id="contactForm2">
+        <input type="text" id="contact-name2" placeholder="Your Name" required>
         <input type="tel" id="contact-phone2" placeholder="Phone Number" required>
         <input type="email" id="contact-email2" placeholder="Email" required>
         <button type="submit">Submit Enquiry</button>
-  </div>
-</section>
+    </div>
+  </section>
 
 
-<!-- ================= FOOTER ================= -->
-<footer class="lp-footer">
-  <div class="footer-divider"></div>
+  <!-- ================= FOOTER ================= -->
+  <footer class="lp-footer">
+    <div class="footer-divider"></div>
 
-  <p><strong>RERA:</strong> Available Upon Request</p>
-  <p><strong>Address:</strong> Central Park Delphine, Gurugram</p>
- <p>
+
+    <p><strong>RERA:Phase I:</strong>/996/728/2025/99 (Dated 16.10.2025)</p>
+    <p><strong>RERA:Phase II: </strong>/997/729/2025/100 (Dated 16.10.2025)</p>
+    <p><strong>RERA:Phase III:</strong> GGM/998/730/2025/101 (Dated 16.10.2025)</p>
+    <p><strong>Address:</strong> Central Park Delphine, Gurugram</p>
+     <p>
       Disclaimer: This website is for information purposes only and does not
       constitute an offer to sell. Project details are indicative and subject
       to change. Marketed by <strong>Apex Landbase</strong>.
     </p>
-</footer>
+    <p>
+      Explore more luxury residential projects by
+      <a href="index.html">Apex Landbase</a>
+    </p>
+  </footer>
 
 
-<!-- ================= BROCHURE MODAL ================= -->
-<div id="brochurePopup" class="brochure-modal">
-  <div class="modal-box">
-    <span class="close-modal" onclick="closeBrochure()">×</span>
-    <h3>Download Brochure</h3>
-    <form>
-      <input type="text" placeholder="Your Name">
-      <input type="tel" placeholder="Phone Number">
-      <input type="email" placeholder="Email">
-      <button type="submit">Submit</button>
-    </form>
+  <!-- ================= BROCHURE MODAL ================= -->
+  <div id="brochurePopup" class="brochure-modal">
+    <div class="modal-box">
+      <span class="close-modal" onclick="closeBrochure()">×</span>
+      <h3>Download Brochure</h3>
+      <form>
+        <input type="text" placeholder="Your Name">
+        <input type="tel" placeholder="Phone Number">
+        <input type="email" placeholder="Email">
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   </div>
-</div>
+  <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("Jt6Vp9_-hORbbxZ79");
+  </script>
 
-<script src="/js/delphine.js"></script>
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+    window.supabase = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
+
+  <script src="/js/delphine.js"></script>
 </body>
+
 </html>

@@ -130,35 +130,42 @@ function submitBrochure(e){
   closeBrochure();
   window.location.href = "/elan/brochure/elan.pdf";
 }
-
 /* =====================================
-   APEX LANDBASE – POPUP + LEAD FORM JS
-   Supabase + EmailJS Connected
+   APEX LANDBASE – ELAN THE STATEMENT
+   POPUP + FOOTER FORM
+   1 HOUR GAP AFTER SUBMIT
+   SUPABASE + EMAILJS
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const popupBg = document.getElementById("apexPopupBg");
-  const closeBtn = document.getElementById("apexPopupClose");
-  const form = document.getElementById("apexLeadForm");
+  const popupBg   = document.getElementById("apexPopupBg");
+  const closeBtn  = document.getElementById("apexPopupClose");
+  const popupForm = document.getElementById("apexLeadForm");
 
-  if (!popupBg || !closeBtn || !form) return;
+  if (!popupBg || !closeBtn || !popupForm) return;
 
-  /* ===== PAGE TRACKING ===== */
+  const pageKey =
+    "apexSubmitted_" +
+    window.location.pathname.replace(/\//g, "").replace(/[^a-zA-Z0-9]/g, "");
+
+  const ONE_HOUR = 60 * 60 * 1000;
+
+  const pageName = document.title || "Elan The Statement";
+  const pageUrl  = window.location.href;
+
   const pageField = document.getElementById("apex-page");
-  if (pageField) {
-    pageField.value = document.title || window.location.pathname;
-  }
+  if (pageField) pageField.value = pageName;
 
-  /* ===== SHOW POPUP UNTIL FORM SUBMITTED ===== */
-  if (!localStorage.getItem("apexFormSubmitted")) {
+  const lastSubmitTime = localStorage.getItem(pageKey);
+
+  if (!lastSubmitTime || (Date.now() - Number(lastSubmitTime)) > ONE_HOUR) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
     }, 3500);
   }
 
-  /* ===== CLOSE POPUP (will reappear on refresh) ===== */
   closeBtn.addEventListener("click", () => {
     popupBg.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -171,70 +178,66 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ===== FORM SUBMIT ===== */
-  form.addEventListener("submit", async function (e) {
+  popupForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const submitBtn = form.querySelector(".apex-submit-btn");
+    const submitBtn = popupForm.querySelector(".apex-submit-btn");
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
-    const name = document.getElementById("apex-name").value.trim();
+    const name  = document.getElementById("apex-name").value.trim();
     const email = document.getElementById("apex-email").value.trim();
     const phone = document.getElementById("apex-phone").value.trim();
-    const page = pageField ? pageField.value : "";
 
     if (!name || !email || !phone) {
-      alert("Please fill all fields");
       submitBtn.disabled = false;
       submitBtn.innerText = "Submit";
       return;
     }
-  try {
-  /* ===== SUPABASE INSERT ===== */
-  const { error } = await window.supabase
-    .from("leads")
-    .insert([{ name, email, phone, page }]);
 
-  if (error) throw error;
+    try {
+      await window.supabase.from("leads").insert([{
+        name,
+        email,
+        phone,
+        page_name: pageName,
+        page_url: pageUrl
+      }]);
 
-  /* ===== EMAILJS SEND ===== */
-  await emailjs.send(
-    "service_kabl40s",
-    "template_hm3z1bq",
-    { name, email, phone }
-  );
+      await emailjs.send(
+        "service_kabl40s",
+        "template_hm3z1bq",
+        { name, email, phone, page_name: pageName, page_url: pageUrl }
+      );
 
-  /* ===== SAVE FLAG ===== */
-  localStorage.setItem("apexFormSubmitted", "yes");
+      localStorage.setItem(pageKey, Date.now());
 
-  /* ===== RESET & CLOSE POPUP ===== */
-  form.reset();
-  popupBg.classList.remove("active");
-  document.body.style.overflow = "auto";
+      popupForm.reset();
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
 
-  /* ===== SUCCESS TOAST ===== */
-  setTimeout(() => {
-    const toast = document.getElementById("thankYouToast");
-    if (toast) {
-      toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3000);
+      const toast = document.getElementById("thankYouToast");
+      if (toast) {
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
     }
-  }, 200);
-
-} catch (err) {
-  console.error(err);
-  alert("Something went wrong. Please try again.");
-} finally {
-  /* ===== BUTTON RESET (ALWAYS) ===== */
-  submitBtn.disabled = false;
-  submitBtn.innerText = "Submit";
-}
-   
   });
+
 });
+
+
+/* =====================================
+   ELAN – FOOTER FORM
+===================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
   const contactForm = document.querySelector(".contact-form");
@@ -250,33 +253,28 @@ document.addEventListener("DOMContentLoaded", function () {
     const phone = inputs[1]?.value.trim();
     const email = inputs[2]?.value.trim();
 
-    if (!name || !phone) {
-      console.warn("Required fields missing");
-      return;
-    }
+    if (!name || !phone) return;
 
     try {
-      /* ===== SUPABASE INSERT ===== */
-      await window.supabase
-        .from("leads")
-        .insert([{ name, phone, email }]);
+      await window.supabase.from("leads").insert([{
+        name,
+        phone,
+        email,
+        page_name: document.title || "Elan The Statement",
+        page_url: window.location.href
+      }]);
 
-      /* ===== EMAILJS SEND ===== */
       await emailjs.send(
         "service_kabl40s",
         "template_hm3z1bq",
-        { name, phone, email }
+        { name, phone, email, page_name: document.title || "Elan The Statement", page_url: window.location.href }
       );
 
-      /* ===== RESET FORM ===== */
       contactForm.reset();
 
-      /* ===== SHOW TOAST (NO ALERT) ===== */
       if (toast) {
         toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
+        setTimeout(() => toast.classList.remove("show"), 3000);
       }
 
     } catch (err) {

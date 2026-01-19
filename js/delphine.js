@@ -1,4 +1,85 @@
-function toggleMenu() {
+// hamburger//
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu a");
+
+  if (!hamburger || !menu) return;
+
+  //  Burger click → toggle menu
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation(); // important
+    menu.classList.toggle("active");
+  });
+
+  // Menu ke andar click pe close (links)
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
+  });
+
+  // Menu ke bahar kahin bhi click → close
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+});
+//floorplan//
+document.addEventListener("DOMContentLoaded", function () {
+
+  const track = document.querySelector(".fp-track");
+  if (!track) return;
+
+  const slides = track.querySelectorAll("img");
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }, 4000);
+
+});
+/* ================================
+   MASTER PLAN MODAL JS
+================================ */
+
+function openMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden"; // background scroll stop
+}
+
+function closeMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "none";
+  document.body.style.overflow = ""; // scroll back
+}
+
+/* Close modal when clicking outside image */
+document.addEventListener("click", function(e){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  if(e.target === modal){
+    closeMasterPlan();
+  }
+});
+
+/* Close modal on ESC key */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeMasterPlan();
+  }
+});
+function toggleMenu(){
   document.querySelector(".menu").classList.toggle("show");
 }
 
@@ -36,41 +117,57 @@ function activateMenu() {
 window.addEventListener("scroll", activateMenu);
 
 
-function openBrochure() {
+function openBrochure(){
   document.getElementById("brochurePopup").style.display = "flex";
 }
 
-function closeBrochure() {
+function closeBrochure(){
   document.getElementById("brochurePopup").style.display = "none";
 }
 
-function submitBrochure(e) {
+function submitBrochure(e){
   e.preventDefault();
   closeBrochure();
   window.location.href = "/delphine/brochure/delphine.pdf";
 }
 /* =====================================
-   APEX LANDBASE – POPUP + LEAD FORM JS
-   DELPHINE (ID = 2)
-   Supabase + EmailJS Connected
+   APEX LANDBASE – CENTRAL PARK DELPHINE
+   POPUP + FOOTER FORM
+   PER PAGE POPUP | 1 HOUR GAP AFTER SUBMIT
+   SUPABASE + EMAILJS
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const popupBg = document.getElementById("apexPopupBg");
-  const closeBtn = document.getElementById("apexPopupClose");
-  const form = document.getElementById("apexLeadForm2");
+  /* ===== ELEMENTS ===== */
+  const popupBg   = document.getElementById("apexPopupBg");
+  const closeBtn  = document.getElementById("apexPopupClose");
+  const popupForm = document.getElementById("apexLeadForm2");
 
-  if (!popupBg || !closeBtn || !form) return;
+  if (!popupBg || !closeBtn || !popupForm) return;
 
-  /* ===== PAGE TRACKING ===== */
+  /* ===== UNIQUE KEY PER PAGE ===== */
+  const pageKey =
+    "apexSubmitted_" +
+    window.location.pathname.replace(/\//g, "").replace(/[^a-zA-Z0-9]/g, "");
+
+  /* ===== TIME GAP (1 HOUR) ===== */
+  const ONE_HOUR = 60 * 60 * 1000;
+
+  /* ===== PAGE INFO ===== */
+  const pageName = document.title || "Central Park Delphine";
+  const pageUrl  = window.location.href;
+
   const pageField = document.getElementById("apex-page2");
-  if (pageField) {
-    pageField.value = document.title || window.location.pathname;
-  }
+  if (pageField) pageField.value = pageName;
 
-  /* ===== SHOW POPUP UNTIL FORM SUBMITTED ===== */
-  if (!localStorage.getItem("apexFormSubmitted2")) {
+  /* ===== POPUP SHOW LOGIC ===== */
+  const lastSubmitTime = localStorage.getItem(pageKey);
+
+  if (
+    !lastSubmitTime ||
+    (Date.now() - Number(lastSubmitTime)) > ONE_HOUR
+  ) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
@@ -91,53 +188,55 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* ===== POPUP FORM SUBMIT ===== */
-  form.addEventListener("submit", async function (e) {
+  popupForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const submitBtn = form.querySelector(".apex-submit-btn");
+    const submitBtn = popupForm.querySelector(".apex-submit-btn");
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
     const name  = document.getElementById("apex-name2").value.trim();
     const email = document.getElementById("apex-email2").value.trim();
     const phone = document.getElementById("apex-phone2").value.trim();
-    const page  = pageField ? pageField.value : "";
 
     if (!name || !email || !phone) {
-      alert("Please fill all fields");
       submitBtn.disabled = false;
       submitBtn.innerText = "Submit";
       return;
     }
 
     try {
-      /* ===== SUPABASE INSERT ===== */
-      const { error } = await window.supabase
-        .from("leads")
-        .insert([{ name, email, phone, page }]);
+      /* ===== SUPABASE ===== */
+      await window.supabase.from("leads").insert([{
+        name,
+        email,
+        phone,
+        page_name: pageName,
+        page_url: pageUrl
+      }]);
 
-      if (error) throw error;
-
-      /* ===== EMAILJS SEND ===== */
+      /* ===== EMAILJS ===== */
       await emailjs.send(
         "service_kabl40s",
         "template_hm3z1bq",
-        { name, email, phone }
+        {
+          name,
+          email,
+          phone,
+          page_name: pageName,
+          page_url: pageUrl
+        }
       );
 
-      /* ===== SAVE FLAG ===== */
-      localStorage.setItem("apexFormSubmitted2", "yes");
+      /* ===== SAVE SUBMIT TIME ===== */
+      localStorage.setItem(pageKey, Date.now());
 
-      /* ===== RESET & CLOSE POPUP ===== */
-      form.reset();
+      popupForm.reset();
       popupBg.classList.remove("active");
       document.body.style.overflow = "auto";
 
-      /* ===== SUCCESS TOAST ===== */
       const toast = document.getElementById("thankYouToast");
       if (toast) {
-        toast.classList.remove("show");
-        void toast.offsetWidth;
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 3000);
       }
@@ -150,17 +249,20 @@ document.addEventListener("DOMContentLoaded", function () {
       submitBtn.innerText = "Submit";
     }
   });
+
 });
 
 
 /* =====================================
-   CONTACT / ENQUIRE FORM – DELPHINE
+   CENTRAL PARK DELPHINE – FOOTER FORM
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
   const contactForm = document.getElementById("contactForm2");
   if (!contactForm) return;
+
+  const toast = document.getElementById("thankYouToast");
 
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -172,25 +274,29 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!name || !phone) return;
 
     try {
-      /* ===== SUPABASE INSERT ===== */
-      await window.supabase
-        .from("leads")
-        .insert([{ name, phone, email }]);
+      await window.supabase.from("leads").insert([{
+        name,
+        phone,
+        email,
+        page_name: document.title || "Central Park Delphine",
+        page_url: window.location.href
+      }]);
 
-      /* ===== EMAILJS SEND ===== */
       await emailjs.send(
         "service_kabl40s",
         "template_hm3z1bq",
-        { name, phone, email }
+        {
+          name,
+          phone,
+          email,
+          page_name: document.title || "Central Park Delphine",
+          page_url: window.location.href
+        }
       );
 
       contactForm.reset();
 
-      /* ===== TOAST ===== */
-      const toast = document.getElementById("thankYouToast");
       if (toast) {
-        toast.classList.remove("show");
-        void toast.offsetWidth;
         toast.classList.add("show");
         setTimeout(() => toast.classList.remove("show"), 3000);
       }
@@ -199,4 +305,5 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error(err);
     }
   });
+
 });

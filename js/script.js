@@ -11,59 +11,99 @@ function showToast(message, type = "success") {
   toast.classList.add("show");
   setTimeout(() => toast.classList.remove("show", "error"), 2500);
 }
+/* ================= HOME PAGE POPUP ================= */
 
-/* ================= POPUP FORM (HOME ONLY) ================= */
 document.addEventListener("DOMContentLoaded", function () {
 
   const popupBg = document.getElementById("formPopupBg");
   const closeBtn = document.getElementById("closeFormPopup");
   const form = document.getElementById("formPopup");
 
-  if (popupBg && closeBtn && form) {
+  if (!popupBg || !closeBtn || !form) return;
 
-    if (!localStorage.getItem("formSubmitted")) {
-      setTimeout(() => {
-        popupBg.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }, 3500);
+  const SUBMIT_GAP = 25 * 60 * 1000;   // 25 minutes (after submit)
+  const REMIND_GAP = 2 * 60 * 1000;    // 2 minutes (if not submitted)
+
+  const SUBMIT_KEY = "homeFormSubmittedTime";
+  const REMIND_KEY = "homePopupLastShown";
+
+  function shouldShowPopup() {
+    const submittedAt = localStorage.getItem(SUBMIT_KEY);
+    const lastShownAt = localStorage.getItem(REMIND_KEY);
+    const now = Date.now();
+
+    // Case 1: Form already submitted
+    if (submittedAt) {
+      return (now - Number(submittedAt)) > SUBMIT_GAP;
     }
 
-    closeBtn.addEventListener("click", () => {
+    // Case 2: Form NOT submitted
+    if (!lastShownAt) return true;
+    return (now - Number(lastShownAt)) > REMIND_GAP;
+  }
+
+  function showPopup() {
+    popupBg.classList.add("active");
+    document.body.style.overflow = "hidden";
+    localStorage.setItem(REMIND_KEY, Date.now());
+  }
+
+  /* ===== INITIAL POPUP CHECK ===== */
+  setTimeout(() => {
+    if (shouldShowPopup()) {
+      showPopup();
+    }
+  }, 3500);
+
+  /* ===== CLOSE POPUP ===== */
+  closeBtn.addEventListener("click", () => {
+    popupBg.classList.remove("active");
+    document.body.style.overflow = "auto";
+  });
+
+  popupBg.addEventListener("click", (e) => {
+    if (e.target === popupBg) {
       popupBg.classList.remove("active");
       document.body.style.overflow = "auto";
-    });
+    }
+  });
 
-    popupBg.addEventListener("click", (e) => {
-      if (e.target === popupBg) {
-        popupBg.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-    });
+  /* ===== FORM SUBMIT ===== */
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
+    const name = document.getElementById("fp-name")?.value.trim();
+    const email = document.getElementById("fp-email")?.value.trim();
+    const phone = document.getElementById("fp-phone")?.value.trim();
 
-      const name = document.getElementById("fp-name")?.value.trim();
-      const email = document.getElementById("fp-email")?.value.trim();
-      const phone = document.getElementById("fp-phone")?.value.trim();
+    if (!name || !email || !phone) {
+      showToast("Please fill all fields", "error");
+      return;
+    }
 
-      if (!name || !email || !phone) {
-        showToast("Please fill all fields", "error");
-        return;
-      }
-
+    try {
       await window.supabase.from("leads").insert([{ name, email, phone }]);
 
-      emailjs.send("service_kabl40s", "template_hm3z1bq", { name, email, phone })
-        .then(() => {
-          showToast("Thank you! We will contact you shortly.");
-          localStorage.setItem("formSubmitted", "yes");
-          form.reset();
-          popupBg.classList.remove("active");
-          document.body.style.overflow = "auto";
-        });
-    });
-  }
+      await emailjs.send(
+        "service_kabl40s",
+        "template_hm3z1bq",
+        { name, email, phone }
+      );
+
+      // Save submit time (25 min gap starts)
+      localStorage.setItem(SUBMIT_KEY, Date.now());
+
+      form.reset();
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
+
+      showToast("Thank you! We will contact you shortly.");
+
+    } catch (err) {
+      console.error(err);
+      showToast("Something went wrong. Please try again.", "error");
+    }
+  });
 
 });
 /* =====================================
@@ -214,3 +254,68 @@ if (contactChoice) {
     }
   });
 }
+/* ================= CONTACT PAGE FORM
+   THANK YOU MESSAGE (AUTO RESET AFTER 20s)
+   EMAILJS ONLY
+================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+
+  // Original form HTML save kar lo
+  const originalFormHTML = form.innerHTML;
+
+  const pageName = document.title || "Contact Page";
+  const pageUrl  = window.location.href;
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const inputs = form.querySelectorAll("input, textarea");
+
+    const name    = inputs[0]?.value.trim();
+    const email   = inputs[1]?.value.trim();
+    const phone   = inputs[2]?.value.trim();
+    const message = inputs[3]?.value.trim();
+
+    if (!name || !email || !phone) {
+      alert("Please fill all required fields");
+      return;
+    }
+
+    emailjs.send(
+      "service_kabl40s",
+      "template_hm3z1bq",
+      {
+        name,
+        email,
+        phone,
+        message,
+        page_name: pageName,
+        page_url: pageUrl
+      }
+    ).then(() => {
+
+      // Show Thank You message
+      form.innerHTML = `
+        <div style="text-align:center; padding:40px;">
+          <h3>Thank You!</h3>
+          <p>Your enquiry has been submitted successfully.</p>
+          <p>Our team will contact you shortly.</p>
+        </div>
+      `;
+
+      // After 6 seconds, restore original form
+      setTimeout(() => {
+        form.innerHTML = originalFormHTML;
+      }, 6000); // 6 seconds
+
+    }).catch((err) => {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    });
+  });
+
+});

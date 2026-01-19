@@ -21,11 +21,18 @@
         <span class="project">RESIDENCES</span>
         <small class="tagline">GURUGRAM</small>
       </div>
+       <!-- MOBILE HAMBURGER (ADD HERE) -->
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
       <nav class="menu" aria-label="Main navigation">
         <a href="#overview">Overview</a>
         <a href="#residences">Residences</a>
         <a href="#masterplan">Master Plan</a>
+        <a href="#floorplan">Floorplan</a>
         <a href="#gallery">Gallery</a>
         <a href="#amenities">Amenities</a>
         <a href="#contact">Contact</a>
@@ -149,41 +156,102 @@
 
     </div>
   </section>
-
-  <!-- ================= MASTER PLAN ================= -->
-  <section id="masterplan" class="apex-masterplan">
-
+<!-- ================= MASTER PLAN ================= -->
+ <section id="masterplan" class="apex-masterplan">
     <div class="container master-wrap">
 
-      <div class="master-image slider">
-        <img src="/whiteland/images/masterplan.webp" class="mp1" alt="Master Plan" loading="lazy">
-        <img src="image/masterplan2.webp" class="mp2" alt="Landscape Layout" loading="lazy">
+      <!-- LEFT IMAGE -->
+      <div class="master-image">
+      <img src="/whiteland/images/masterplan.webp"
+           class="master-thumb"
+           alt="Westin Master Plan"
+           onclick="openMasterPlan()">
+        <small class="click-note">Click to view full master plan</small>
       </div>
 
+    <!-- RIGHT CONTENT -->
       <div class="master-content">
-        <h2 class="apex-title">Master Plan</h2>
-        <span class="apex-line"></span>
+        <h2 class="master-heading">Master Plan</h2>
+        <span class="master-line"></span>
 
-        <p>
-          A thoughtfully created 20-acre urban resort layout featuring elevated towers, sunken clubhouse,
-          zero ground-level traffic, cycling & jogging tracks, and over 70% landscaped greens.
-        </p>
+      <p>
+        Westin Residences Gurugram is a thoughtfully planned urban resort-style
+        development featuring elevated towers, sunken clubhouse, zero
+        ground-level traffic and expansive landscaped greens.
+      </p>
 
-        <ul class="master-list">
-          <li>Biophilic design with organic water bodies</li>
-          <li>Zero vehicular movement at ground level</li>
-          <li>Dedicated tracks for cycling, jogging & walking</li>
-          <li>Separate entry to clubhouse and service zones</li>
-          <li>Panoramic green views from every tower</li>
-        </ul>
-
-      </div>
-
+      <ul class="master-list">
+        <li>Zero vehicular movement at ground level</li>
+        <li>Sunken clubhouse & wellness zones</li>
+        <li>Over 70% landscaped greens</li>
+        <li>Cycling & jogging tracks</li>
+      </ul>
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <!-- ================= GALLERY ================= -->
+  <!-- ================= MASTER PLAN MODAL ================= -->
+  <div id="masterModal" class="master-modal">
+    <span class="master-close" onclick="closeMasterPlan()">×</span>
+    <img src="/whiteland/images/masterplan.webp" class="master-full" alt="westin master plan">
+  </div>
+ <!-- ================= FLOOR PLANS ================= -->
+<section id="floorplan" class="apex-floorplan" id="floorplan">
+  <div class="container floorplan-wrap">
+
+    <!-- LEFT CONTENT -->
+    <div class="floorplan-content">
+      <h2 class="apex-title">Floor Plans</h2>
+      <span class="apex-line"></span>
+
+      <p class="floorplan-text">
+        Westin Residences offers intelligently planned 3 & 4 BHK layouts with
+        expansive living spaces, private decks and seamless zoning for luxury living.
+      </p>
+
+      <ul class="floorplan-list">
+        <li>Private lift lobbies</li>
+        <li>Large balconies & decks</li>
+        <li>Multiple 3 & 4 BHK layouts</li>
+        <li>Optimized ventilation</li>
+      </ul>
+
+      <div class="floorplan-tags">
+        <span>3 BHK</span>
+        <span>4 BHK</span>
+        <span>Large · Medium</span>
+      </div>
+    </div>
+
+    <!-- RIGHT : AUTO SLIDER -->
+    <div class="floorplan-images">
+      <div class="fp-slider">
+        <div class="fp-track" id="fpTrack">
+
+          <div class="fp-slide">
+            <img src="/whiteland/images/floorplan1.webp" alt="Core Plan 3 BHK">
+          </div>
+
+          <div class="fp-slide">
+            <img src="/whiteland/images/floorplan2.webp" alt="Core Plan 4 BHK">
+          </div>
+
+          <div class="fp-slide">
+            <img src="/whiteland/images/floorplanlg.webp" alt="4 BHK Large">
+          </div>
+
+          <div class="fp-slide">
+            <img src="/whiteland/images/floorplanmd.webp" alt="4 BHK Medium">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+ <!-- ================= GALLERY ================= -->
   <section id="gallery">
     <div class="container">
 
@@ -255,11 +323,11 @@
         <button type="submit" class="apex-submit-btn">Submit</button>
       </form>
     </div>
-    <div id="thankYouToast" class="toast">
+  </div>
+  <div id="thankYouToast" class="toast">
       <strong>Thank you!</strong><br>
       Our team will contact you shortly.
     </div>
-  </div>
 
   <!-- ================= CONTACT ================= -->
   <section id="contact" class="contact-section">

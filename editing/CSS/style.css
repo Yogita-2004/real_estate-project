@@ -97,14 +97,14 @@ a {
 }
 
 .logo img {
-  height: 80px;
+  height: 60px;
 }
 
 .brand {
   font-size: 1rem;
   font-weight: 700;
   color: #0b3b63;
-  letter-spacing: 1px;
+  letter-spacing: 0.1px;
 }
 
 /* Nav links */

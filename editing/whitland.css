@@ -230,7 +230,7 @@ section {
 }
 
 /* =====================================================
-   HERO SECTION — SAME AS MAX361
+   HERO – CLEAN SOBHA LOOK
 ===================================================== */
 .hero {
   position: relative;
@@ -239,8 +239,9 @@ section {
   display: flex;
   align-items: flex-end;
   padding: 80px;
-  padding-top: calc(80px + 72px);
   color: #fff;
+  overflow: hidden;
+  padding-top: calc(80px + 72px);
 }
 
 .hero video {
@@ -255,7 +256,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 1;
 }
 
@@ -265,6 +266,7 @@ section {
   max-width: 520px;
 }
 
+
 .hero-content h1 {
   font-size: 52px;
   font-weight: 600;
@@ -273,6 +275,7 @@ section {
 .hero-subtitle {
   font-size: 18px;
   margin: 14px 0 22px;
+  opacity: .9;
 }
 
 .hero-highlights {
@@ -284,15 +287,25 @@ section {
 .hero-highlights span {
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   font-size: 13px;
 }
 
+.hero button {
+  padding: 14px 36px;
+  border-radius: 40px;
+  border: none;
+  background: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* =====================================================
-   OVERVIEW — UPDATED SMALLER IMAGE
+   OVERVIEW SECTION
 ===================================================== */
+
 .overview {
-  background: #fff;
+  background: var(--white);
   padding: 80px 20px;
 }
 
@@ -303,45 +316,81 @@ section {
   align-items: center;
 }
 
+/* ================= LEFT ================= */
 .overview-text h2 {
-  font-size: 32px;
-  color: var(--primary);
+  position: relative;
+  padding-bottom: 10px;
+  color: #0b3b63;
 }
 
 .overview-text h2::after {
   content: "";
+  display: block;
   width: 46px;
   height: 3px;
   background: var(--accent);
-  display: block;
-  margin-top: 10px;
+  margin-top: 8px;
+  border-radius: 2px;
 }
+
+.overview-text p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+/* ================= POINT CARDS ================= */
 
 .overview-points {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px 30px;
-  margin: 28px 0;
+  margin: 32px 0;
 }
 
 .point-card {
   border-left: 2px solid var(--primary);
   padding-left: 14px;
-  transition: .3s;
 }
 
-.point-card:hover {
-  border-left-color: var(--accent);
-  background: rgba(251,176,64,0.08);
+.point-card .highlight {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 4px;
 }
 
-/* === FIXED SMALLER OVERVIEW IMAGE === */
+.point-card p {
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ================= EXTRA LIST ================= */
+
+.overview-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.overview-list li {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.overview-list strong {
+  color: var(--primary);
+}
+
+/* ================= RIGHT IMAGE ================= */
+
 .overview-image {
   position: relative;
-  height: 300px;
-  max-width: 85%;
-  margin-left: auto;
-  border-radius: 16px;
+  height: 460px;
+  border-radius: 18px;
   overflow: hidden;
   background: var(--light);
 }
@@ -350,6 +399,31 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
+}
+
+/* ================= POINT CARD HOVER ================= */
+
+.point-card {
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.point-card:hover {
+  background: rgba(251, 176, 64, 0.08);
+  /* soft orange */
+  border-left-color: var(--accent);
+  /* orange */
+  transform: translateY(-4px);
+}
+
+.point-card:hover .highlight {
+  color: var(--accent);
+  /* orange text */
+}
+
+.point-card:hover p {
+  color: var(--text);
 }
 
 /* =====================================================
@@ -357,8 +431,8 @@ section {
 ===================================================== */
 
 .residences {
-  background: var(--white);
-  padding: 80px 20px;
+  background: #fef8f8;
+  padding: 100px 20px 90px;
 }
 
 .residences-wrap {
@@ -371,22 +445,24 @@ section {
 /* ================= CONTENT ================= */
 
 .residences-content {
-  margin-left: 50px;
-  /* text right shift */
+  margin-left: 100px;
+  padding-top: 20px;
+  padding-left: 40px;
 }
 
 .residences-content h2 {
-  font-size: 34px;
+  font-size: 36px;
   color: var(--primary);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   position: relative;
+  letter-spacing: 0.4px;
 }
 
 /* orange line (same as Overview & Amenities) */
 .residences-content h2::after {
   content: "";
   display: block;
-  width: 46px;
+  width: 52px;
   height: 3px;
   background: var(--accent);
   margin-top: 8px;
@@ -396,13 +472,13 @@ section {
 .residences-list {
   list-style: none;
   padding: 0;
-  margin: 28px 0 24px;
+  margin: 32px 0 32px;
 }
 
 .residences-list li {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
   padding-left: 18px;
   position: relative;
 }
@@ -448,6 +524,7 @@ section {
   width: 100%;
   height: 300px;
   margin-left: auto;
+  /* right aligned */
   border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
@@ -478,35 +555,6 @@ section {
   align-items: center;
 }
 
-/* ================= LEFT IMAGE SLIDER ================= */
-
-.master-image {
-  position: relative;
-  height: 480px;
-  background: var(--light);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.master-image img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  animation: masterSlide 12s infinite;
-}
-
-/* slide timing */
-.master-image img.mp1 {
-  animation-delay: 0s;
-}
-
-.master-image img.mp2 {
-  animation-delay: 6s;
-}
-
 /* ================= RIGHT CONTENT ================= */
 
 .master-content .apex-title {
@@ -531,27 +579,214 @@ section {
   margin-bottom: 8px;
 }
 
-/* ================= SLIDER ANIMATION ================= */
+/* ================= MASTER PLAN SECTION ================= */
 
-@keyframes masterSlide {
-  0% {
-    opacity: 0
+.apex-masterplan {
+  padding: 90px 0;
+  background: #fff;
+}
+
+.master-wrap {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* IMAGE */
+.master-image {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.master-thumb {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 14px;
+  cursor: zoom-in;
+}
+
+.click-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* CONTENT */
+.master-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #1d4465;
+  /* 👈 same blue */
+  margin-bottom: 10px;
+}
+
+.master-line {
+  display: block;
+  width: 55px;
+  height: 4px;
+  background: #d4a13a;
+  /* 👈 golden line */
+  margin-bottom: 22px;
+}
+
+.master-text {
+  max-width: 520px;
+  margin-bottom: 22px;
+  color: #333;
+}
+
+.master-list {
+  padding-left: 18px;
+}
+
+.master-list li {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* =========================================
+   MASTER PLAN MODAL (FULL IMAGE VIEW)
+========================================= */
+
+.master-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* FULL IMAGE */
+.master-full {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 14px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* CLOSE BUTTON */
+.master-close {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  font-size: 36px;
+  font-weight: 300;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.master-close:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+/* ================= FLOOR PLAN ================= */
+
+.apex-floorplan {
+  padding: 90px 0;
+  background: #fafafa;
+}
+
+.floorplan-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+.floorplan-content{
+  padding-left: 60px;
+  padding-right: 20px;
+}
+.apex-title {
+  font-size: 38px;
+  color: #0b3b63;
+}
+
+.apex-line {
+  width: 60px;
+  height: 3px;
+  background: #fbb040;
+  margin: 12px 0 22px;
+}
+
+.floorplan-text {
+  max-width: 520px;
+  font-size: 14px;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.floorplan-list {
+  padding-left: 18px;
+  margin-bottom: 22px;
+}
+
+.floorplan-list li {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.floorplan-tags span {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: #f2f2f2;
+  font-size: 13px;
+}
+
+/* ================= SLIDER ================= */
+
+.floorplan-images {
+  width: 100%;
+  overflow: hidden;
+}
+
+.fp-slider {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.fp-track {
+  display: flex;
+  transition: transform 0.7s ease-in-out;
+}
+
+.fp-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.fp-slide img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.18);
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .floorplan-wrap {
+    grid-template-columns: 1fr;
+    gap: 35px;
   }
 
-  8% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: 1
-  }
-
-  58% {
-    opacity: 0
-  }
-
-  100% {
-    opacity: 0
+  .fp-slide img {
+    max-height: 360px;
   }
 }
 
@@ -1003,152 +1238,30 @@ section {
   outline-offset: 3px;
 }
 /* =====================================================
-   COMPLETE RESPONSIVE MEDIA – MAX 361 (FINAL)
-   MOBILE + TABLET + DESKTOP SAFE
+   MOBILE + TABLET MEDIA CSS (WITH HAMBURGER)
 ===================================================== */
 
-/* ================= MOBILE (≤768px) ================= */
-@media (max-width: 768px) {
-
-  /* GLOBAL */
-  html,
-  body {
-    width: 100%;
-    font-size: 14px;
-    overflow-x: hidden;
-  }
-
-  /* HEADER */
-  .site-header {
-    padding-top: env(safe-area-insert-top);
-    background: rgba(0, 0, 0, 0.92);
-  }
+/* ================== TABLET ================== */
+@media (max-width: 1024px) {
 
   .nav {
-    padding: 10px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .logo-text {
-   flex-grow: 0;
-   align-items: flex-start;
-  }
-  .logo-text .brand{
-    font-size: 14px;
-    letter-spacing: 2px;
-  }
-  .logo-text .project{
-    font-size: 18px;
-    line-height:1;
-  }
-  .logo-text .tagline{
-    font-size: 9px;
-    letter-spacing: 1.5px;
-  }
-
-  .menu {
-    width: 100%;
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: flex-start;
-    gap: 8px;
+    padding: 0 16px;
   }
 
   .menu a {
-    font-size: 12px;
-    margin: 0;
-  }
-
-  .brochure-header-btn {
-    margin: 10px auto 0;
-    display: inline-block;
-  }
- 
-  .hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-
-    display: flex;
-    align-items: flex-end;
-    padding-top: calc(64px + 24px);
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 70px;
-
-    color: #fff;
-    overflow: hidden;
-  }
-
-  .hero video {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.55);
-    z-index: 1;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 100%;
-    text-align: left;
-  }
-  .hero-content h1 {
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 10px;
-  }
-
-  .hero-subtitle {
+    margin-left: 16px;
     font-size: 13px;
-    line-height: 1.4;
-    margin: 6px 0 14px;
-    opacity: 0.9;
   }
 
-  .hero-highlights {
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 8px;
+  .hero {
+    padding: 60px 40px;
+    padding-top: calc(60px + 72px);
   }
 
-  .hero-highlights span {
-    font-size: 12px;
-    padding: 6px 12px;
-  }
-
-  .hero button {
-    padding: 12px 26px;
-    font-size: 14px;
-  }
-
-  /* OVERVIEW */
-  .overview-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-image {
-    height: 260px;
-    margin-top: 25px;
-  }
-
-  .overview-points {
-    grid-template-columns: 1fr;
-  }
-
-  /* RESIDENCES */
-  .residences-wrap {
+  .overview-wrap,
+  .residences-wrap,
+  .apex-amenities-wrap,
+  .contact-wrap {
     grid-template-columns: 1fr;
   }
 
@@ -1158,117 +1271,222 @@ section {
 
   .residences-images {
     margin-left: 0;
-    margin-top: 25px;
   }
-
-  .residences-images img:first-child {
-    height: 220px;
-  }
-
-  .residences-images img:last-child {
-    width: 100%;
-    height: 160px;
-  }
-
-  /* MASTER PLAN */
-  .master-wrap {
-    grid-template-columns: 1fr;
-  }
-
-  .master-image {
-    height: 260px;
-    margin-bottom: 30px;
-  }
-
-  /* GALLERY */
-  #gallery .gallery {
-    grid-template-columns: 1fr;
-  }
-
-  #gallery .gallery img {
-    height: 220px;
-  
-  }
-
-  /* AMENITIES */
-  .apex-amenities-wrap {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .amenities-image {
-    margin-top: 0%;
-    min-height: unset;
-    padding: 0px;
-  }
-  .amenities-image img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    max-height: none;
-    object-fit: contain;
-    border-radius: 10px;
-  }
-
-  .apex-title {
-    font-size: 30px;
-  }
-
-  /* CONTACT */
-  .contact-wrap {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .contact-text p {
-    margin: auto;
+  .overview-image{
+    height: 320px;
+    margin: 0 auto;
   }
 }
+/* ================== MOBILE (FINAL FIXED) ================== */
+@media (max-width: 768px) {
 
-/* ================= TABLET (769px – 1024px) ================= */
-@media (max-width: 1024px) {
+  /* ================= GLOBAL FIX ================= */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
 
-  body {
+  /* ================= HEADER ================= */
+  .site-header {
+    height: 64px;
+  }
+
+  .nav {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  /* ================= LOGO ================= */
+  .logo-text {
+    align-items: flex-start;
+  }
+
+  .logo-text .brand {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+  }
+
+  .logo-text .project {
+    font-size: 19px;
+    letter-spacing: 1.8px;
+  }
+
+  .logo-text .tagline {
+    font-size: 9px;
+  }
+
+  /* ================= HAMBURGER ================= */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+  }
+
+  /* ================= MENU ================= */
+  .menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: flex-start;   /* 🔥 LEFT ALIGN */
+    gap: 18px;
+    padding: 28px 20px 36px;
+    transform: translateY(-120%);
+    transition: 0.4s ease;
+    z-index: 9998;
+  }
+
+  .menu.active {
+    transform: translateY(0);
+  }
+
+  .menu a {
     font-size: 15px;
+    margin: 0;
+  }
+
+  .brochure-header-btn {
+    margin-top: 12px;
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    min-height: 100vh;
+    padding: 26px 16px;
+    padding-top: calc(26px + 64px);
+    align-items: flex-end;      /* 🔥 bottom */
+    text-align: left;           /* 🔥 LEFT */
+  }
+
+  .hero-content {
+    max-width: 92%;
+    margin: 0;
   }
 
   .hero-content h1 {
-    font-size: 42px;
+    font-size: 22px;
+    line-height: 1.35;
   }
 
-  .overview-wrap,
-  .residences-wrap,
-  .master-wrap,
-  .apex-amenities-wrap,
-  .contact-wrap {
+  .hero-subtitle {
+    font-size: 14px;
+    margin: 10px 0 18px;
+  }
+
+  .hero-highlights {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-highlights span {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  /* ================= OVERVIEW ================= */
+  .overview {
+    padding: 56px 16px;
+  }
+
+  .overview-wrap {
     grid-template-columns: 1fr;
   }
 
   .overview-image {
-    height: 320px;
+    height: 260px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* ================= RESIDENCES ================= */
+  .residences {
+    padding: 56px 16px;
+  }
+
+  .residences-images img {
+    height: 230px;
+  }
+
+  /* ================= MASTER PLAN ================= */
+  .master-wrap {
+    grid-template-columns: 1fr;
+    text-align: left;
   }
 
   .master-image {
-    height: 360px;
+    align-items: flex-start;
   }
 
-  .residences-images img:first-child {
-    height: 260px;
-  }
-}
-
-/* ================= SMALL DESKTOP (≤1200px) ================= */
-@media (max-width: 1200px) {
-
-  .nav {
-    padding: 0 16px;
+  /* ================= FLOOR PLAN ================= */
+  .floorplan-wrap {
+    grid-template-columns: 1fr;
   }
 
-  .hero {
-    padding: 80px 40px;
+  .floorplan-images img {
+    max-width: 100%;
+  }
+#gallery {
+    padding: 40px 0;
+    width: 100%;
+  }
+  #gallery .container {
+    max-width: 100% !important;
+    width: 100%;
+    padding-left: 14px;  
+    padding-right: 14px;
+    margin: 0;
   }
 
-  .hero-content h1 {
-    font-size: 46px;
+  /* Grid */
+  #gallery .gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Images */
+  #gallery .gallery img {
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* ================= AMENITIES ================= */
+  .apex-amenities {
+    padding: 50px 16px;
+  }
+
+  .apex-amenities-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .amenities-image img {
+    width: 100%;
+  }
+
+  /* ================= CONTACT ================= */
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-text h2 {
+    font-size: 26px;
+  }
+
+  /* ================= FOOTER ================= */
+  .lp-footer p {
+    font-size: 10px;
   }
 }

@@ -1,3 +1,84 @@
+// hamburger//
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu a");
+
+  if (!hamburger || !menu) return;
+
+  //  Burger click → toggle menu
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation(); // important
+    menu.classList.toggle("active");
+  });
+
+  // Menu ke andar click pe close (links)
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
+  });
+
+  // Menu ke bahar kahin bhi click → close
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+});
+//floorplan//
+document.addEventListener("DOMContentLoaded", function () {
+
+  const track = document.querySelector(".fp-track");
+  if (!track) return;
+
+  const slides = track.querySelectorAll("img");
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % slides.length;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  }, 4000);
+
+});
+/* ================================
+   MASTER PLAN MODAL JS
+================================ */
+
+function openMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden"; // background scroll stop
+}
+
+function closeMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "none";
+  document.body.style.overflow = ""; // scroll back
+}
+
+/* Close modal when clicking outside image */
+document.addEventListener("click", function(e){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  if(e.target === modal){
+    closeMasterPlan();
+  }
+});
+
+/* Close modal on ESC key */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeMasterPlan();
+  }
+});
 function toggleMenu(){
   document.querySelector(".menu").classList.toggle("show");
 }
@@ -49,35 +130,47 @@ function submitBrochure(e){
   closeBrochure();
   window.location.href = "/emaar/brochure/emaar.pdf";
 }
-
 /* =====================================
-   APEX LANDBASE – POPUP + LEAD FORM JS
-   Supabase + EmailJS Connected
+   APEX LANDBASE – EMAAR SERENITY HILLS
+   POPUP + FOOTER FORM
+   1 HOUR GAP AFTER SUBMIT
+   SUPABASE + EMAILJS
 ===================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const popupBg = document.getElementById("apexPopupBg");
-  const closeBtn = document.getElementById("apexPopupClose");
-  const form = document.getElementById("apexLeadForm");
+  const popupBg   = document.getElementById("apexPopupBg");
+  const closeBtn  = document.getElementById("apexPopupClose");
+  const popupForm = document.getElementById("apexLeadForm");
 
-  if (!popupBg || !closeBtn || !form) return;
+  if (!popupBg || !closeBtn || !popupForm) return;
 
-  /* ===== PAGE TRACKING ===== */
+  /* ===== UNIQUE PAGE KEY ===== */
+  const pageKey =
+    "apexSubmitted_" +
+    window.location.pathname.replace(/\//g, "").replace(/[^a-zA-Z0-9]/g, "");
+
+  /* ===== TIME GAP ===== */
+  const ONE_HOUR = 60 * 60 * 1000;
+
+  /* ===== PAGE INFO ===== */
+  const pageName = document.title || "Emaar Serenity Hills Sector 86";
+  const pageUrl  = window.location.href;
+
   const pageField = document.getElementById("apex-page");
-  if (pageField) {
-    pageField.value = document.title || window.location.pathname;
-  }
+  if (pageField) pageField.value = pageName;
 
-  /* ===== SHOW POPUP UNTIL FORM SUBMITTED ===== */
-  if (!localStorage.getItem("apexFormSubmitted")) {
+  /* ===== POPUP SHOW LOGIC ===== */
+  const lastSubmitTime = localStorage.getItem(pageKey);
+
+  if (!lastSubmitTime || (Date.now() - Number(lastSubmitTime)) > ONE_HOUR) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
     }, 3500);
   }
 
-  /* ===== CLOSE POPUP (will reappear on refresh) ===== */
+  /* ===== CLOSE POPUP ===== */
   closeBtn.addEventListener("click", () => {
     popupBg.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -90,73 +183,76 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ===== FORM SUBMIT ===== */
-  form.addEventListener("submit", async function (e) {
+  /* ===== POPUP FORM SUBMIT ===== */
+  popupForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const submitBtn = form.querySelector(".apex-submit-btn");
+    const submitBtn = popupForm.querySelector(".apex-submit-btn");
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
-    const name = document.getElementById("apex-name").value.trim();
+    const name  = document.getElementById("apex-name").value.trim();
     const email = document.getElementById("apex-email").value.trim();
     const phone = document.getElementById("apex-phone").value.trim();
-    const page = pageField ? pageField.value : "";
 
     if (!name || !email || !phone) {
-      alert("Please fill all fields");
       submitBtn.disabled = false;
       submitBtn.innerText = "Submit";
       return;
     }
-  try {
-  /* ===== SUPABASE INSERT ===== */
-  const { error } = await window.supabase
-    .from("leads")
-    .insert([{ name, email, phone, page }]);
 
-  if (error) throw error;
+    try {
+      await window.supabase.from("leads").insert([{
+        name,
+        email,
+        phone,
+        page_name: pageName,
+        page_url: pageUrl
+      }]);
 
-  /* ===== EMAILJS SEND ===== */
-  await emailjs.send(
-    "service_kabl40s",
-    "template_hm3z1bq",
-    { name, email, phone }
-  );
+      await emailjs.send(
+        "service_kabl40s",
+        "template_hm3z1bq",
+        {
+          name,
+          email,
+          phone,
+          page_name: pageName,
+          page_url: pageUrl
+        }
+      );
 
-  /* ===== SAVE FLAG ===== */
-  localStorage.setItem("apexFormSubmitted", "yes");
+      localStorage.setItem(pageKey, Date.now());
 
-  /* ===== RESET & CLOSE POPUP ===== */
-  form.reset();
-  popupBg.classList.remove("active");
-  document.body.style.overflow = "auto";
+      popupForm.reset();
+      popupBg.classList.remove("active");
+      document.body.style.overflow = "auto";
 
-  /* ===== SUCCESS TOAST ===== */
-  setTimeout(() => {
-    const toast = document.getElementById("thankYouToast");
-    if (toast) {
-      toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 3000);
+      const toast = document.getElementById("thankYouToast");
+      if (toast) {
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      }
+
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong. Please try again.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Submit";
     }
-  }, 200);
-
-} catch (err) {
-  console.error(err);
-  alert("Something went wrong. Please try again.");
-} finally {
-  /* ===== BUTTON RESET (ALWAYS) ===== */
-  submitBtn.disabled = false;
-  submitBtn.innerText = "Submit";
-}
-   
   });
+
 });
+
+
+/* =====================================
+   EMAAR – FOOTER FORM
+===================================== */
+
 document.addEventListener("DOMContentLoaded", function () {
 
-  const contactForm = document.querySelector(".contact-form");
+  const contactForm = document.getElementById("contactForm");
   if (!contactForm) return;
 
   const toast = document.getElementById("thankYouToast");
@@ -164,38 +260,38 @@ document.addEventListener("DOMContentLoaded", function () {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const inputs = contactForm.querySelectorAll("input");
-    const name  = inputs[0]?.value.trim();
-    const phone = inputs[1]?.value.trim();
-    const email = inputs[2]?.value.trim();
+    const name  = document.getElementById("contact-name").value.trim();
+    const phone = document.getElementById("contact-phone").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
 
-    if (!name || !phone) {
-      console.warn("Required fields missing");
-      return;
-    }
+    if (!name || !phone) return;
 
     try {
-      /* ===== SUPABASE INSERT ===== */
-      await window.supabase
-        .from("leads")
-        .insert([{ name, phone, email }]);
+      await window.supabase.from("leads").insert([{
+        name,
+        phone,
+        email,
+        page_name: document.title || "Emaar Serenity Hills Sector 86",
+        page_url: window.location.href
+      }]);
 
-      /* ===== EMAILJS SEND ===== */
       await emailjs.send(
         "service_kabl40s",
         "template_hm3z1bq",
-        { name, phone, email }
+        {
+          name,
+          phone,
+          email,
+          page_name: document.title || "Emaar Serenity Hills Sector 86",
+          page_url: window.location.href
+        }
       );
 
-      /* ===== RESET FORM ===== */
       contactForm.reset();
 
-      /* ===== SHOW TOAST (NO ALERT) ===== */
       if (toast) {
         toast.classList.add("show");
-        setTimeout(() => {
-          toast.classList.remove("show");
-        }, 3000);
+        setTimeout(() => toast.classList.remove("show"), 3000);
       }
 
     } catch (err) {
