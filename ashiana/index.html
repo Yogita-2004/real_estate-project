@@ -234,20 +234,21 @@
     </div>
   </section>
 
-  <!-- ================= MASTER PLAN ================= -->
+<!-- ================= MASTER PLAN ================= -->
   <section id="masterplan" class="apex-masterplan">
-
     <div class="container master-wrap">
 
-    
-      <div class="master-image slider">
-        <img src="/ashiana/images/masterplan1.webp" class="mp1" alt="ashiana master plan1">
-        <img src="/ashiana/images/masterplan2.webp" class="mp2" alt="ashiana master palan2">
+      <!-- LEFT IMAGE -->
+      <div class="master-image">
+        <img src="/ashiana/images/masterplan.webp" class="master-thumb" alt="Ashiana Aaroham master plan"
+          onclick="openMasterPlan()">
+        <small class="click-note">Click to view full master plan</small>
       </div>
-      <div class="master-content">
 
-        <h2 class="section-heading">Master Plan</h2>
-        <span class="apex-line"></span>
+      <!-- RIGHT CONTENT -->
+      <div class="master-content">
+        <h2 class="master-heading">Master Plan</h2>
+        <span class="master-line"></span>
         <p>
           Thoughtfully designed layout prioritizing safety, visibility, interconnected activity zones and green
           breathing spaces—ensuring children can explore freely while parents enjoy peace of mind.
@@ -264,6 +265,11 @@
 
     </div>
   </section>
+  <!-- ================= MASTER PLAN MODAL ================= -->
+  <div id="masterModal" class="master-modal">
+    <span class="master-close" onclick="closeMasterPlan()">×</span>
+    <img src="/ashiana/images/masterplan.webp" class="master-full" alt="ASHIANA AAROHAM master plan full view">
+  </div>
 
   <!-- ================= GALLERY ================= -->
   <section id="gallery">

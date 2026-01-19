@@ -552,64 +552,62 @@ section {
   margin-top: 8px;
 }
 
-
-/* =====================================================
-   MASTER PLAN – MAX (SOBHA STYLE)
-===================================================== */
-
-#masterplan {
-  background: var(--white);
-  padding: 80px 20px;
+/* ================= MASTER PLAN SECTION ================= */
+.apex-masterplan {
+  padding: 90px 0;
+  background: #fff;
 }
 
 .master-wrap {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 50px;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 40px;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-/* ================= LEFT IMAGE SLIDER ================= */
-
+/* IMAGE */
 .master-image {
-  position: relative;
-  height: 480px;
-  background: var(--light);
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.master-image img {
-  position: absolute;
-  inset: 0;
+.master-thumb {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  animation: masterSlide 12s infinite;
+  max-width: 440px;
+  border-radius: 14px;
+  cursor: zoom-in;
 }
 
-/* slide timing */
-.master-image img.mp1 {
-  animation-delay: 0s;
+.click-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #777;
 }
 
-.master-image img.mp2 {
-  animation-delay: 6s;
+/* CONTENT */
+.master-heading {
+  font-size: 42px;
+  font-weight: 700;
+  color: #0f1f2d; /* same blue */
+  margin-bottom: 10px;
 }
 
-/* ================= RIGHT CONTENT ================= */
-
-.master-content .apex-title {
-  font-size: 34px;
-  color: var(--primary);
+.master-line {
+  display: block;
+  width: 55px;
+  height: 4px;
+  background: #d4a13a; /* golden line */
+  margin-bottom: 22px;
 }
 
-.master-content p {
-  font-size: 14px;
-  color: var(--text);
-  line-height: 1.7;
-  margin: 16px 0;
+.master-text {
+  max-width: 520px;
+  margin-bottom: 22px;
+  color: #333;
 }
 
 .master-list {
@@ -617,35 +615,49 @@ section {
 }
 
 .master-list li {
-  font-size: 14px;
-  color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-/* ================= SLIDER ANIMATION ================= */
-
-@keyframes masterSlide {
-  0% {
-    opacity: 0
-  }
-
-  8% {
-    opacity: 1
-  }
-
-  50% {
-    opacity: 1
-  }
-
-  58% {
-    opacity: 0
-  }
-
-  100% {
-    opacity: 0
-  }
+/* =========================================
+   MASTER PLAN MODAL (FULL IMAGE VIEW)
+========================================= */
+.master-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
 }
 
+/* FULL IMAGE */
+.master-full {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 14px;
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* CLOSE BUTTON */
+.master-close {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  font-size: 36px;
+  font-weight: 300;
+  color: #fff;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.master-close:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
 /* ================= PROJECT GALLERY ================= */
 
 #gallery {
@@ -963,4 +975,266 @@ section {
 .lp-footer a:focus-visible {
   outline: 2px solid #fbb040;
   outline-offset: 3px;
+}
+/* =====================================================
+   MOBILE + TABLET MEDIA CSS (WITH HAMBURGER)
+===================================================== */
+
+/* ================== TABLET ================== */
+@media (max-width: 1024px) {
+
+  .nav {
+    padding: 0 16px;
+  }
+
+  .menu a {
+    margin-left: 16px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 60px 40px;
+    padding-top: calc(60px + 72px);
+  }
+
+  .overview-wrap,
+  .residences-wrap,
+  .apex-amenities-wrap,
+  .contact-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .residences-content {
+    margin-left: 0;
+  }
+
+  .residences-images {
+    margin-left: 0;
+  }
+  .overview-image{
+    height: 320px;
+    margin: 0 auto;
+  }
+}
+/* ================== MOBILE (FINAL FIXED) ================== */
+@media (max-width: 768px) {
+
+  /* ================= GLOBAL FIX ================= */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ================= HEADER ================= */
+  .site-header {
+    height: 64px;
+  }
+
+  .nav {
+    height: 64px;
+    padding: 0 14px;
+  }
+
+  /* ================= LOGO ================= */
+  .logo-text {
+    align-items: flex-start;
+  }
+
+  .logo-text .brand {
+    font-size: 13px;
+    letter-spacing: 2.5px;
+  }
+
+  .logo-text .project {
+    font-size: 19px;
+    letter-spacing: 1.8px;
+  }
+
+  .logo-text .tagline {
+    font-size: 9px;
+  }
+
+  /* ================= HAMBURGER ================= */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2px;
+    background: #fff;
+  }
+
+  /* ================= MENU ================= */
+  .menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.96);
+    backdrop-filter: blur(8px);
+    flex-direction: column;
+    align-items: flex-start;   /* 🔥 LEFT ALIGN */
+    gap: 18px;
+    padding: 28px 20px 36px;
+    transform: translateY(-120%);
+    transition: 0.4s ease;
+    z-index: 9998;
+  }
+
+  .menu.active {
+    transform: translateY(0);
+  }
+
+  .menu a {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .brochure-header-btn {
+    margin-top: 12px;
+  }
+
+  /* ================= HERO ================= */
+  .hero {
+    min-height: 100vh;
+    padding: 26px 16px;
+    padding-top: calc(26px + 64px);
+    align-items: flex-end;      /* 🔥 bottom */
+    text-align: left;           /* 🔥 LEFT */
+  }
+
+  .hero-content {
+    max-width: 92%;
+    margin: 0;
+  }
+
+  .hero-content h1 {
+    font-size: 22px;
+    line-height: 1.35;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    margin: 10px 0 18px;
+  }
+
+  .hero-highlights {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hero-highlights span {
+    font-size: 12px;
+    padding: 6px 14px;
+  }
+
+  /* ================= OVERVIEW ================= */
+  .overview {
+    padding: 56px 16px;
+  }
+
+  .overview-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-image {
+    height: 260px;
+    max-width: 100%;
+    margin: 0;
+  }
+
+  /* RESIDENCES */
+  .residences {
+    padding: 60px 20px;
+  }
+
+  .residences-images img:first-child {
+    height: 240px;
+  }
+
+  .residences-images img:last-child {
+    width: 85%;
+    height: 150px;
+  }
+
+  /* AMENITIES */
+  .amenities-images img:first-child {
+    height: 220px;
+  }
+
+  .amenities-images img:last-child {
+    width: 80%;
+  }
+  /* ================= MASTER PLAN ================= */
+  .master-wrap {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .master-image {
+    align-items: flex-start;
+  }
+  
+  /* GALLERY */
+  #gallery .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  #gallery .gallery img {
+    height: 220px;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    padding: 40px 20px;
+  }
+
+  .contact-text p {
+    max-width: 100%;
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE (max-width: 480px)
+===================================================== */
+@media (max-width: 480px) {
+
+  /* HERO */
+  .hero-content h1 {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  /* MODALS */
+  .modal-box,
+  .apex-popup-box {
+    width: 92%;
+    padding: 24px 20px;
+  }
+
+  /* TEXT SIZES */
+  p,
+  li {
+    font-size: 13px;
+  }
+
+  /* FOOTER */
+  .lp-footer p {
+    font-size: 10px;
+  }
+
+  /* TOAST */
+  .toast {
+    right: 16px;
+    bottom: 20px;
+    font-size: 13px;
+  }
 }

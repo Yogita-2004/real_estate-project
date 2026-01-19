@@ -1,4 +1,70 @@
-function toggleMenu() {
+// hamburger//
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu a");
+
+  if (!hamburger || !menu) return;
+
+  //  Burger click → toggle menu
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation(); // important
+    menu.classList.toggle("active");
+  });
+
+  // Menu ke andar click pe close (links)
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
+  });
+
+  // Menu ke bahar kahin bhi click → close
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+});
+/* ================================
+   MASTER PLAN MODAL JS
+================================ */
+
+function openMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "flex";
+  document.body.style.overflow = "hidden"; // background scroll stop
+}
+
+function closeMasterPlan(){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  modal.style.display = "none";
+  document.body.style.overflow = ""; // scroll back
+}
+
+/* Close modal when clicking outside image */
+document.addEventListener("click", function(e){
+  const modal = document.getElementById("masterModal");
+  if(!modal) return;
+
+  if(e.target === modal){
+    closeMasterPlan();
+  }
+});
+
+/* Close modal on ESC key */
+document.addEventListener("keydown", function(e){
+  if(e.key === "Escape"){
+    closeMasterPlan();
+  }
+});
+function toggleMenu(){
   document.querySelector(".menu").classList.toggle("show");
 }
 
@@ -36,18 +102,18 @@ function activateMenu() {
 window.addEventListener("scroll", activateMenu);
 
 
-function openBrochure() {
+function openBrochure(){
   document.getElementById("brochurePopup").style.display = "flex";
 }
 
-function closeBrochure() {
+function closeBrochure(){
   document.getElementById("brochurePopup").style.display = "none";
 }
 
-function submitBrochure(e) {
+function submitBrochure(e){
   e.preventDefault();
   closeBrochure();
-  window.location.href = "/ashiana/brochure/ashiana.pdf";
+  window.location.href = "/elan/brochure/elan.pdf";
 }
 /* =====================================
    APEX LANDBASE – ASHIANA AAROHAM
