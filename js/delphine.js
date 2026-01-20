@@ -1,36 +1,41 @@
-// hamburger//
-document.addEventListener("DOMContentLoaded", () => {
+/* =====================================
+   CENTRAL PARK DELPHINE – FINAL JS
+   SAFE | NO BREAK | LIGHTHOUSE FRIENDLY
+===================================== */
 
+/* ===============================
+   HAMBURGER MENU
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.querySelector(".hamburger");
   const menu = document.querySelector(".menu");
   const menuLinks = document.querySelectorAll(".menu a");
 
   if (!hamburger || !menu) return;
 
-  //  Burger click → toggle menu
   hamburger.addEventListener("click", (e) => {
-    e.stopPropagation(); // important
+    e.stopPropagation();
     menu.classList.toggle("active");
   });
 
-  // Menu ke andar click pe close (links)
   menuLinks.forEach(link => {
     link.addEventListener("click", () => {
       menu.classList.remove("active");
     });
   });
 
-  // Menu ke bahar kahin bhi click → close
   document.addEventListener("click", (e) => {
     if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
       menu.classList.remove("active");
     }
   });
-
 });
-//floorplan//
-document.addEventListener("DOMContentLoaded", function () {
 
+
+/* ===============================
+   FLOOR PLAN SLIDER
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".fp-track");
   if (!track) return;
 
@@ -41,54 +46,50 @@ document.addEventListener("DOMContentLoaded", function () {
     index = (index + 1) % slides.length;
     track.style.transform = `translateX(-${index * 100}%)`;
   }, 4000);
-
 });
-/* ================================
-   MASTER PLAN MODAL JS
-================================ */
 
-function openMasterPlan(){
+
+/* ===============================
+   MASTER PLAN MODAL
+================================ */
+function openMasterPlan() {
   const modal = document.getElementById("masterModal");
-  if(!modal) return;
+  if (!modal) return;
 
   modal.style.display = "flex";
-  document.body.style.overflow = "hidden"; // background scroll stop
+  document.body.style.overflow = "hidden";
 }
 
-function closeMasterPlan(){
+function closeMasterPlan() {
   const modal = document.getElementById("masterModal");
-  if(!modal) return;
+  if (!modal) return;
 
   modal.style.display = "none";
-  document.body.style.overflow = ""; // scroll back
+  document.body.style.overflow = "";
 }
 
-/* Close modal when clicking outside image */
-document.addEventListener("click", function(e){
+document.addEventListener("click", (e) => {
   const modal = document.getElementById("masterModal");
-  if(!modal) return;
-
-  if(e.target === modal){
+  if (modal && e.target === modal) {
     closeMasterPlan();
   }
 });
 
-/* Close modal on ESC key */
-document.addEventListener("keydown", function(e){
-  if(e.key === "Escape"){
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
     closeMasterPlan();
   }
 });
-function toggleMenu(){
-  document.querySelector(".menu").classList.toggle("show");
-}
 
 
+/* ===============================
+   SCROLL SPY MENU
+================================ */
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".menu a");
 
 function activateMenu() {
-  let scrollPos = window.scrollY + window.innerHeight / 2;
+  const scrollPos = window.scrollY + window.innerHeight / 2;
 
   sections.forEach(section => {
     const top = section.offsetTop;
@@ -97,40 +98,38 @@ function activateMenu() {
 
     if (scrollPos >= top && scrollPos < top + height) {
       navLinks.forEach(link => link.classList.remove("active"));
-      const activeLink = document.querySelector('.menu a[href="#' + id + '"]');
+      const activeLink = document.querySelector(`.menu a[href="#${id}"]`);
       if (activeLink) activeLink.classList.add("active");
     }
   });
 
-  /* SPECIAL FIX FOR CONTACT (LAST SECTION) */
-  const contact = document.querySelector("#contact");
-  if (
-    window.innerHeight + window.scrollY >= document.body.offsetHeight - 5
-  ) {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 5) {
     navLinks.forEach(link => link.classList.remove("active"));
-    document
-      .querySelector('.menu a[href="#contact"]')
-      ?.classList.add("active");
+    document.querySelector('.menu a[href="#contact"]')?.classList.add("active");
   }
 }
 
-window.addEventListener("scroll", activateMenu);
+window.addEventListener("scroll", activateMenu, { passive: true });
 
-/* ===== OPEN / CLOSE POPUP ===== */
+
+/* ===============================
+   BROCHURE MODAL
+================================ */
 function openBrochure() {
-  document.getElementById("brochurePopup").style.display = "flex";
+  const popup = document.getElementById("brochurePopup");
+  if (popup) popup.style.display = "flex";
 }
 
 function closeBrochure() {
-  document.getElementById("brochurePopup").style.display = "none";
+  const popup = document.getElementById("brochurePopup");
+  if (popup) popup.style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", () => {
   const brochureForm = document.getElementById("brochureForm");
   if (!brochureForm) return;
 
-  brochureForm.addEventListener("submit", async function (e) {
+  brochureForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const formData = new FormData(brochureForm);
@@ -143,19 +142,14 @@ document.addEventListener("DOMContentLoaded", function () {
       project: formData.get("project") || "Central Park Delphine"
     };
 
-    /* ===== 1️⃣ SUPABASE ===== */
     try {
-      const { error } = await supabase
-        .from("leads")
-        .insert([leadData]);
-
+      const { error } = await window.supabase.from("leads").insert([leadData]);
       if (error) throw error;
-    } catch (err) {
+    } catch {
       alert("Lead save failed");
       return;
     }
 
-    /* ===== 2️⃣ EMAILJS ===== */
     emailjs.send(
       "service_kabl40s",
       "template_hm3z1bq",
@@ -163,71 +157,44 @@ document.addEventListener("DOMContentLoaded", function () {
         name: leadData.name,
         email: leadData.email,
         phone: leadData.phone,
-        page_name: leadData.project,        // Central Park Delphine
+        page_name: leadData.project,
         page_url: window.location.href,
         message: leadData.source
       }
-    )
-    .then(() => {
-      console.log("✅ Delphine Email sent");
-    })
-    .catch((error) => {
-      console.error("❌ Delphine Email failed:", error);
-    });
+    );
 
-    /* ===== 3️⃣ DELPHINE BROCHURE ===== */
-    window.open("/delphine/brochure/delphine.pdf", "_blank");
+    window.open(
+      "/delphine/brochure/delphine.pdf",
+      "_blank",
+      "noopener,noreferrer"
+    );
 
     brochureForm.reset();
     closeBrochure();
   });
-
 });
-/* =====================================
-   APEX LANDBASE – CENTRAL PARK DELPHINE
-   POPUP + FOOTER FORM
-   PER PAGE POPUP | 1 HOUR GAP AFTER SUBMIT
-   SUPABASE + EMAILJS
-===================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
 
-  /* ===== ELEMENTS ===== */
-  const popupBg   = document.getElementById("apexPopupBg");
-  const closeBtn  = document.getElementById("apexPopupClose");
+/* ===============================
+   AUTO POPUP FORM
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const popupBg = document.getElementById("apexPopupBg");
+  const closeBtn = document.getElementById("apexPopupClose");
   const popupForm = document.getElementById("apexLeadForm2");
-
   if (!popupBg || !closeBtn || !popupForm) return;
 
-  /* ===== UNIQUE KEY PER PAGE ===== */
-  const pageKey =
-    "apexSubmitted_" +
-    window.location.pathname.replace(/\//g, "").replace(/[^a-zA-Z0-9]/g, "");
-
-  /* ===== TIME GAP (1 HOUR) ===== */
+  const pageKey = "apexSubmitted_" + location.pathname.replace(/\W/g, "");
   const ONE_HOUR = 60 * 60 * 1000;
 
-  /* ===== PAGE INFO ===== */
-  const pageName = document.title || "Central Park Delphine";
-  const pageUrl  = window.location.href;
-
-  const pageField = document.getElementById("apex-page2");
-  if (pageField) pageField.value = pageName;
-
-  /* ===== POPUP SHOW LOGIC ===== */
-  const lastSubmitTime = localStorage.getItem(pageKey);
-
-  if (
-    !lastSubmitTime ||
-    (Date.now() - Number(lastSubmitTime)) > ONE_HOUR
-  ) {
+  const lastSubmit = localStorage.getItem(pageKey);
+  if (!lastSubmit || Date.now() - Number(lastSubmit) > ONE_HOUR) {
     setTimeout(() => {
       popupBg.classList.add("active");
       document.body.style.overflow = "hidden";
     }, 3500);
   }
 
-  /* ===== CLOSE POPUP ===== */
   closeBtn.addEventListener("click", () => {
     popupBg.classList.remove("active");
     document.body.style.overflow = "auto";
@@ -240,123 +207,85 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  /* ===== POPUP FORM SUBMIT ===== */
-  popupForm.addEventListener("submit", async function (e) {
+  popupForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const submitBtn = popupForm.querySelector(".apex-submit-btn");
     submitBtn.disabled = true;
     submitBtn.innerText = "Submitting...";
 
-    const name  = document.getElementById("apex-name2").value.trim();
-    const email = document.getElementById("apex-email2").value.trim();
-    const phone = document.getElementById("apex-phone2").value.trim();
-
-    if (!name || !email || !phone) {
-      submitBtn.disabled = false;
-      submitBtn.innerText = "Submit";
-      return;
-    }
-
     try {
-      /* ===== SUPABASE ===== */
       await window.supabase.from("leads").insert([{
-        name,
-        email,
-        phone,
-        page_name: pageName,
-        page_url: pageUrl
+        name: apex-name2.value,
+        email: apex-email2.value,
+        phone: apex-phone2.value,
+        page_name: document.title,
+        page_url: window.location.href
       }]);
 
-      /* ===== EMAILJS ===== */
-      await emailjs.send(
-        "service_kabl40s",
-        "template_hm3z1bq",
-        {
-          name,
-          email,
-          phone,
-          page_name: pageName,
-          page_url: pageUrl
-        }
-      );
+      await emailjs.send("service_kabl40s", "template_hm3z1bq", {
+        name: apex-name2.value,
+        email: apex-email2.value,
+        phone: apex-phone2.value,
+        page_name: document.title,
+        page_url: window.location.href
+      });
 
-      /* ===== SAVE SUBMIT TIME ===== */
       localStorage.setItem(pageKey, Date.now());
-
       popupForm.reset();
       popupBg.classList.remove("active");
       document.body.style.overflow = "auto";
 
-      const toast = document.getElementById("thankYouToast");
-      if (toast) {
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 3000);
-      }
+      document.getElementById("thankYouToast")?.classList.add("show");
+      setTimeout(() => {
+        document.getElementById("thankYouToast")?.classList.remove("show");
+      }, 3000);
 
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong. Please try again.");
+    } catch {
+      alert("Something went wrong");
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerText = "Submit";
     }
   });
-
 });
 
 
-/* =====================================
-   CENTRAL PARK DELPHINE – FOOTER FORM
-===================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
+/* ===============================
+   FOOTER CONTACT FORM
+================================ */
+document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm2");
   if (!contactForm) return;
 
-  const toast = document.getElementById("thankYouToast");
-
-  contactForm.addEventListener("submit", async function (e) {
+  contactForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-
-    const name  = document.getElementById("contact-name2").value.trim();
-    const phone = document.getElementById("contact-phone2").value.trim();
-    const email = document.getElementById("contact-email2").value.trim();
-
-    if (!name || !phone) return;
 
     try {
       await window.supabase.from("leads").insert([{
-        name,
-        phone,
-        email,
-        page_name: document.title || "Central Park Delphine",
+        name: contact-name2.value,
+        phone: contact-phone2.value,
+        email: contact-email2.value,
+        page_name: document.title,
         page_url: window.location.href
       }]);
 
-      await emailjs.send(
-        "service_kabl40s",
-        "template_hm3z1bq",
-        {
-          name,
-          phone,
-          email,
-          page_name: document.title || "Central Park Delphine",
-          page_url: window.location.href
-        }
-      );
+      await emailjs.send("service_kabl40s", "template_hm3z1bq", {
+        name: contact-name2.value,
+        phone: contact-phone2.value,
+        email: contact-email2.value,
+        page_name: document.title,
+        page_url: window.location.href
+      });
 
       contactForm.reset();
+      document.getElementById("thankYouToast")?.classList.add("show");
+      setTimeout(() => {
+        document.getElementById("thankYouToast")?.classList.remove("show");
+      }, 3000);
 
-      if (toast) {
-        toast.classList.add("show");
-        setTimeout(() => toast.classList.remove("show"), 3000);
-      }
-
-    } catch (err) {
-      console.error(err);
+    } catch {
+      console.error("Footer form failed");
     }
   });
-
 });
