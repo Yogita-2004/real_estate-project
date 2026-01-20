@@ -34,7 +34,11 @@
         <a href="#amenities">Amenities</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <a class="Download brochure-header-btn" onclick="openBrochure()">Download Brochure</a>
+       <a href="javascript:void(0)"
+         class="brochure-header-btn"
+         onclick="openBrochure()">
+        Download Brochure
+      </a>
       </nav>
 
     </div>
@@ -56,9 +60,9 @@
         <span>Sky Villas</span>
         <span>Exclusive Club</span>
       </div>
-      <button class="brochure-header-btn" onclick="openBrochure()" aria-label="Download Brochure">
-        Download Brochure
-      </button>
+      <button class="brochure-header-btn" onclick="openBrochure()">
+      Download Brochure
+    </button>
     </div>
   </section>
 
@@ -307,11 +311,12 @@
         </ul>
       </div>
 
-      <form class="contact-form" id="contactForm2">
+      <form> class="contact-form" id="contactForm2">
         <input type="text" id="contact-name2" placeholder="Your Name" required>
         <input type="tel" id="contact-phone2" placeholder="Phone Number" required>
         <input type="email" id="contact-email2" placeholder="Email" required>
         <button type="submit">Submit Enquiry</button>
+        </form>
     </div>
   </section>
 
@@ -335,21 +340,33 @@
       <a href="index.html">Apex Landbase</a>
     </p>
   </footer>
+<!-- ============ CENTRAL PARK DELPHINE : BROCHURE MODAL ============ -->
+<div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
+  <div class="modal-box">
 
-  <!-- ================= BROCHURE MODAL ================= -->
-  <div id="brochurePopup" class="brochure-modal">
-    <div class="modal-box">
-      <span class="close-modal" onclick="closeBrochure()">×</span>
-      <h3>Download Brochure</h3>
-      <form>
-        <input type="text" placeholder="Your Name">
-        <input type="tel" placeholder="Phone Number">
-        <input type="email" placeholder="Email">
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <span class="close-modal" onclick="closeBrochure()">×</span>
+
+    <h3>Download Brochure</h3>
+    <p>Please fill your details to get the brochure</p>
+
+    <form id="brochureForm">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <!-- TRACKING -->
+      <input type="hidden" name="source" value="Brochure Download">
+      <input type="hidden" name="project" value="Central Park Delphine">
+
+      <button type="submit">Submit & Download</button>
+
+    </form>
+
   </div>
+
+</div>
   <!-- EMAILJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>

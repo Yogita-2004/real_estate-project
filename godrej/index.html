@@ -453,30 +453,33 @@
       <a href="index.html">Apex Landbase</a>
     </p>
   </footer>
-  <!-- ================= BROCHURE MODAL ================= -->
-  <div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
+  <!-- ================= ELAN : BROCHURE MODAL ================= -->
+<div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
-    <div class="modal-box">
+  <div class="modal-box">
 
-      <!-- CLOSE BUTTON -->
-      <span class="close-modal" onclick="closeBrochure()">×</span>
+    <span class="close-modal" onclick="closeBrochure()">×</span>
 
-      <h3>Download Brochure</h3>
-      <p>Please fill your details to get the brochure</p>
+    <h3>Download Brochure</h3>
+    <p>Please fill your details to get the brochure</p>
 
-      <form id="brochureForm" onsubmit="submitBrochure(event)">
+    <form id="brochureForm">
 
-        <input type="text" placeholder="Your Name" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <input type="email" placeholder="Email Address" required>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
 
-        <button type="submit">Submit & Download</button>
+      <!-- TRACKING -->
+      <input type="hidden" name="source" value="Brochure Download">
+      <input type="hidden" name="project" value="Godrej">
 
-      </form>
+      <button type="submit">Submit & Download</button>
 
-    </div>
+    </form>
 
   </div>
+
+</div>
   <!-- EMAILJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>

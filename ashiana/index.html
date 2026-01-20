@@ -351,23 +351,33 @@
       <strong>Thank you!</strong><br>
       Our team will contact you shortly.
     </div>
+<!-- ================= ASHIANA : BROCHURE MODAL ================= -->
+<div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
-  <!-- ================= BROCHURE POPUP ================= -->
-  <div id="brochurePopup" class="brochure-modal">
-    <div class="modal-box">
-      <span class="close-modal" onclick="closeBrochure()">×</span>
+  <div class="modal-box">
 
-      <h3>Download Brochure</h3>
-      <p>Fill in your details to receive the full brochure</p>
+    <span class="close-modal" onclick="closeBrochure()">×</span>
 
-      <form>
-        <input type="text" placeholder="Name" required>
-        <input type="tel" placeholder="Phone" required>
-        <input type="email" placeholder="Email" required>
-        <button type="submit">Submit & Download</button>
-      </form>
-    </div>
+    <h3>Download Brochure</h3>
+    <p>Please fill your details to get the brochure</p>
+
+    <form id="brochureForm">
+
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
+
+      <!-- TRACKING -->
+      <input type="hidden" name="source" value="Brochure Download">
+      <input type="hidden" name="project" value="Ashiana">
+
+      <button type="submit">Submit & Download</button>
+
+    </form>
+
   </div>
+
+</div>
    <!-- EMAILJS -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script>

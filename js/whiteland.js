@@ -102,20 +102,75 @@ function activateMenu() {
 
 window.addEventListener("scroll", activateMenu);
 
-
-function openBrochure(){
+/* ===== OPEN / CLOSE BROCHURE ===== */
+function openBrochure() {
+  document.body.style.overflow = "hidden";
   document.getElementById("brochurePopup").style.display = "flex";
 }
 
-function closeBrochure(){
+function closeBrochure() {
+  document.body.style.overflow = "";
   document.getElementById("brochurePopup").style.display = "none";
 }
 
-function submitBrochure(e){
-  e.preventDefault();
-  closeBrochure();
-  window.location.href = "/whiteland/brochure/Westin Brochure.pdf";
-}
+document.addEventListener("DOMContentLoaded", function () {
+
+  const brochureForm = document.getElementById("brochureForm");
+  if (!brochureForm) return;
+
+  brochureForm.addEventListener("submit", async function (e) {
+    e.preventDefault(); // ⛔ page jump stop
+
+    const formData = new FormData(brochureForm);
+
+    const leadData = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      email: formData.get("email"),
+      source: formData.get("source") || "Brochure Download",
+      project: formData.get("project") || "WESTIN"
+    };
+
+    /* ===== 1️⃣ SUPABASE ===== */
+    try {
+      const { error } = await supabase
+        .from("leads")
+        .insert([leadData]);
+
+      if (error) throw error;
+    } catch (err) {
+      alert("Lead save failed");
+      return;
+    }
+
+    /* ===== 2️⃣ EMAILJS ===== */
+    emailjs.send(
+      "service_kabl40s",
+      "template_hm3z1bq",
+      {
+        name: leadData.name,
+        email: leadData.email,
+        phone: leadData.phone,
+        page_name: leadData.project, // WESTIN
+        page_url: window.location.href,
+        message: leadData.source
+      }
+    )
+    .then(() => {
+      console.log("✅ Westin Email sent");
+    })
+    .catch((error) => {
+      console.error("❌ Westin Email failed:", error);
+    });
+
+    /* ===== 3️⃣ WESTIN BROCHURE ===== */
+    window.open("/westin/brochure/Westin.pdf", "_blank");
+
+    brochureForm.reset();
+    closeBrochure();
+  });
+
+});
 /* =====================================
    APEX LANDBASE – WESTIN RESIDENCES
    POPUP + FOOTER FORM

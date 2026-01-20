@@ -397,57 +397,54 @@
       to change. Marketed by <strong>Apex Landbase</strong>.
     </p>
   </footer>
-  <!-- ================= BROCHURE MODAL ================= -->
-  <div id="brochurePopup" class="brochure-modal">
+ <!-- ================= ELAN : BROCHURE MODAL ================= -->
+<div id="brochurePopup" class="brochure-modal" role="dialog" aria-modal="true">
 
-    <div class="modal-box">
+  <div class="modal-box">
 
-      <!-- CLOSE BUTTON -->
-      <span class="close-modal" onclick="closeBrochure()">×</span>
+    <span class="close-modal" onclick="closeBrochure()">×</span>
 
-      <h3>Download Brochure</h3>
-      <p>Please fill your details to get the brochure</p>
+    <h3>Download Brochure</h3>
+    <p>Please fill your details to get the brochure</p>
 
-      <form id="brochureForm" onsubmit="submitBrochure(event)">
+    <form id="brochureForm">
 
-        <input type="text" placeholder="Your Name" required>
-        <input type="tel" placeholder="Phone Number" required>
-        <input type="email" placeholder="Email Address" required>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="tel" name="phone" placeholder="Phone Number" required>
+      <input type="email" name="email" placeholder="Email Address" required>
 
-        <button type="submit">Submit & Download</button>
+      <!-- TRACKING -->
+      <input type="hidden" name="source" value="Brochure Download">
+      <input type="hidden" name="project" value="Elan">
 
-      </form>
+      <button type="submit">Submit & Download</button>
 
-    </div>
+    </form>
 
   </div>
 
+</div>
+ <!-- EMAILJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("Jt6Vp9_-hORbbxZ79");
+  </script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = "https://naipydrihdzbjohfrypu.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5haXB5ZHJpaGR6YmpvaGZyeXB1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY4OTgwODUsImV4cCI6MjA4MjQ3NDA4NX0.JlRuujtS0t8G67X7RYqWVvxuqvRhFgqeng8OOlELJok";
+
+    window.supabase = supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_KEY
+    );
+  </script>
+
   <!-- SAME JS AS MAX -->
   <script src="/js/elan.js" defer></script>
-  <script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "FAQPage",
- "mainEntity": [
-  {
-   "@type": "Question",
-   "name": "Where is Elan The Statement located?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "Elan The Statement is located in Sector 49, Gurugram, Haryana."
-   }
-  },
-  {
-   "@type": "Question",
-   "name": "What type of residences are offered?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "The project offers ultra-luxury 4 BHK residences and penthouses."
-   }
-  }
- ]
-}
-</script>
+
 </body>
 
 </html>
