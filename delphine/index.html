@@ -19,14 +19,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- CANONICAL (VERY IMPORTANT) -->
-  <link rel="canonical" href="https://www.apexlandbase.com/central-park-delphine">
+  <link rel="canonical" href="https://www.apexlandbase.com/delphine/">
 
   <!-- OPEN GRAPH (SOCIAL SHARING) -->
   <meta property="og:title" content="Central Park Delphine | Ultra Luxury Residences Gurugram">
   <meta property="og:description"
     content="Discover ultra luxury sky villas & premium apartments at Central Park Delphine, Gurugram. Download brochure & price list.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.apexlandbase.com/central-park-delphine">
+  <meta property="og:url" content="https://www.apexlandbase.com/delphine/">
   <meta property="og:image" content="https://www.apexlandbase.com/delphine/images/overview.webp">
 
   <!-- TWITTER -->
@@ -38,7 +38,7 @@
   <!-- CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="/editing/delphine.css">
+  <link rel="stylesheet" href="../editing/delphine.css">
 </head>
 
 <body>
@@ -75,31 +75,41 @@
 
     </div>
   </header>
+<!-- ================= HERO : CENTRAL PARK DELPHINE ================= -->
+<section class="hero delphine-hero">
 
+  <!-- BACKGROUND IMAGE -->
+  <img 
+    src="../delphine/images/hero.webp" 
+    alt="Central Park Delphine Luxury Residences Gurugram"
+    class="hero-bg"
+    fetchpriority="high"
+  >
 
-  <!-- ================= HERO VIDEO ================= -->
-  <section class="hero">
-    <video autoplay muted loop playsinline>
-      <source src="https://www.pexels.com/download/video/32541194/" type="video/mp4">
-    </video>
+  <!-- DARK OVERLAY -->
+  <div class="hero-overlay"></div>
 
-    <div class="hero-content">
-      <h1>Central Park Delphine<br> – Ultra Luxury Sky Villas & Apartments in Gurugram</h1>
+  <!-- CONTENT -->
+  <div class="hero-content">
+    <h1>Central Park Delphine</h1>
 
-      <p class="hero-subtitle">
-        Located at Central Park Resorts, offering private lift lobby, exclusive clubhouse & resort-style living.
-      </p>
-      <div class="hero-highlights">
-        <span>Ultra Luxury</span>
-        <span>Sky Villas</span>
-        <span>Exclusive Club</span>
-      </div>
-      <button class="brochure-header-btn" onclick="openBrochure()">
-        Download Brochure
-      </button>
+    <p class="hero-subtitle">
+      Luxury Residences in Sector 94, Gurugram
+    </p>
+
+    <div class="hero-highlights">
+      <span>Ultra Luxury Living</span>
+      <span>Sector 94</span>
+      <span>Central Park</span>
     </div>
-  </section>
 
+    <button class="brochure-header-btn" onclick="openBrochure()">
+      Download Brochure
+    </button>
+  </div>
+
+</section>
+  
 
   <!-- ================= OVERVIEW ================= -->
   <section id="overview" class="overview">
@@ -139,7 +149,7 @@
       </div>
 
       <div class="overview-image">
-        <img src="/delphine/images/overview.webp" alt="Delphine overview" loading="lazy">
+        <img src="images/overview.webp" alt="Delphine overview" loading="lazy">
       </div>
 
     </div>
@@ -169,8 +179,8 @@
       </div>
 
       <div class="residences-images">
-        <img src="/delphine/images/residences.webp" alt="Luxury dining Areas" loading="lazy">
-        <img src="/delphine/images/residence1.webp" alt="balconies Areas" loading="lazy">
+        <img src="images/residences.webp" alt="Luxury dining Areas" loading="lazy">
+        <img src="images/residence1.webp" alt="balconies Areas" loading="lazy">
       </div>
 
     </div>
@@ -179,7 +189,7 @@
   <section id="masterplan" class="masterplan">
     <div class="master-wrap">
       <div class="master-image">
-        <img src="/delphine/images/masterplan.webp" alt="Elan The Statement Master Plan" class="master-thumb"
+        <img src="images/masterplan.webp" alt="Elan The Statement Master Plan" class="master-thumb"
           onclick="openMasterPlan()">
 
         <small class="click-note">Click to view full master plan</small>
@@ -206,6 +216,11 @@
 
     </div>
   </section>
+  <!-- ================= MASTER PLAN MODAL ================= -->
+  <div id="masterModal" class="master-modal">
+    <span class="master-close" onclick="closeMasterPlan()">×</span>
+    <img src="images/masterplan.webp" class="master-full" alt="central-park-delphine master plan full view">
+  </div>
   <!-- ================= FLOOR PLAN ================= -->
   <section id="floorplan" class="apex-floorplan">
     <div class="container floorplan-wrap">
@@ -229,7 +244,7 @@
           <li>Limited exclusive residences</li>
         </ul>
 
-        <a href="/delphine/brochure/delphine.pdf" class="floorplan-btn" target="_blank" download>
+        <a href="brochure/delphine.pdf" class="floorplan-btn" target="_blank" download>
           Download All Floor Plans
         </a>
       </div>
@@ -239,9 +254,9 @@
         <div class="fp-slider">
           <div class="fp-track">
 
-            <img src="/delphine/images/floorplan1.webp" alt="Central Delhi 3 BHK Floor Plan" loading="lazy">
+            <img src="images/floorplan1.webp" alt="Central Delhi 3 BHK Floor Plan" loading="lazy">
 
-            <img src="/delphine/images/floorplan2.webp" alt="Central Delhi 4 BHK Floor Plan" loading="lazy">
+            <img src="images/floorplan2.webp" alt="Central Delhi 4 BHK Floor Plan" loading="lazy">
           </div>
         </div>
       </div>
@@ -254,7 +269,7 @@
 
       <!-- LEFT : IMAGE -->
       <div class="amenities-image">
-        <img src="/delphine/images/amenities.webp" alt="Central Park Delphine luxury amenities" loading="lazy">
+        <img src="images/amenities.webp" alt="Central Park Delphine luxury amenities" loading="lazy">
       </div>
 
       <!-- RIGHT : CONTENT -->
@@ -286,10 +301,10 @@
       <div class="section-line"></div>
 
       <div class="gallery">
-        <img src="/delphine/images/gallery1.webp" alt="Central park delphine dining areas" loading="lazy">
-        <img src="/delphine/images/gallery2.webp" alt="Central park buildings" loading="lazy">
-        <img src="/delphine/images/gallery3.webp" alt="Central park Pool view" loading="lazy">
-        <img src="/delphine/images/gallery4.webp" alt="central-park-delphine bedroom" loading="lazy">
+        <img src="images/gallery1.webp" alt="Central park delphine dining areas" loading="lazy">
+        <img src="images/gallery2.webp" alt="Central park buildings" loading="lazy">
+        <img src="images/gallery3.webp" alt="Central park Pool view" loading="lazy">
+        <img src="images/gallery4.webp" alt="central-park-delphine bedroom" loading="lazy">
       </div>
   </section>
   <!-- ===== APEX LANDBASE : COMMON POPUP FORM ===== -->
@@ -301,7 +316,7 @@
       </button>
 
       <div class="apex-popup-header">
-        <img src="/img/image.png" alt="Apex Landbase Logo">
+        <img src="../img/image.png" alt="Apex Landbase Logo">
         <h3>Get Exclusive Details</h3>
         <p>Register now to receive price, floor plan & offers</p>
       </div>
@@ -367,7 +382,7 @@
     </p>
     <p>
       Explore more luxury residential projects by
-      <a href="index.html">Apex Landbase</a>
+      <a href="../index.html">Apex Landbase</a>
     </p>
   </footer>
   <!-- ============ CENTRAL PARK DELPHINE : BROCHURE MODAL ============ -->
@@ -415,7 +430,7 @@
     );
   </script>
 
-  <script src="/js/delphine.js"></script>
+  <script src="../js/delphine.js"></script>
 </body>
 
 </html>

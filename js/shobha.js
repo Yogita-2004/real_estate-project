@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ SOBHA BROCHURE ===== */
-    window.open("/shobha/brochure/shobha-aranya.pdf", "_blank");
+    window.open("../shobha/brochure/shobha-aranya.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

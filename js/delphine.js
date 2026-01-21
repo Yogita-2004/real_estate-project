@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
     window.open(
-      "/delphine/brochure/delphine.pdf",
+      "../delphine/brochure/delphine.pdf",
       "_blank",
       "noopener,noreferrer"
     );

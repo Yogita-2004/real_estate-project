@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ EMAAR BROCHURE DOWNLOAD ===== */
-    window.open("/emaar/brochure/emaar.pdf", "_blank");
+    window.open("../emaar/brochure/emaar.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

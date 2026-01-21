@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ BROCHURE ===== */
-    window.open("brochure/max361.pdf", "_blank");
+    window.open("../max361/brochure/max361.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

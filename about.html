@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About | Apex Landbase</title>
 
-  <link rel="stylesheet" href="/editing/CSS/style.css">
-  <link rel="stylesheet" href="/editing/CSS/about.css">
+  <link rel="stylesheet" href="editing/CSS/style.css">
+  <link rel="stylesheet" href="editing/CSS/about.css">
 </head>
 
 <body>
@@ -17,13 +17,13 @@
     <p>Call Now Best Real Estate Consultation: <a href="tel:+919999074263">+91 9999074263</a></p>
 
     <div class="social-icons">
-      <a href="https://www.facebook.com/ApexLandbase" target="_blank"><img src="/img/fb.png" loading="lazy"
+      <a href="https://www.facebook.com/ApexLandbase" target="_blank"><img src="img/fb.png" loading="lazy"
           alt="facebook" /></a>
-      <a href="https://www.instagram.com/apexlandbase" target="_blank"><img src="/img/insta.png" loading="lazy"
+      <a href="https://www.instagram.com/apexlandbase" target="_blank"><img src="img/insta.png" loading="lazy"
           alt="instagram" /></a>
-      <a href="https://www.youtube.com/@apexlandbase" target="_blank"><img src="/img/youtube.png" loading="lazy"
+      <a href="https://www.youtube.com/@apexlandbase" target="_blank"><img src="img/youtube.png" loading="lazy"
           alt="youtube" /></a>
-      <a href="https://www.twitter.com/ApexLandbase" target="_blank"><img src="/img/twitter.png" loading="lazy"
+      <a href="https://www.twitter.com/ApexLandbase" target="_blank"><img src="img/twitter.png" loading="lazy"
           alt="twitter Apex Landbase" /></a>
     </div>
   </header>
@@ -33,7 +33,7 @@
     <div class="nav-container">
       <!-- LEFT: Logo -->
       <a href="index.html" class="logo" aria-label="Apex Landbase Home">
-        <img src="/img/image.png" alt="Apex Landbase logo" fetchpriority="high">
+        <img src="img/image.png" alt="Apex Landbase logo" fetchpriority="high">
         <span class="brand">APEX LANDBASE</span>
       </a>
       <!-- MENUE BUTTON-->
@@ -115,8 +115,8 @@
 
             <div class="about-image-wrap">
               <picture>
-                <source srcset="/img/about.webp" type="image/webp">
-                <img src="/img/about.webp" alt="Real estate consultation services in Gurgaon NCR" loading="lazy"
+                <source srcset="img/about.webp" type="image/webp">
+                <img src="img/about.webp" alt="Real estate consultation services in Gurgaon NCR" loading="lazy"
                   decoding="async">
               </picture>
             </div>
@@ -186,54 +186,85 @@
     </section>
 
   </main>
+   <!-- ================= FOOTER (SAME AS HOME) ================= -->
 
-  <!-- ========== FOOTER (same as home) ========== -->
-  <footer class="main-footer">
-    <div class="footer-container">
+    <!-- CONTACT CALL / WHATSAPP POPUP -->
+    <div id="contactChoice" class="contact-choice">
+        <div class="contact-box">
+            <h3>Connect with Apex Landbase</h3>
+            <p>Choose how you would like to connect</p>
 
-      <div class="footer-col">
-        <h3>Contact Us</h3>
-        <p>📞 :+91 9999074263</p>
-        <p>✉ info@apexlandbase.com</p>
-        <p>
-          📍 Office No.28, Core-A, 2nd Floor Silverton Tower,<br>
-          Sector-50, Gurugram-122018, Haryana
-        </p>
+            <a href="tel:+919999074263" class="choice-btn call">📞 Call Now</a>
+            <a href="https://wa.me/919654465643" target="_blank" class="choice-btn whatsapp">💬 WhatsApp</a>
 
-        <h4>Follow Us On</h4>
-        <div class="footer-social">
-          <a href="https://www.facebook.com/ApexLandbase"><img src="/img/fb.png" alt="facebook"></a>
-          <a href="https://www.instagram.com/apexlandbase"><img src="/img/insta.png" alt="instagram"></a>
-          <a href="https://www.youtube.com/@apexlandbase"><img src="/img/youtube.png" alt="youtube"></a>
-          <a href="https://www.twitter.com/ApexLandbase"><img src="/img/twitter.png" alt="twitter"></a>
+            <button class="close-choice" id="closeChoiceBtn">✕</button>
         </div>
-      </div>
-
-      <div class="footer-col">
-        <h3>Quick Links</h3>
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="contact.html">Contact Us</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms-condition.html">Terms Conditions</a>
-      </div>
-
-      <div class="footer-col">
-        <h3>Builders</h3>
-        <a href="/dlf/index.html">DLF</a>
-        <a href="/shobha/index.html">SHOBHA</a>
-        <a href="/delphine/index.html">CENTRAL PARK</a>
-        <a href="/godrej/index.html">GODREJ</a>
-      </div>
-
     </div>
+    <footer class="main-footer">
+        <div class="footer-container">
 
-    <div class="footer-bottom">
-      <p>copyright © 2026, apexlandbase | Managed by ApexLandbase</p>
-    </div>
-  </footer>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
 
+                <p class="footer-item">
+                    <span class="icon">📞</span>
+                    <span>+91 9999074263</span>
+                </p>
+
+                <p class="footer-item">
+                    <span class="icon">✉️</span>
+                    <span>info@apexlandbase.com</span>
+                </p>
+
+                <p class="footer-item">
+                    <span class="icon">📍</span>
+                    <span>
+                        Office No.28, Core-A,<br>
+                        2nd Floor Silverton Tower,<br>
+                        Sector-50, Gurugram – 122018, Haryana
+                    </span>
+                </p>
+
+                <h4>Follow Us On</h4>
+
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/ApexLandbase"><img src="img/fb.png" loading="lazy"
+                            alt="facebook"></a>
+                    <a href="https://www.instagram.com/apexlandbase"><img src="img/insta.png" loading="lazy"
+                            alt="instagram"></a>
+                    <a href="https://www.youtube.com/@apexlandbase"><img src="img/youtube.png" loading="lazy"
+                            alt="youtube"></a>
+                    <a href="https://www.twitter.com/ApexLandbase"><img src="img/twitter.png" loading="lazy"
+                            alt="twitter"></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms-condition.html">Terms Conditions</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Builders</h3>
+                <a href="dlf/index.html">DLF</a>
+                <a href="shobha/index.html">SHOBHA</a>
+                <a href="delphine/index.html">CENTRAL PARK</a>
+                <a href="godrej/index.html">GODREJ</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>copyright © 2026, apexlandbase | Managed by ApexLandbase</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>

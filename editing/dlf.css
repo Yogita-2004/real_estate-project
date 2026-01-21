@@ -225,10 +225,10 @@ section {
 .menu a:hover::after {
   width: 100%;
 }
-
 /* =====================================================
-   HERO SECTION — SAME AS MAX361
+   HERO — IMAGE VERSION (COMMON FOR ALL)
 ===================================================== */
+
 .hero {
   position: relative;
   height: 100vh;
@@ -238,9 +238,10 @@ section {
   padding: 80px;
   padding-top: calc(80px + 72px);
   color: #fff;
+  overflow: hidden;
 }
 
-.hero video {
+.hero img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -252,7 +253,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,0.55);
   z-index: 1;
 }
 
@@ -281,10 +282,25 @@ section {
 .hero-highlights span {
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.12);
   font-size: 13px;
 }
 
+/* MOBILE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 24px;
+    height: 90vh;
+  }
+
+  .hero-content h1 {
+    font-size: 22px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+}
 /* =====================================================
    OVERVIEW — UPDATED SMALLER IMAGE
 ===================================================== */

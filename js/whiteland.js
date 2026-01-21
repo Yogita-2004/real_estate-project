@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ WESTIN BROCHURE ===== */
-    window.open("/westin/brochure/Westin.pdf", "_blank");
+    window.open("../westin/brochure/Westin.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

@@ -225,22 +225,20 @@ section {
 .menu a:hover::after {
   width: 100%;
 }
-
 /* =====================================================
-   HERO SECTION — SAME AS MAX361
+   HERO SECTION — IMAGE (SAME FEEL AS VIDEO)
 ===================================================== */
+
 .hero {
   position: relative;
   height: 100vh;
   width: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding: 80px;
-  padding-top: calc(80px + 72px);
+  overflow: hidden;
   color: #fff;
 }
 
-.hero video {
+/* HERO IMAGE */
+.hero img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -248,6 +246,7 @@ section {
   object-fit: cover;
 }
 
+/* DARK OVERLAY — SAME AS VIDEO */
 .hero::after {
   content: "";
   position: absolute;
@@ -256,12 +255,16 @@ section {
   z-index: 1;
 }
 
+/* TEXT — LEFT BOTTOM (IMPORTANT FIX) */
 .hero-content {
-  position: relative;
+  position: absolute;
   z-index: 2;
+  left: 80px;
+  bottom: 80px;
   max-width: 520px;
 }
 
+/* TEXT STYLES */
 .hero-content h1 {
   font-size: 30px;
   font-weight: 600;
@@ -272,6 +275,7 @@ section {
   margin: 14px 0 22px;
 }
 
+/* HIGHLIGHTS */
 .hero-highlights {
   display: flex;
   gap: 14px;
@@ -284,6 +288,30 @@ section {
   background: rgba(255, 255, 255, 0.12);
   font-size: 13px;
 }
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .hero-content {
+    left: 20px;
+    right: 20px;
+    bottom: 40px;
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 24px;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+
+  .hero-highlights {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
 
 /* =====================================================
    OVERVIEW — UPDATED SMALLER IMAGE
@@ -1228,39 +1256,6 @@ section {
     margin-top: 12px;
   }
 
-  /* ================= HERO ================= */
-  .hero {
-    min-height: 100vh;
-    padding: 26px 16px;
-    padding-top: calc(26px + 64px);
-    align-items: flex-end;      /* 🔥 bottom */
-    text-align: left;           /* 🔥 LEFT */
-  }
-
-  .hero-content {
-    max-width: 92%;
-    margin: 0;
-  }
-
-  .hero-content h1 {
-    font-size: 22px;
-    line-height: 1.35;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-    margin: 10px 0 18px;
-  }
-
-  .hero-highlights {
-    justify-content: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .hero-highlights span {
-    font-size: 12px;
-    padding: 6px 14px;
-  }
 
   /* ================= OVERVIEW ================= */
   .overview {

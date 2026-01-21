@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ ASHIANA BROCHURE DOWNLOAD ===== */
-    window.open("/ashiana/brochure/ashiana.pdf", "_blank");
+    window.open("../ashiana/brochure/ashiana.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

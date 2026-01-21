@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ DLF BROCHURE DOWNLOAD ===== */
-    window.open("/dlf/brochure/dlf.pdf", "_blank");
+    window.open("../dlf/brochure/dlf.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

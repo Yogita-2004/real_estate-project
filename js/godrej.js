@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ GODREJ BROCHURE ===== */
-    window.open("/godrej/brochure/godrej.pdf", "_blank");
+    window.open("../godrej/brochure/godrej.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();

@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     /* ===== 3️⃣ ELAN BROCHURE DOWNLOAD ===== */
-    window.open("/elan/brochure/Elan.pdf", "_blank");
+    window.open("../elan/brochure/Elan.pdf", "_blank");
 
     brochureForm.reset();
     closeBrochure();
