@@ -1,3 +1,33 @@
+// hamburger//
+document.addEventListener("DOMContentLoaded", () => {
+
+  const hamburger = document.querySelector(".hamburger");
+  const menu = document.querySelector(".menu");
+  const menuLinks = document.querySelectorAll(".menu a");
+
+  if (!hamburger || !menu) return;
+
+  //  Burger click → toggle menu
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation(); // important
+    menu.classList.toggle("active");
+  });
+
+  // Menu ke andar click pe close (links)
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+    });
+  });
+
+  // Menu ke bahar kahin bhi click → close
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+      menu.classList.remove("active");
+    }
+  });
+
+});
 function toggleMenu() {
   document.querySelector(".menu").classList.toggle("show");
 }

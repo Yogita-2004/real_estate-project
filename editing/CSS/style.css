@@ -909,6 +909,82 @@ a {
     font-size: 26px;
   }
 }
+.commercial-page {
+  min-height: 70vh;
+  padding: 60px 8%;
+  position: relative;
+}
+
+/* Heading top-left */
+.commercial-heading {
+  margin-top: 20px;   /* 🔼 heading upar aa jayegi */
+}
+
+.commercial-heading h1 {
+  font-size: 36px;
+  font-weight: 600;
+  color: #0b3b63; /* Blue */
+  margin-bottom: 8px;
+}
+
+/* Orange line */
+.heading-line {
+  display: block;
+  width: 55px;
+  height: 4px;
+  background-color: #fbb040;
+  border-radius: 2px;
+}
+
+/* Center Coming Soon */
+.coming-soon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+.coming-soon h2 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #0b3b63;
+  opacity: 0.85;
+}
+@media (max-width: 768px) {
+
+  .commercial-page {
+    padding: 40px 5%;
+  }
+
+  .commercial-heading h1 {
+    font-size: 26px;
+  }
+
+  .heading-line {
+    width: 40px;
+    height: 3px;
+  }
+
+  .coming-soon {
+    height: 40vh;
+  }
+
+  .coming-soon h2 {
+    font-size: 26px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .commercial-heading h1 {
+    font-size: 22px;
+  }
+
+  .coming-soon h2 {
+    font-size: 22px;
+  }
+}
 /* ================================
    AWARDS PAGE
 ================================ */
