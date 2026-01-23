@@ -319,3 +319,71 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const dropBtns = document.querySelectorAll(".dropbtn");
+  const dropdowns = document.querySelectorAll(".dropdown-content");
+  const hamburger = document.querySelector(".hamburger");
+  const navMenu = document.querySelector(".nav-menu");
+
+  // ===============================
+  // DROPDOWN TOGGLE
+  // ===============================
+  dropBtns.forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const dropdown = this.nextElementSibling;
+      const isOpen = dropdown.classList.contains("show");
+
+      // close all first
+      dropdowns.forEach(d => d.classList.remove("show"));
+
+      // toggle current
+      if (!isOpen) {
+        dropdown.classList.add("show");
+      }
+    });
+  });
+
+  // ===============================
+  // CLICK ANYWHERE OUTSIDE
+  // ===============================
+  document.addEventListener("click", function (e) {
+
+    // agar dropdown ya button ke andar click hua → ignore
+    if (e.target.closest(".dropdown") || e.target.closest(".dropbtn")) {
+      return;
+    }
+
+    // close dropdown
+    dropdowns.forEach(d => d.classList.remove("show"));
+
+    // close hamburger menu
+    if (navMenu && navMenu.classList.contains("active")) {
+      navMenu.classList.remove("active");
+      hamburger.classList.remove("active");
+    }
+  });
+
+  // ===============================
+  // DROPDOWN LINK CLICK
+  // ===============================
+  document.querySelectorAll(".dropdown-content a").forEach(link => {
+    link.addEventListener("click", function () {
+
+      // close dropdown
+      dropdowns.forEach(d => d.classList.remove("show"));
+
+      // close hamburger
+      if (navMenu && navMenu.classList.contains("active")) {
+        navMenu.classList.remove("active");
+        hamburger.classList.remove("active");
+      }
+    });
+  });
+
+});
